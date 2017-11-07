@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Intership Boards</title>
+	<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+</head>
+<body>
+	<form id="postJob" class="post-job-form" action="handlejob.php" method="POST" accept-charset="UTF-8">
+		<div class="job-image form-row">
+			<label for="job_image">Image URL</label>
+			<input name="job_image" type="text" value="" >
+		</div>
+		<div class="job-category form-row">
+			<label for="job_category">Category</label>
+			<select name="job_category">
+				<option value="IT">IT</option>
+				<option value="Finance">Finance</option>
+				<option value="BA">Business Administration</option>
+			</select>
+		</div>
+		<div class="job-title form-row">
+			<label for="job_title">Job Title</label>
+			<input name="job_title" type="text" />
+		</div>
+		<div class="company form-row">
+			<label for="company">Company</label>
+			<input name="company" type="text" />
+		</div>
+		<div class="job-desc form-row">
+			<label for="job_desc">Job Description</label>
+			<textarea rows="6" name="job_desc" ></textarea>
+		</div>
+		<div class="job-require form-row">
+			<label for="job_require">Job Requirement</label>
+			<textarea rows="6" name="job_require"></textarea>
+		</div>
+		<div class="salary form-row">
+			<label for="salary">Salary</label>
+			<input name="salary" type="text" />
+		</div>
+		<div class="benefit form-row">
+			<label for="benefit">Benefits</label>
+			<textarea rows="6" name="benefit"></textarea>
+		</div>
+		<div class="job-contact-submit form-row">
+			<label for="job_contact">Contact to CV Submission</label>
+			<textarea rows="6" name="job_contact_submit"></textarea>
+		</div>
+		<div class="job-contact-contributor form-row">
+			<label for="job_contact">Contact to Contributor</label>
+			<textarea rows="6" name="job_contact_contributor"></textarea>
+		</div>
+		<div class="form-row btn">
+			<button class="submit-btn" type="submit">Submit</button>
+		</div>
+	</form>
+</body>
+</html>
