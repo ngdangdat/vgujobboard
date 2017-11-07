@@ -4,7 +4,7 @@
 
 To set up environment, make sure you have npm. You can download npm here: https://www.npmjs.com/
 
-Next, install gulp and gulp dependencies by run following commands in command line:
+Next, install gulp and gulp dependencies by running following commands in command line:
 
 
 ```
