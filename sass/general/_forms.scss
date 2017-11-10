@@ -16,17 +16,21 @@ label {
 
 input, textarea, select {
     border-radius: 3px;
-
     border: 1px solid #ccc;
 }
 
 input {
     width: 365px;
     height: 25px;
+
+    font-size: 15px;
+    font-weight: 400;
 }
 
 textarea {
     width: 363px;
+
+    font-size: 15px;
 }
 
 select {
