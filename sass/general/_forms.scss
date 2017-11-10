@@ -1,3 +1,12 @@
+body {
+  font-family: 'Lato', georgia;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(236, 181, 62, 0.95); /*Orange*/
+  text-align: center;
+  font-weight: 300;
+}
+
 label {
     display: inline-block;
     width: 30%;
@@ -25,14 +34,30 @@ select {
 }
 
 button.submit-btn {
-    width: 200px;
-    background: #ccc;
-    border: 1px solid #ccc;
-    height: 30px;
-    color: gray;
-    border-radius: 5px;
-    margin-right: 5px;
+    background: none;
+    border: none;
+    outline: none;
+    margin: 2vmax;
 }
+
+.send-icn {
+  fill: rgba(255, 255, 255, 1)
+}
+
+.send-icn:hover {
+  fill: rgba(0, 0, 0, 1);
+  cursor: pointer;
+}
+
+button:hover small {
+  opacity: 1;
+}
+
+small {
+  display: block;
+  opacity: 0;
+}
+
 
 textarea {
     resize: none;
