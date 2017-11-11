@@ -8,11 +8,11 @@
 <body>
 	<form id="postJob" class="post-job-form" action="handlejob.php" method="POST" accept-charset="UTF-8">
 		<div class="job-image form-row">
-			<label for="job_image">Image URL</label>
+			<label for="job_image">Image</label>
 			<input name="job_image" type="text" value="" >
 		</div>
 		<div class="job-category form-row">
-			<label for="job_category">Category</label>
+			<label for="job_category">Job Field</label>
 			<select name="job_category">
 				<option value="IT">IT</option>
 				<option value="Finance">Finance</option>
@@ -24,7 +24,7 @@
 			<input name="job_title" type="text" />
 		</div>
 		<div class="company form-row">
-			<label for="company">Company</label>
+			<label for="company">Company Name</label>
 			<input name="company" type="text" />
 		</div>
 		<div class="job-desc form-row">
@@ -32,7 +32,7 @@
 			<textarea rows="6" name="job_desc" ></textarea>
 		</div>
 		<div class="job-require form-row">
-			<label for="job_require">Job Requirement</label>
+			<label for="job_require">Job Requirements</label>
 			<textarea rows="6" name="job_require"></textarea>
 		</div>
 		<div class="salary form-row">
@@ -42,6 +42,10 @@
 		<div class="benefit form-row">
 			<label for="benefit">Benefits</label>
 			<textarea rows="6" name="benefit"></textarea>
+		</div>
+		<div class="deadline form-row">
+			<label for="deadline">Deadline</label>
+			<input name="deadline" type="date" />
 		</div>
 		<div class="job-contact-submit form-row">
 			<label for="job_contact">Contact to CV Submission</label>
