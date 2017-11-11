@@ -7,10 +7,6 @@
 </head>
 <body>
 	<form id="postJob" class="post-job-form" action="handlejob.php" method="POST" accept-charset="UTF-8">
-		<div class="job-image form-row">
-			<label for="job_image">Image</label>
-			<input name="job_image" type="text" value="" >
-		</div>
 		<div class="job-category form-row">
 			<label for="job_category">Job Field</label>
 			<select name="job_category">
@@ -43,17 +39,21 @@
 			<label for="benefit">Benefits</label>
 			<textarea rows="6" name="benefit"></textarea>
 		</div>
-		<div class="deadline form-row">
-			<label for="deadline">Deadline</label>
-			<input name="deadline" type="date" />
-		</div>
 		<div class="job-contact-submit form-row">
 			<label for="job_contact">Contact to CV Submission</label>
 			<textarea rows="6" name="job_contact_submit"></textarea>
 		</div>
+		<div class="deadline form-row">
+			<label for="deadline">Deadline</label>
+			<input name="deadline" type="date" />
+		</div>
 		<div class="job-contact-contributor form-row">
 			<label for="job_contact">Contact to Contributor</label>
 			<textarea rows="6" name="job_contact_contributor"></textarea>
+		</div>
+		<div class="job-image form-row">
+			<label for="job_image">Image</label>
+			<input name="job_image" type="text" value="" >
 		</div>
 		<div class="form-row btn">
 			<button type="submit" class="submit-btn">
