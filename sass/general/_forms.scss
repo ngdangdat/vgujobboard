@@ -42,8 +42,11 @@ textarea {
 }
 
 select {
+    background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
+    background-color: white;
     width: 370px;
     height: 25px;
+    -webkit-appearance: none;
 }
 
 button.submit-btn {
