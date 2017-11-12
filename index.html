@@ -4,12 +4,14 @@
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<title>Intership Boards</title>
 	<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/select.js"></script>
 </head>
 <body>
 	<form id="postJob" class="post-job-form" action="handlejob.php" method="POST" accept-charset="UTF-8">
 		<div class="job-category form-row">
 			<label for="job_category">Job Field</label>
-			<select name="job_category">
+			<select name="job_category" id="jobSelectBox" onchange="checkIfOthersSelected();">
 				<option value="IT-SW">IT - Software</option>
 				<option value="IT-HW">IT - Hardware/Networking</option>
 				<option value="Electrical">Electrical/Electronics</option>
@@ -22,6 +24,10 @@
 				<option value="Translator">Interpreter/Translator</option>
 				<option value="Others">Others</option>
 			</select>
+		</div>
+		<div class="job-category-others form-row" id="jobOthersInput">
+			<label for="job_field_others">Specify Your Field</label>
+			<input name="job_category_others" type="text" />
 		</div>
 		<div class="job-title form-row">
 			<label for="job_title">Job Title</label>
