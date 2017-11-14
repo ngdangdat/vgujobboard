@@ -1,4 +1,19 @@
+body {
+  font-family: 'Lato', georgia;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 102, 0, 1); /*Orange*/
+  text-align: center;
+  font-weight: 300;
+}
+
+#postJob {
+    position: absolute;
+    left: 25%;
+}
+
 label {
+    font-weight: 400;
     display: inline-block;
     width: 30%;
     vertical-align: top;
@@ -6,40 +21,73 @@ label {
 
 input, textarea, select {
     border-radius: 3px;
+    border: 3px solid rgba(255, 102, 0, 1);
 
-    border: 1px solid #ccc;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border: 3px solid #555;
 }
 
 input {
-    width: 365px;
+    width: 370px;
     height: 25px;
+
+    font-size: 15px;
+    font-weight: 400;
 }
 
 textarea {
-    width: 363px;
+    width: 370px;
+    font-size: 15px;
 }
 
 select {
-    width: 370px;
-    height: 25px;
+    background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
+    background-color: white;
+    width: 380px;
+    height: 33px;
+    -webkit-appearance: none;
+}
+
+#jobOthersInput {
+    display: none;
 }
 
 button.submit-btn {
-    width: 200px;
-    background: #ccc;
-    border: 1px solid #ccc;
-    height: 30px;
-    color: gray;
-    border-radius: 5px;
-    margin-right: 5px;
+    background: none;
+    border: none;
+    outline: none;
+    margin: 2vmax;
 }
+
+.send-icn {
+  fill: rgba(255, 255, 255, 1)
+}
+
+.send-icn:hover {
+  fill: rgba(0, 0, 0, 1);
+  cursor: pointer;
+}
+
+button:hover small {
+  opacity: 1;
+}
+
+small {
+  display: block;
+  opacity: 0;
+}
+
 
 textarea {
     resize: none;
 }
 
 .form-row {
-    max-width: 540px;
+    max-width: 555px;
     margin-bottom: 10px;
 }
 
