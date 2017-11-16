@@ -4,7 +4,7 @@ function checkIfOthersSelected() {
 	var othersInput = document.getElementById("jobOthersInput");
 
     if (selectedValue == "Others")
-    	othersInput.style.display = "inline-block";
+    	othersInput.style.display = "block";
     else
     	othersInput.style.display = "none";
 }

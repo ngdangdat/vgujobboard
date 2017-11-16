@@ -1,15 +1,46 @@
 body {
-  font-family: 'Lato', georgia;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 25px;
-  color: rgba(255, 255, 255, 1);
-  background-color: rgba(255, 102, 0, 1); /*Orange*/
+  color: #474544;
+  background: #F2F3EB;
   text-align: center;
   font-weight: 300;
 }
 
-#postJob {
-    position: absolute;
-    left: 25%;
+#container {
+  border: solid 3px #474544;
+  max-width: 768px;
+  margin: 60px auto;
+  position: relative;
+}
+
+h1 {
+  color: #474544;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.underline {
+  border-bottom: solid 2px #474544;
+  margin: -0.512em auto;
+  width: 80px;
+}
+
+#header {
+  margin: 50px auto 0;
+}
+
+#header img {
+  max-width: 50%;
+  display: block;
+}
+
+form {
+  padding: 37.5px;
+  margin: 50px 0;
 }
 
 label {
@@ -20,33 +51,38 @@ label {
 }
 
 input, textarea, select {
-    border-radius: 3px;
-    border: 3px solid rgba(255, 102, 0, 1);
-
+    border: 2px solid #474544;
     padding-left: 2px;
     padding-right: 2px;
 }
 
-input:focus, textarea:focus, select:focus {
-    border: 3px solid #555;
+textarea:focus, input:focus, select:focus {
+    outline: none;
 }
 
 input {
     width: 370px;
     height: 25px;
-
+    color: #474544;
     font-size: 15px;
     font-weight: 400;
 }
 
+#jobImage {
+    background-color: white;
+    padding-top: 2px;
+}
+
 textarea {
     width: 370px;
+    color: #474544;
     font-size: 15px;
 }
 
 select {
-    background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
+    background: url('../../image/arrow-down.png') no-repeat right;
     background-color: white;
+    color: #474544;
     width: 380px;
     height: 33px;
     -webkit-appearance: none;
@@ -54,6 +90,10 @@ select {
 
 #jobOthersInput {
     display: none;
+}
+
+#jobOthersInput input {
+    margin-left: 31%;
 }
 
 button.submit-btn {
@@ -64,11 +104,11 @@ button.submit-btn {
 }
 
 .send-icn {
-  fill: rgba(255, 255, 255, 1)
+  fill: black;
 }
 
 .send-icn:hover {
-  fill: rgba(0, 0, 0, 1);
+  fill: rgba(255, 102, 0, 1);
   cursor: pointer;
 }
 
@@ -80,7 +120,6 @@ small {
   display: block;
   opacity: 0;
 }
-
 
 textarea {
     resize: none;
