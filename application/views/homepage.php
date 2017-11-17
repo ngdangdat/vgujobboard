@@ -1,9 +1,5 @@
-<div id="container">
-	<h1>&bull; Job Board &bull;</h1>
-	<div class="underline"> </div>
-	<div id="header">
-		<center><img src="<?= getStaticPath('images/vgu_logo.png'); ?>"></center>
-	</div>
+<? $this->load->helper('form'); ?>
+
 <form id="postJob" class="post-job-form" action="handlejob.php" method="POST" accept-charset="UTF-8">
 	<div class="job-category form-row">
 		<label for="job_category">Job Field</label>

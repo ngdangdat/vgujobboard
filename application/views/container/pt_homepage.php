@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Homepage</title>
 	<?php $this->load->view('component/htmlhead'); ?>
 </head>
 <body>
+	<div id="container" class="container">
+		<? $this->load->view('component/header'); ?>
 
-	<?php $this->load->view('component/header'); ?>
+		<? $this->load->view($template); ?>
 
-	<?php $this->load->view($template); ?>
+		<? $this->load->view('component/footer'); ?>
+	</div>
 
-	<?php $this->load->view('component/footer'); ?>
-
-	<?php $this->load->view('component/htmlfooter'); ?>
+	<? $this->load->view('component/htmlfooter'); ?>
 </body>
 </html>
