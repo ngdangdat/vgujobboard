@@ -66,7 +66,7 @@ if ( ! function_exists('site_url'))
 		return get_instance()->config->site_url($uri, $protocol);
 	}
 }
-
+ 
 // ------------------------------------------------------------------------
 
 if ( ! function_exists('base_url'))
@@ -565,5 +565,15 @@ if ( ! function_exists('redirect'))
 				break;
 		}
 		exit;
+	}
+}
+
+if(!function_exists('getCurrentProtocol')) {
+	/**
+	 * Get Current Protocol
+	 */
+
+	function getCurrentProtocol() {
+		return (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 	}
 }

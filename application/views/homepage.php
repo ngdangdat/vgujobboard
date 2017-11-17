@@ -1,3 +1,9 @@
+<div id="container">
+	<h1>&bull; Job Board &bull;</h1>
+	<div class="underline"> </div>
+	<div id="header">
+		<center><img src="<?= getStaticPath('images/vgu_logo.png'); ?>"></center>
+	</div>
 <form id="postJob" class="post-job-form" action="handlejob.php" method="POST" accept-charset="UTF-8">
 	<div class="job-category form-row">
 		<label for="job_category">Job Field</label>
@@ -16,8 +22,7 @@
 		</select>
 	</div>
 	<div class="job-category-others form-row" id="jobOthersInput">
-		<label for="job_field_others">Specify Your Field</label>
-		<input name="job_category_others" type="text" />
+		<input name="job_category_others" type="text" placeholder="Job Field is"/>
 	</div>
 	<div class="job-title form-row">
 		<label for="job_title">Job Title</label>
@@ -57,7 +62,7 @@
 	</div>
 	<div class="job-image form-row">
 		<label for="job_image">Image</label>
-		<input name="job_image" type="file">
+		<input name="job_image" id="jobImage" type="file">
 	</div>
 	<div class="form-row btn">
 		<button type="submit" class="submit-btn">
@@ -68,3 +73,4 @@
 		</button>
 	</div>
 </form>
+</div>

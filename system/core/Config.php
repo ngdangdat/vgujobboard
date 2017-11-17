@@ -289,6 +289,16 @@ class CI_Config {
 		return $base_url.$this->item('index_page').$uri;
 	}
 
+	/**
+	 * Path serving static files
+	 * 
+	 * @return string
+	 */
+
+	public function static_path() {
+		return 'static';
+	}
+
 	// -------------------------------------------------------------
 
 	/**
