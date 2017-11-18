@@ -1,6 +1,4 @@
-<? $this->load->helper('form'); ?>
-
-<form id="postJob" class="post-job-form" action="handlejob.php" method="POST" accept-charset="UTF-8">
+<?= form_open('job/process'); ?>
 	<div class="job-category form-row">
 		<label for="job_category">Job Field</label>
 		<select name="job_category" id="jobSelectBox" onchange="checkIfOthersSelected();">
@@ -68,5 +66,4 @@
 			<small>Submit</small>
 		</button>
 	</div>
-</form>
-</div>
+<?= form_close(); ?>
