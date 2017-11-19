@@ -31,11 +31,10 @@ h1 {
 
 #header {
   margin: 50px auto 0;
-}
-
-#header img {
-  max-width: 50%;
-  display: block;
+  img {
+    max-width: 50%;
+    display: block;
+  }
 }
 
 form {
@@ -44,72 +43,68 @@ form {
 }
 
 label {
-    font-weight: 400;
-    display: inline-block;
-    width: 30%;
-    vertical-align: top;
+  font-weight: 400;
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
 }
 
 input, textarea, select {
-    border: 2px solid #474544;
-    padding-left: 2px;
-    padding-right: 2px;
-}
-
-textarea:focus, input:focus, select:focus {
+  color: #474544;
+  border: 2px solid #474544;
+  font-size: 15px;
+  padding-left: 4px;
+  padding-right: 2px;
+  &:focus {
     outline: none;
+  }
 }
 
 input {
-    width: 370px;
-    height: 25px;
-    color: #474544;
-    font-size: 15px;
-    font-weight: 400;
-}
-
-#jobImage {
-    background-color: white;
-    padding-top: 2px;
+  width: 370px;
+  height: 25px;
 }
 
 textarea {
-    width: 370px;
-    color: #474544;
-    font-size: 15px;
+  width: 370px;
+  resize: none;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 select {
-    background: url('../../image/arrow-down.png') no-repeat right;
-    background-color: white;
-    color: #474544;
-    width: 380px;
-    height: 33px;
-    -webkit-appearance: none;
+  width: 380px;
+  height: 33px;
+  background: url('../../image/arrow-down.png') no-repeat right;
+  background-color: white;
+  -webkit-appearance: none;
+}
+
+#jobImage {
+  background-color: white;
+  padding-top: 2px;
 }
 
 #jobOthersInput {
-    display: none;
-}
-
-#jobOthersInput input {
-    margin-left: 31%;
+  display: none;
+  input {
+   margin-left: 31%;
+  }
 }
 
 button.submit-btn {
-    background: none;
-    border: none;
-    outline: none;
-    margin: 2vmax;
+  background: none;
+  border: none;
+  outline: none;
+  margin: 2vmax;
 }
 
 .send-icn {
   fill: black;
-}
-
-.send-icn:hover {
-  fill: rgba(255, 102, 0, 1);
-  cursor: pointer;
+  &:hover {
+    fill: rgba(255, 102, 0, 1);
+    cursor: pointer;
+  }
 }
 
 button:hover small {
@@ -121,15 +116,10 @@ small {
   opacity: 0;
 }
 
-textarea {
-    resize: none;
-}
-
 .form-row {
-    max-width: 555px;
-    margin-bottom: 10px;
-}
-
-.form-row.btn {
+  max-width: 555px;
+  margin-bottom: 10px;
+  &.btn {
     text-align: right;
+  }
 }
