@@ -16,7 +16,7 @@
 		</div>
 	<form id="postJob" class="post-job-form" action="handlejob.php" method="POST" accept-charset="UTF-8">
 		<div class="job-category form-row">
-			<label for="job_category">Job Field</label>
+			<label for="job_category">Job Field*</label>
 			<select name="job_category" id="jobSelectBox" onchange="checkIfOthersSelected();">
 				<option value="IT-SW">IT - Software</option>
 				<option value="IT-HW">IT - Hardware/Networking</option>
@@ -35,20 +35,20 @@
 			<input name="job_category_others" type="text" placeholder="Job Field is"/>
 		</div>
 		<div class="job-title form-row">
-			<label for="job_title">Job Title</label>
-			<input name="job_title" type="text" />
+			<label for="job_title">Job Title*</label>
+			<input name="job_title" type="text" required/>
 		</div>
 		<div class="company form-row">
-			<label for="company">Company Name</label>
-			<input name="company" type="text" />
+			<label for="company">Company Name*</label>
+			<input name="company" type="text" required/>
 		</div>
 		<div class="job-desc form-row">
 			<label for="job_desc">Job Description</label>
 			<textarea rows="6" name="job_desc" ></textarea>
 		</div>
 		<div class="job-require form-row">
-			<label for="job_require">Job Requirements</label>
-			<textarea rows="6" name="job_require"></textarea>
+			<label for="job_require">Job Requirements*</label>
+			<textarea rows="6" name="job_require" required></textarea>
 		</div>
 		<div class="salary form-row">
 			<label for="salary">Salary</label>
@@ -59,12 +59,12 @@
 			<textarea rows="6" name="benefit"></textarea>
 		</div>
 		<div class="job-contact-submit form-row">
-			<label for="job_contact">Resume Application</label>
-			<textarea rows="6" name="job_contact_submit"></textarea>
+			<label for="job_contact">Resume Application*</label>
+			<textarea rows="6" name="job_contact_submit" required></textarea>
 		</div>
 		<div class="deadline form-row">
-			<label for="deadline">Deadline</label>
-			<input name="deadline" type="date" />
+			<label for="deadline">Deadline*</label>
+			<input name="deadline" type="date" required/>
 		</div>
 		<div class="job-contact-contributor form-row">
 			<label for="job_contact">Your Contact</label>
@@ -81,6 +81,9 @@
 				</svg>
 				<small>Submit</small>
 			</button>
+		</div>
+		<div class="legend">
+			<label for="legend">*: required</label>
 		</div>
 	</form>
 	</div> <!-- End of Container -->

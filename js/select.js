@@ -3,8 +3,12 @@ function checkIfOthersSelected() {
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 	var othersInput = document.getElementById("jobOthersInput");
 
-    if (selectedValue == "Others")
-    	othersInput.style.display = "block";
-    else
-    	othersInput.style.display = "none";
+    if (selectedValue == "Others") {
+        othersInput.childNodes[1].setAttribute("required","");
+        othersInput.style.display = "block";
+    }
+    else {
+        othersInput.childNodes[1].removeAttribute("required");
+        othersInput.style.display = "none";
+    }
 }
