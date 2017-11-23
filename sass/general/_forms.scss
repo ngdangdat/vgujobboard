@@ -89,6 +89,39 @@ h1 {
     display: block;
   }
 }
+#navigation {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      padding: 0px;
+      background-color: #000000;
+      color: #ffffff;
+      :hover {
+        background-color: #474544;
+      }
+      a {
+        height: 36px;
+        display: block;
+        line-height: 2;
+        width: 100%;
+        text-align: center;
+        vertical-align: middle;
+        border-right: 1px solid #808080;
+        border-bottom: 1px solid #808080;
+        text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 18px;
+        font-weight: 100;
+      }
+    }
+  }
+}
 
 form {
   padding: 37.5px;
@@ -97,6 +130,8 @@ form {
 
 label {
   font-weight: 400;
+  padding-right: 15px;
+  text-align: center;
 }
 
 input, textarea, select {
@@ -176,4 +211,17 @@ small {
   &.btn {
     text-align: right;
   }
+}
+
+.legend label {
+  font-size: 15px;
+}
+.footer {
+  border: solid 3px #474544;
+  max-width: 95%;
+  margin: 20px auto;
+  position: relative;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
 }

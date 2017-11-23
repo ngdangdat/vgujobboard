@@ -13,13 +13,28 @@
 		<h1>&bull; Job Board &bull;</h1>
 		<div class="underline"> </div>
 		<div id="header">
-			<center><img src="image/vgu_logo.png"></center>
+			<a href="index.html">
+				<center><img src="image/vgu_logo.png"></center>
+			</a>
+			<div id="navigation" class="col-12">
+			    <ul>
+			        <li class="col-3 col-m-6"><a href="index.html">Home</a>
+			        </li>
+			        <li class="col-3 col-m-6"><a href="instruction.html">Instruction</a>
+			        </li>
+			        <li class="col-3 col-m-6"><a href="https://www.facebook.com/VGUAlumniCommunity">Facebook</a>
+			        </li>
+			        <li class="col-3 col-m-6"><a href="https://vgualumniqna.tumblr.com/">Q&amp;A</a>
+			        </li>
+			    </ul>
+			    <div class="clear"></div>
+			</div>
 		</div>
 		<form id="postJob" class="post-job-form" action="handlejob.php" method="POST" accept-charset="UTF-8">
 			<div class="row">
 				<div class="job-category form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="job_category">Job Field*</label>
-					<select class="col-8 col-m-8" name="job_category" id="jobSelectBox">
+					<label class="col-3 col-m-12" for="job_category">Job Field*</label>
+					<select class="col-9 col-m-12" name="job_category" id="jobSelectBox">
 						<option value="IT-SW">IT - Software</option>
 						<option value="IT-HW">IT - Hardware/Networking</option>
 						<option value="Electrical">Electrical/Electronics</option>
@@ -34,47 +49,47 @@
 					</select>
 				</div>
 				<div class="job-category-others form-row col-12 col-m-12" id="jobOthersInput">
-					<input class="col-8 col-m-8" name="job_category_others" type="text" placeholder="Job Field is"/>
+					<input class="col-9 col-m-12" name="job_category_others" type="text" placeholder="Job Field is"/>
 				</div>
 				<div class="job-title form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="job_title">Job Title*</label>
-					<input class="col-8 col-m-8" name="job_title" type="text" required/>
+					<label class="col-3 col-m-12" for="job_title">Job Title*</label>
+					<input class="col-9 col-m-12" name="job_title" type="text" required/>
 				</div>
 				<div class="company form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="company">Company Name*</label>
-					<input class="col-8 col-m-8" name="company" type="text" required/>
+					<label class="col-3 col-m-12" for="company">Company Name*</label>
+					<input class="col-9 col-m-12" name="company" type="text" required/>
 				</div>
 				<div class="job-desc form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="job_desc">Job Description</label>
-					<textarea class="col-8 col-m-8" rows="6" name="job_desc" ></textarea>
+					<label class="col-3 col-m-12" for="job_desc">Job Description</label>
+					<textarea class="col-9 col-m-12" rows="6" name="job_desc" ></textarea>
 				</div>
 				<div class="job-require form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="job_require">Job Requirements*</label>
-					<textarea class="col-8 col-m-8" rows="6" name="job_require" required></textarea>
+					<label class="col-3 col-m-12" for="job_require">Job Requirements*</label>
+					<textarea class="col-9 col-m-12" rows="6" name="job_require" required></textarea>
 				</div>
 				<div class="salary form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="salary">Salary</label>
-					<input class="col-8 col-m-8" name="salary" type="text" />
+					<label class="col-3 col-m-12" for="salary">Salary</label>
+					<input class="col-9 col-m-12" name="salary" type="text" />
 				</div>
 				<div class="benefit form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="benefit">Benefits</label>
-					<textarea class="col-8 col-m-8" rows="6" name="benefit"></textarea>
+					<label class="col-3 col-m-12" for="benefit">Benefits</label>
+					<textarea class="col-9 col-m-12" rows="6" name="benefit"></textarea>
 				</div>
 				<div class="job-contact-submit form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="job_contact">Resume Application*</label>
-					<textarea class="col-8 col-m-8" rows="6" name="job_contact_submit" required></textarea>
+					<label class="col-3 col-m-12" for="job_contact">Resume Application*</label>
+					<textarea class="col-9 col-m-12" rows="6" name="job_contact_submit" required></textarea>
 				</div>
 				<div class="deadline form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="deadline">Deadline*</label>
-					<input class="col-8 col-m-8" name="deadline" type="date" required/>
+					<label class="col-3 col-m-12" for="deadline">Deadline*</label>
+					<input class="col-9 col-m-12" name="deadline" type="date" required/>
 				</div>
 				<div class="job-contact-contributor form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="job_contact">Your Contact</label>
-					<textarea class="col-8 col-m-8" rows="6" name="job_contact_contributor" placeholder="In case students need your help."></textarea>
+					<label class="col-3 col-m-12" for="job_contact">Your Contact</label>
+					<textarea class="col-9 col-m-12" rows="6" name="job_contact_contributor" placeholder="In case students need your help."></textarea>
 				</div>
 				<div class="job-image form-row col-12 col-m-12">
-					<label class="col-4 col-m-4" for="job_image">Image</label>
-					<input class="col-8 col-m-8" name="job_image" id="jobImage" type="file">
+					<label class="col-3 col-m-12" for="job_image">Image</label>
+					<input class="col-9 col-m-12" name="job_image" id="jobImage" type="file">
 				</div>
 				<div class="form-row col-12 col-m-12 btn col-12 col-m-12">
 					<button type="submit" class="submit-btn">
@@ -84,11 +99,14 @@
 						<small>Submit</small>
 					</button>
 				</div>
-				<div class="legend">
-					<label class="col-4 col-m-4" for="legend">*: required</label>
+				<div class="legend col-12">
+					<label for="legend">*: required</label>
 				</div>
 			</div>
 		</form>
+		<div class="footer">
+		  <p>Email: vgu.alumni@gmail.com</p>
+		</div>
 	</div> <!-- End of Container -->
 </body>
 </html>
