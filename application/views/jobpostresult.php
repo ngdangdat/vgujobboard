@@ -1,1 +1,1 @@
-<? var_dump($test); ?>
+<? var_dump($postUrl); ?>
