@@ -1,15 +1,68 @@
+/* Set up grid view */
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+
+/* End Set up grid view */
+
 body {
   font-family: 'Montserrat', Arial, sans-serif;
   font-size: 25px;
   color: #474544;
   background: #F2F3EB;
-  text-align: center;
+  text-align: left;
   font-weight: 300;
 }
 
 #container {
   border: solid 3px #474544;
-  max-width: 768px;
+  max-width: 90%;
   margin: 60px auto;
   position: relative;
 }
@@ -31,11 +84,43 @@ h1 {
 
 #header {
   margin: 50px auto 0;
+  img {
+    max-width: 50%;
+    display: block;
+  }
 }
-
-#header img {
-  max-width: 50%;
-  display: block;
+#navigation {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      padding: 0px;
+      background-color: #000000;
+      color: #ffffff;
+      :hover {
+        background-color: #474544;
+      }
+      a {
+        height: 36px;
+        display: block;
+        line-height: 2;
+        width: 100%;
+        text-align: center;
+        vertical-align: middle;
+        border-right: 1px solid #808080;
+        border-bottom: 1px solid #808080;
+        text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 18px;
+        font-weight: 100;
+      }
+    }
+  }
 }
 
 form {
@@ -44,72 +129,72 @@ form {
 }
 
 label {
-    font-weight: 400;
-    display: inline-block;
-    width: 30%;
-    vertical-align: top;
+  font-weight: 400;
+  padding-right: 15px;
+  text-align: center;
 }
 
 input, textarea, select {
-    border: 2px solid #474544;
-    padding-left: 2px;
-    padding-right: 2px;
-}
-
-textarea:focus, input:focus, select:focus {
+  color: #474544;
+  border: 2px solid #474544;
+  font-size: 15px;
+  padding: 4px;
+  &:focus {
     outline: none;
+  }
 }
 
 input {
-    width: 370px;
-    height: 25px;
-    color: #474544;
-    font-size: 15px;
-    font-weight: 400;
-}
-
-#jobImage {
-    background-color: white;
-    padding-top: 2px;
+  height: 30px;
 }
 
 textarea {
-    width: 370px;
-    color: #474544;
-    font-size: 15px;
+  resize: none;
 }
 
 select {
-    background: url('../../image/arrow-down.png') no-repeat right;
-    background-color: white;
-    color: #474544;
-    width: 380px;
-    height: 33px;
-    -webkit-appearance: none;
+  height: 30px;
+  background: url('../../image/arrow-down.png') no-repeat right;
+  background-color: white;
+  -webkit-appearance: none;
+}
+
+#jobImage {
+  background-color: white;
+  padding: 2px;
+}
+
+@-moz-document url-prefix() {
+  select {
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: "";
+  }
+  #jobImage {
+    padding: 0px;
+  }
 }
 
 #jobOthersInput {
-    display: none;
-}
-
-#jobOthersInput input {
-    margin-left: 31%;
+  display: none;
+  input {
+    float: right;
+  }
 }
 
 button.submit-btn {
-    background: none;
-    border: none;
-    outline: none;
-    margin: 2vmax;
+  background: none;
+  border: none;
+  outline: none;
+  margin: 2vmax;
 }
 
 .send-icn {
   fill: black;
-}
-
-.send-icn:hover {
-  fill: rgba(255, 102, 0, 1);
-  cursor: pointer;
+  &:hover {
+    fill: rgba(255, 102, 0, 1);
+    cursor: pointer;
+  }
 }
 
 button:hover small {
@@ -121,15 +206,22 @@ small {
   opacity: 0;
 }
 
-textarea {
-    resize: none;
-}
-
 .form-row {
-    max-width: 555px;
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+  &.btn {
+    text-align: right;
+  }
 }
 
-.form-row.btn {
-    text-align: right;
+.legend label {
+  font-size: 15px;
+}
+.footer {
+  border: solid 3px #474544;
+  max-width: 95%;
+  margin: 20px auto;
+  position: relative;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
 }
