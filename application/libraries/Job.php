@@ -4,15 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Job {
     const PREFIXES = [
-        'jobCategory' => 'Internship',
+        'jobCategory' => 'Job Field',
         'jobTitle' => 'Job Title',
         'jobDescription' => 'Job Description',
-        'jobRequirement' => 'Job Requirements',
+        'jobRequirement' => 'Job Requirement',
         'company' => 'Company',
         'salary' => 'Salary',
         'benefit' => 'Benefit',
         'contactPointSubmission' => 'Contact To CV Submission',
-        'contactPointContributor' => 'Contact To Contributor',
+        'contactPointContributor' => 'For more information',
         'jobDeadline' => 'Deadline'
     ];
     const DEFAULT_IMAGE_URL = 'https://boardsource.org/wp-content/uploads/2016/05/Board-Member-Job-Description.png';
@@ -30,18 +30,20 @@ class Job {
     protected $jobImage;
     protected $jobDeadline;
 
-    public function __construct(array $fields = []) {
-        $this->jobCategory = $fields['jobCategory'];
-        $this->jobTitle = $fields['jobTitle'];
-        $this->jobDescription = $fields['jobDescription'];
-        $this->jobRequirement = $fields['jobRequirement'];
-        $this->company = $fields['company'];
-        $this->salary = $fields['salary'];
-        $this->benefit = $fields['benefit'];
-        $this->contactPointSubmission = $fields['contactPointSubmission'];
-        $this->contactPointContributor = $fields['contactPointContributor'];
-        $this->jobImage = $fields['jobImage'];
-        $this->jobDeadline = $fields['jobDeadline'];
+    public function __construct($fields = array()) {
+        if(count($fields) > 0) {
+            $this->jobCategory = $fields['jobCategory'];
+            $this->jobTitle = $fields['jobTitle'];
+            $this->jobDescription = $fields['jobDescription'];
+            $this->jobRequirement = $fields['jobRequirement'];
+            $this->company = $fields['company'];
+            $this->salary = $fields['salary'];
+            $this->benefit = $fields['benefit'];
+            $this->contactPointSubmission = $fields['contactPointSubmission'];
+            $this->contactPointContributor = $fields['contactPointContributor'];
+            $this->jobImage = $fields['jobImage'];
+            $this->jobDeadline = $fields['jobDeadline'];
+        }
     }
 
     public function getCaption() {

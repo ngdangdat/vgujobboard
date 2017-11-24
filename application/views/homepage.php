@@ -1,4 +1,4 @@
-<?= form_open('job/process'); ?>
+<?= form_open('handle/job'); ?>
     <div class="job-category form-row">
         <label for="job_category">Job Field</label>
         <?= form_dropdown(

@@ -13,12 +13,12 @@ if(!function_exists(('postImageToFacebook'))) {
         $CI_instance = get_instance();
         $CI_instance->load->library('Facebook');
         $postImageEndpoint = '/' . $albumId . '/photos';
-        $caption = $caption ? $caption || '';
+        $caption = $caption ? $caption : '';
 
         try {
             $facebookServ = new Facebook();
             $postImageResp = $facebookServ->post(
-                $endpoint,
+                $postImageEndpoint,
                 array(
                     'url' => $imageUrl,
                     'caption' => $caption
@@ -53,7 +53,7 @@ if(!function_exists('getPostUrlFromId')) {
         try {
             $facebookServ = new Facebook();
             $getPostEndpoint = $postId . '?fields=permalink_url';
-            $getPostResponse = $this->FacebookApp->get($getPostEndpoint);
+            $getPostResponse = $facebookServ->get($getPostEndpoint);
             if(array_key_exists('permalink_url', $getPostResponse)) {
                 return $getPostResponse['permalink_url'];
             }

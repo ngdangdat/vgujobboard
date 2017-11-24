@@ -243,7 +243,8 @@ class CI_Config {
 	{
 		$base_url = $this->slash_item('base_url');
 
-		if (isset($protocol))
+
+		/*if (isset($protocol))
 		{
 			// For protocol-relative links
 			if ($protocol === '')
@@ -254,8 +255,13 @@ class CI_Config {
 			{
 				$base_url = $protocol.substr($base_url, strpos($base_url, '://'));
 			}
-		}
+		}*/
 
+		if(!isset($protocol)) {
+			$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+		}
+		$base_url = $protocol.substr($base_url, strpos($base_url, '://'));
+		
 		if (empty($uri))
 		{
 			return $base_url.$this->item('index_page');
