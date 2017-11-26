@@ -62,7 +62,7 @@ body {
 
 #container {
   border: solid 3px #474544;
-  max-width: 90%;
+  max-width: 80%;
   margin: 60px auto;
   position: relative;
 }
@@ -71,9 +71,16 @@ h1 {
   color: #474544;
   font-size: 32px;
   font-weight: 700;
-  letter-spacing: 7px;
   text-align: center;
   text-transform: uppercase;
+}
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    h1 {letter-spacing: 7px;}
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    h1 {letter-spacing: 7px;}
 }
 
 .underline {
