@@ -269,6 +269,7 @@ class CI_Security {
 			return FALSE;
 		}
 
+		ob_start();
 		setcookie(
 			$this->_csrf_cookie_name,
 			$this->_csrf_hash,
@@ -279,6 +280,7 @@ class CI_Security {
 			config_item('cookie_httponly')
 		);
 		log_message('info', 'CSRF cookie sent');
+		ob_end_flush();
 
 		return $this;
 	}

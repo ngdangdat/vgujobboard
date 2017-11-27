@@ -6,13 +6,13 @@
 </head>
 <body>
 	<div id="container" class="container">
-		<? $this->load->view('component/header'); ?>
+		<?php $this->load->view('component/header'); ?>
 
-		<? $this->load->view($template); ?>
+		<?php $this->load->view($template); ?>
 
-		<? $this->load->view('component/footer'); ?>
+		<?php $this->load->view('component/footer'); ?>
 	</div>
 
-	<? $this->load->view('component/htmlfooter'); ?>
+	<?php $this->load->view('component/htmlfooter'); ?>
 </body>
 </html>

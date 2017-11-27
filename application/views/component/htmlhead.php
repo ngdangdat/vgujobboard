@@ -1,1 +1,1 @@
-<link rel="stylesheet" type="text/css" href="<?= getStaticPath('css/style.css'); ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo getStaticPath('css/style.css'); ?>" />
