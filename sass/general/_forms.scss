@@ -9,15 +9,12 @@
     display: table;
 }
 
-[class*="col-"] {
-    float: left;
-}
-
 /* For mobile phones: */
 [class*="col-"] {
     width: 100%;
+    float: left;
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 767px) {
     /* For tablets: */
     .col-m-1 {width: 8.33%;}
     .col-m-2 {width: 16.66%;}
