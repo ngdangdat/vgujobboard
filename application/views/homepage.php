@@ -1,12 +1,17 @@
 <?php echo form_open('handle/job'); ?>
     <div class="row">
+        <?php if (!empty(validation_errors())) {?>
+            <div class="form-errors">
+                <?php echo validation_errors(); ?>
+            </div>
+        <?php } ?>
         <div class="job-category form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_category">Job Field</label>
+            <label class="col-2 col-m-12" for="job_category">Job Field</label>
             <?php echo form_dropdown(
                 array(
                     'name'  => 'job_category',
                     'id'    => 'jobSelectBox',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('job_category')
                 ),
                 array(
@@ -30,109 +35,109 @@
                 array(
                     'name' => 'job_category_others',
                     'placeholder' => 'Job Field is',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('job_category_others')
                 )
             ); ?>
         </div>
         <div class="job-title form-row <col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_title" class='col-9 col-m-12'>Job Title</label>
+            <label class="col-2 col-m-12" for="job_title" class='col-10 col-m-12'>Job Title</label>
             <?php echo form_input(
                 array(
                     'name' => 'job_title',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('job_title')
                 )
-            );?>
+            ); ?>
         </div>
         <div class="company form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="company">Company Name</label>
+            <label class="col-2 col-m-12" for="company">Company Name</label>
             <?php echo form_input(
                 array(
                     'name' => 'company',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('company')
                 )
             );?>
         </div>
         <div class="job-desc form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_desc">Job Description</label>
+            <label class="col-2 col-m-12" for="job_desc">Job Description</label>
             <?php echo form_textarea(
                 array(
                     'name' => 'job_desc',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('job_desc')
                 )
             );?>
         </div>
         <div class="job-require form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_require">Job Requirements</label>
+            <label class="col-2 col-m-12" for="job_require">Job Requirements</label>
             <?php echo form_textarea(
                 array(
                     'name' => 'job_require',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('job_require')
                 )
             );?>
         </div>
         <div class="salary form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="salary">Salary</label>
+            <label class="col-2 col-m-12" for="salary">Salary</label>
             <?php echo form_input(
                 array(
                     'name' => 'salary',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('salary')
                 )
             );?>
         </div>
         <div class="benefit form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="benefit">Benefits</label>
+            <label class="col-2 col-m-12" for="benefit">Benefits</label>
             <?php echo form_textarea(
                 array(
                     'name' => 'benefit',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('benefi')
                 )
             );?>
         </div>
         <div class="job-contact-submit form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_contact">Contact to CV Submission</label>
+            <label class="col-2 col-m-12" for="job_contact">Contact to CV Submission</label>
             <?php echo form_textarea(
                 array(
                     'name' => 'job_contact_submit',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('job_contact_submit')
                 )
             );?>
         </div>
         <div class="deadline form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="deadline">Deadline</label>
+            <label class="col-2 col-m-12" for="deadline">Deadline</label>
             <?php echo form_input(
                 array(
                     'type' => 'date',
                     'name' => 'deadline',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('deadline')
                 )
             );?>
         </div>
         <div class="job-contact-contributor form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_contact">Contact to Contributor</label>
+            <label class="col-2 col-m-12" for="job_contact">Contact to Contributor</label>
             <?php echo form_textarea(
                 array(
                     'name' => 'job_contact_contributor',
-                    'class' => 'col-9 col-m-12',
+                    'class' => 'col-10 col-m-12',
                     'value' => set_value('job_contact_contributor')
                 )
             );?>
         </div>
         <div class="job-image form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_image">Image</label>
+            <label class="col-2 col-m-12" for="job_image">Image</label>
             <?php echo form_upload(
                 array(
                     'name' => 'job_image',
                     'id'   => 'jobImage',
-                    'class' => 'col-9 col-m-12'
+                    'class' => 'col-10 col-m-12'
                 )
             ); ?>
         </div>
