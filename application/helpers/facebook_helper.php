@@ -7,7 +7,7 @@ if(!function_exists(('postImageToFacebook'))) {
      * @param string Album ID
      * @return string Post URL
      */
-    function postImageToFacebook($imageUrl, $caption, $albumId) {
+    function postImageToFacebook($imageUrl, $caption, $albumId, $isPublished = true, $scheduledTime) {
         if(empty($imageUrl) || empty($albumId)) return NULL;
 
         $CI_instance = get_instance();
@@ -15,14 +15,21 @@ if(!function_exists(('postImageToFacebook'))) {
         $postImageEndpoint = '/' . $albumId . '/photos';
         $caption = $caption ? $caption : '';
 
+        $param = array(
+            'url' => $imageUrl,
+            'caption' => $caption
+        );
+
+        if(!$isPublished && isset($scheduledTime)) {
+            $param['published'] = false;
+            $param['scheduled_publish_time'] = $scheduledTime;
+        }
+
         try {
             $facebookServ = new Facebook();
             $postImageResp = $facebookServ->post(
                 $postImageEndpoint,
-                array(
-                    'url' => $imageUrl,
-                    'caption' => $caption
-                )
+                $param
             );
             if(array_key_exists('post_id', $postImageResp)) {
                 $postId = $postImageResp['post_id'];

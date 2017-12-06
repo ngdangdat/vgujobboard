@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+function getScheduledTimeString($scheduledWeekday) {
+    $time = new DateTime();
+    $currentWeekDay = date('w', $time->getTimestamp());
+    $delta = $scheduledWeekday - $currentWeekDay;
+    $expectedTimestring = $time->getTimestamp() + $delta*24*60*60;
+    return $expectedTimestring;
+}
+
 class Handle extends CI_Controller {
     public function job() {
         $this->load->library('Form_validation');
