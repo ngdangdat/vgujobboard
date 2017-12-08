@@ -7,16 +7,20 @@
         </a>
         <div id="navigation" class="col-12">
             <ul>
-                <li class="col-3 col-m-6"><a href="<?php echo $this->config->site_url(); ?>">Home</a>
+                <li class="col-3 col-m-6">
+                    <a target="_blank"href="<?php echo $this->config->site_url(); ?>">Home</a>
                 </li>
-                <li class="col-3 col-m-6"><a href="instruction.html">Instruction</a>
+                <li class="col-3 col-m-6">
+                    <a target="_blank" href="instruction.html">Instruction</a>
                 </li>
-                <li class="col-3 col-m-6"><a href="https://www.facebook.com/VGUAlumniCommunity">Facebook</a>
+                <li class="col-3 col-m-6">
+                    <a target="_blank" href="https://www.facebook.com/VGUAlumniCommunity">Facebook</a>
                 </li>
-                <li class="col-3 col-m-6"><a href="https://vgualumniqna.tumblr.com/">Q&amp;A</a>
+                <li class="col-3 col-m-6">
+                    <a target="_blank" href="https://vgualumniqna.tumblr.com/">Q&amp;A</a>
                 </li>
+                <div class="clearfix"></div>
             </ul>
-            <div class="clear"></div>
         </div>
     </div>
 </div>

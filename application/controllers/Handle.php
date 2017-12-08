@@ -1,15 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+function getScheduledTimeString($scheduledWeekday) {
+    $time = new DateTime();
+    $currentWeekDay = date('w', $time->getTimestamp());
+    $delta = $scheduledWeekday - $currentWeekDay;
+    $expectedTimestring = $time->getTimestamp() + $delta*24*60*60;
+    return $expectedTimestring;
+}
+
 class Handle extends CI_Controller {
     public function job() {
-        $this->load->library('form_validation');
+        $this->load->library('Form_validation');
         $this->load->library('Job');
         $this->load->helper('facebook');
         $this->load->helper('form');
         $exportedVars = array();
-
-        if($this->form_validation->run() == FALSE) {
+        if($this->form_validation->run('job') === FALSE) {
+            $exportedVars['template'] = 'homepage';
+        }else{
             $jobCat = $this->input->post('job_category');
             $jobTitle = $this->input->post('job_title');
             $company = $this->input->post('company');
@@ -20,8 +29,6 @@ class Handle extends CI_Controller {
             $jobContactSubmit = $this->input->post('job_contact_submit');
             $deadline = $this->input->post('deadline');
             $jobContactContributor = $this->input->post('job_contact_contributor');
-            $exportedVars['template'] = 'homepage';
-        }else{
             $job = new Job(
                 array (
                     'jobCategory' => $jobCat,
