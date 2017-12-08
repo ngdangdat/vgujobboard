@@ -1,7 +1,7 @@
 <?php echo form_open('handle/job'); ?>
     <div class="row">
         <div class="job-category form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_category">Job Field</label>
+            <label class="col-3 col-m-12" for="job_category">Job Field <span class="required">*</span></label>
             <?php echo form_dropdown(
                 array(
                     'name'  => 'job_category',
@@ -37,7 +37,7 @@
             <?php echo form_error('job_category_others'); ?>
         </div>
         <div class="job-title form-row <col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_title" class='col-10 col-m-12'>Job Title</label>
+            <label class="col-3 col-m-12" for="job_title" class='col-10 col-m-12'>Job Position <span class="required">*</span></label>
             <?php echo form_input(
                 array(
                     'name' => 'job_title',
@@ -48,7 +48,7 @@
             <?php echo form_error('job_title'); ?>
         </div>
         <div class="company form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="company">Company Name</label>
+            <label class="col-3 col-m-12" for="company">Company Name <span class="required">*</span></label>
             <?php echo form_input(
                 array(
                     'name' => 'company',
@@ -70,7 +70,7 @@
             <?php echo form_error('job_desc'); ?>
         </div>
         <div class="job-require form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_require">Job Requirements</label>
+            <label class="col-3 col-m-12" for="job_require">Job Requirements <span class="required">*</span></label>
             <?php echo form_textarea(
                 array(
                     'name' => 'job_require',
@@ -103,7 +103,7 @@
             <?php echo form_error('benefit'); ?>
         </div>
         <div class="job-contact-submit form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_contact">Contact to CV Submission</label>
+            <label class="col-3 col-m-12" for="job_contact">Contact to CV Submission <span class="required">*</span></label>
             <?php echo form_textarea(
                 array(
                     'name' => 'job_contact_submit',
@@ -114,7 +114,7 @@
             <?php echo form_error('job_contact_submit'); ?>
         </div>
         <div class="deadline form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="deadline">Deadline</label>
+            <label class="col-3 col-m-12" for="deadline">Deadline <span class="required">*</span></label>
             <?php echo form_input(
                 array(
                     'type' => 'date',
@@ -126,7 +126,7 @@
             <?php echo form_error('deadline'); ?>
         </div>
         <div class="job-contact-contributor form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_contact">Contact to Contributor</label>
+            <label class="col-3 col-m-12" for="job_contact">Your Contact</label>
             <?php echo form_textarea(
                 array(
                     'name' => 'job_contact_contributor',

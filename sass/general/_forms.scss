@@ -100,12 +100,18 @@ label {
   padding-right: 15px;
   @media screen and (min-width: 768px) {
     padding-left: 10px;
+    padding-top: 10px;
   }
   @media screen and (min-width: 1025px) {
-    padding-left: 70px;
+    padding-left: 50px;
   }
   @media screen and (min-width: 1280px) {
     font-size: 1.4em;
+  }
+  span{
+    &.required{
+      color: red;
+    }
   }
 }
 
@@ -204,6 +210,9 @@ small {
     @media screen and (min-width: 768px) {
       margin-left: 25%;
     }
+    .error-msg{
+      margin-top: 5px;
+    }
   }
 }
 
@@ -211,15 +220,15 @@ small {
   color: red;
 }
 
-.legend label {
-}
 .footer {
-  border: solid 3px #474544;
   max-width: 95%;
-  margin: 20px auto;
+  margin: 20px auto 0;
   position: relative;
   text-align: center;
   padding: 10px;
+  p{
+    margin: 5px;
+  }
 }
 
 /* For mobile phones: */

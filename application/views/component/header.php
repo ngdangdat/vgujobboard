@@ -8,16 +8,16 @@
         <div id="navigation" class="col-12">
             <ul>
                 <li class="col-3 col-m-6">
-                    <a href="<?php echo $this->config->site_url(); ?>">Home</a>
+                    <a target="_blank"href="<?php echo $this->config->site_url(); ?>">Home</a>
                 </li>
                 <li class="col-3 col-m-6">
-                    <a href="instruction.html">Instruction</a>
+                    <a target="_blank" href="instruction.html">Instruction</a>
                 </li>
                 <li class="col-3 col-m-6">
-                    <a href="https://www.facebook.com/VGUAlumniCommunity">Facebook</a>
+                    <a target="_blank" href="https://www.facebook.com/VGUAlumniCommunity">Facebook</a>
                 </li>
                 <li class="col-3 col-m-6">
-                    <a href="https://vgualumniqna.tumblr.com/">Q&amp;A</a>
+                    <a target="_blank" href="https://vgualumniqna.tumblr.com/">Q&amp;A</a>
                 </li>
                 <div class="clearfix"></div>
             </ul>

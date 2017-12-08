@@ -20,11 +20,6 @@ if(!function_exists(('postImageToFacebook'))) {
             'caption' => $caption
         );
 
-        if(!$isPublished && isset($scheduledTime)) {
-            $param['published'] = false;
-            $param['scheduled_publish_time'] = $scheduledTime;
-        }
-
         try {
             $facebookServ = new Facebook();
             $postImageResp = $facebookServ->post(
