@@ -117,9 +117,10 @@
             <label class="col-3 col-m-12" for="deadline">Deadline <span class="required">*</span></label>
             <?php echo form_input(
                 array(
-                    'type' => 'date',
+                    'type' => 'text',
                     'name' => 'deadline',
                     'class' => 'col-9 pull-right col-m-12',
+                    'id' => 'datepicker',
                     'value' => set_value('deadline')
                 )
             );?>
