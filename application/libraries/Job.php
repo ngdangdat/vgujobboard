@@ -11,7 +11,7 @@ class Job {
         'company' => 'Company',
         'salary' => 'Salary',
         'benefit' => 'Benefit',
-        'contactPointSubmission' => 'Contact To CV Submission',
+        'contactPointSubmission' => 'Resume Application',
         'contactPointContributor' => 'For more information',
         'jobDeadline' => 'Deadline'
     ];

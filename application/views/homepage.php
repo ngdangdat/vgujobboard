@@ -103,7 +103,7 @@
             <?php echo form_error('benefit'); ?>
         </div>
         <div class="job-contact-submit form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_contact">Contact to CV Submission <span class="required">*</span></label>
+            <label class="col-3 col-m-12" for="job_contact">Resume Application <span class="required">*</span></label>
             <?php echo form_textarea(
                 array(
                     'name' => 'job_contact_submit',

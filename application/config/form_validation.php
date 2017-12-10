@@ -37,7 +37,7 @@ $config = array(
 		),
 		array(
 			'field' => 'job_contact_submit',
-			'label' => 'Contact to CV Submission',
+			'label' => 'Resume Application',
 			'rules' => 'required',
 			'errors' => array(
 				'required' => '%s is required.',
