@@ -104,7 +104,7 @@
         </div>
         <div class="job-contact-submit form-row col-12 col-m-12">
             <label class="col-3 col-m-12" for="job_contact">Resume Application <span class="required">*</span></label>
-            <?php echo form_textarea(
+            <?php echo form_input(
                 array(
                     'name' => 'job_contact_submit',
                     'class' => 'col-9 pull-right col-m-12',
@@ -128,7 +128,7 @@
         </div>
         <div class="job-contact-contributor form-row col-12 col-m-12">
             <label class="col-3 col-m-12" for="job_contact">Your Contact</label>
-            <?php echo form_textarea(
+            <?php echo form_input(
                 array(
                     'name' => 'job_contact_contributor',
                     'class' => 'col-9 pull-right col-m-12',
