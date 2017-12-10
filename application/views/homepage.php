@@ -103,8 +103,8 @@
             <?php echo form_error('benefit'); ?>
         </div>
         <div class="job-contact-submit form-row col-12 col-m-12">
-            <label class="col-3 col-m-12" for="job_contact">Contact to CV Submission <span class="required">*</span></label>
-            <?php echo form_textarea(
+            <label class="col-3 col-m-12" for="job_contact">Resume Application <span class="required">*</span></label>
+            <?php echo form_input(
                 array(
                     'name' => 'job_contact_submit',
                     'class' => 'col-9 pull-right col-m-12',
@@ -117,9 +117,10 @@
             <label class="col-3 col-m-12" for="deadline">Deadline <span class="required">*</span></label>
             <?php echo form_input(
                 array(
-                    'type' => 'date',
+                    'type' => 'text',
                     'name' => 'deadline',
                     'class' => 'col-9 pull-right col-m-12',
+                    'id' => 'datepicker',
                     'value' => set_value('deadline')
                 )
             );?>
@@ -127,7 +128,7 @@
         </div>
         <div class="job-contact-contributor form-row col-12 col-m-12">
             <label class="col-3 col-m-12" for="job_contact">Your Contact</label>
-            <?php echo form_textarea(
+            <?php echo form_input(
                 array(
                     'name' => 'job_contact_contributor',
                     'class' => 'col-9 pull-right col-m-12',
