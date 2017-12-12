@@ -8,7 +8,7 @@
         <div id="navigation" class="col-12">
             <ul>
                 <li class="col-4">
-                    <a target="_blank"href="<?php echo $this->config->site_url(); ?>">Home</a>
+                    <a href="<?php echo $this->config->site_url(); ?>">Home</a>
                 </li>
                 <li class="col-4">
                     <a target="_blank" href="https://www.facebook.com/VGUAlumniCommunity">Facebook</a>

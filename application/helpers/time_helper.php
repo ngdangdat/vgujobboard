@@ -46,48 +46,39 @@ if(!function_exists('getScheduleList'))
     }
 }
 
-
-if(!function_exists('getSiteTimezone')
+function getScheduledTimeString()
 {
-    function getSiteTimezone()
-    {
-        return new DateTimeZone('Asia/Ho_Chi_Minh');
-    }
-}
 
+    $timeList       = getScheduleList();
+    $currTime       = new DateTime();
+    $currTimeStamp  = $currTime->getTimestamp();
+    $currWeekDay    = date('w', $currTimeStamp);
+    $scheduledTime  = $currTime;
+    $isScheduled    = FALSE;
 
-function getScheduledTimeString() {
+    for ($i=0; $i < count($timeList); $i++) {
+        $weekday    = $timeList[$i]['weekday'];
+        $time       = $timeList[$i]['time'];
+        $deltaDay   = $weekday - $currWeekDay;
+        $deltaTime  = strtotime($timeList[$i]['time']) - $currTimeStamp;
 
-    $scheduledTimeArr = getScheduleList();
-    $currTime = new DateTime();
-    $currTime->setTimezone(getSiteTimezone());
-    $currTimeStamp = $currTime->getTimestamp();
-    $currWeekDay = date('w', $currTimeStamp);
+        if($deltaDay >= 0){
+            $scheduledTime->setTimestamp(strtotime($timeList[$i]['time']));
+            $scheduledTime->add(new DateInterval('P'.(string) $deltaDay . 'D'));
+            $deltaTime = $scheduledTime->getTimestamp() - $currTimeStamp;
 
-    $currentWeekDay = date('w', $currTimeStamp);
-    $scheduledTime = $currTime;
-    for ($i=0; $i < count($scheduledTimeArr); $i++) {
-        if($currentWeekDay <= $scheduledTimeArr[$i]['weekday']){
-            if($currentWeekDay == $scheduledTimeArr[$i]['weekday']){
-                $deltaTimeStr = strtotime($scheduledTimeArr[$i]['time']) - $currTimeStamp;
-                if($deltaTimeStr > 300){
-                    $scheduledTime->setTimestamp(strtotime($scheduledTimeArr[$i]['time']));
-                    break;
-                }
-            }else{
-                $scheduledTime->setTimestamp(strtotime($scheduledTimeArr[$i]['time']));
-                $deltaDay = $scheduledTimeArr[$i]['weekday'] - $currWeekDay;
-                $scheduledTime->add(new DateInterval('P'.(string) $deltaDay . 'D'));
-                break;
+            if($deltaTime > 14400){
+                $isScheduled = TRUE;
             }
+            break;
         }
     }
-    if($scheduledTime == $currTime){
-        $scheduledTime->setTimestamp(strtotime($scheduledTimeArr[0]['time']));
-        $deltaDay = 7 - ($currWeekDay - $scheduledTimeArr[0]['weekday']);
+
+    if(!$isScheduled){
+        $deltaDay = 7 - ($currWeekDay - $timeList[0]['weekday']);
+        $scheduledTime->setTimestamp(strtotime($timeList[0]['time']));
         $scheduledTime->add(new DateInterval('P'.(string) $deltaDay . 'D'));
     }
 
-    $expectedTimestring = $scheduledTime->getTimestamp();
-    return $expectedTimestring;
+    return $scheduledTime->getTimestamp();
 }
