@@ -22,7 +22,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
 $config['base_url'] = 'http://localhost/intern';
+$config['site_timezone'] = 'Asia/Ho_Chi_Minh';
+
+date_timezone_set($config['site_timezone']);
 
 /*
 |--------------------------------------------------------------------------
@@ -99,7 +103,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
