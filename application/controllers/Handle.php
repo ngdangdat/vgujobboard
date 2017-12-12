@@ -1,34 +1,29 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-function getScheduledTimeString($scheduledWeekday) {
-    $time = new DateTime();
-    $currentWeekDay = date('w', $time->getTimestamp());
-    $delta = $scheduledWeekday - $currentWeekDay;
-    $expectedTimestring = $time->getTimestamp() + $delta*24*60*60;
-    return $expectedTimestring;
-}
-
 class Handle extends CI_Controller {
     public function job() {
         $this->load->library('Form_validation');
         $this->load->library('Job');
         $this->load->helper('facebook');
+        $this->load->helper('time');
         $this->load->helper('form');
+
         $exportedVars = array();
         if($this->form_validation->run('job') === FALSE) {
             $exportedVars['template'] = 'homepage';
         }else{
-            $jobCat = $this->input->post('job_category');
-            $jobTitle = $this->input->post('job_title');
-            $company = $this->input->post('company');
-            $jobDesc = $this->input->post('job_desc');
-            $jobRequire = $this->input->post('job_require');
-            $salary = $this->input->post('salary');
-            $benefit = $this->input->post('benefit');
-            $jobContactSubmit = $this->input->post('job_contact_submit');
-            $deadline = $this->input->post('deadline');
-            $jobContactContributor = $this->input->post('job_contact_contributor');
+            $jobCat                 = $this->input->post('job_category');
+            $jobTitle               = $this->input->post('job_title');
+            $company                = $this->input->post('company');
+            $jobDesc                = $this->input->post('job_desc');
+            $jobRequire             = $this->input->post('job_require');
+            $salary                 = $this->input->post('salary');
+            $benefit                = $this->input->post('benefit');
+            $jobContactSubmit       = $this->input->post('job_contact_submit');
+            $deadline               = $this->input->post('deadline');
+            $jobContactContributor  = $this->input->post('job_contact_contributor');
+
             $job = new Job(
                 array (
                     'jobCategory' => $jobCat,
@@ -44,11 +39,12 @@ class Handle extends CI_Controller {
                     'jobImage' => 'https://boardsource.org/wp-content/uploads/2016/05/Board-Member-Job-Description.png'
                 )
             );
-            $caption = $job->getCaption();
-            $image = $job->getJobImage();
-            $postUrl = postImageToFacebook($image, $caption, '672115002991670');
-            $exportedVars['postUrl'] = $postUrl;
-            $exportedVars['template'] = 'jobpostsuccess';
+
+            $caption                    = $job->getCaption();
+            $image                      = $job->getJobImage();
+            $scheduledTimestamp         = getScheduledTimeString();
+            $postResult                 = postImageToFacebook($image, $caption, false, $scheduledTimestamp);
+            $exportedVars['template']   = 'jobpostsuccess';
         }
         $this->load->view('container/pt_homepage', $exportedVars);
     }
