@@ -5,11 +5,10 @@ if(!function_exists(('postImageToFacebook'))) {
      * @param string Image URL
      * @param string Caption of the photo
      * @param string Album ID
-     * @return string Post URL
+     * @return array
      */
-    function postImageToFacebook($imageUrl, $caption, $albumId, $isPublished = true, $scheduledTime) {
-        if(empty($imageUrl) || empty($albumId)) return NULL;
-
+    function postImageToFacebook($imageUrl, $caption, $isPublished = TRUE, $scheduledTime = FALSE) {
+        $albumId = getFacebookPostAlbumId();
         $CI_instance = get_instance();
         $CI_instance->load->library('Facebook');
         $postImageEndpoint = '/' . $albumId . '/photos';
@@ -19,6 +18,12 @@ if(!function_exists(('postImageToFacebook'))) {
             'url' => $imageUrl,
             'caption' => $caption
         );
+
+        if(!$isPublished && !empty($scheduledTime))
+        {
+            $param['published'] = FALSE;
+            $param['scheduled_publish_time'] = $scheduledTime;
+        }
 
         try {
             $facebookServ = new Facebook();
@@ -30,16 +35,29 @@ if(!function_exists(('postImageToFacebook'))) {
                 $postId = $postImageResp['post_id'];
                 $postUrl = getPostUrlFromId($postId);
                 if(!empty($postUrl)) {
-                    return $postUrl;
+                    return array(
+                        'isSuccess' => TRUE,
+                        'isScheduled' => FALSE,
+                        'postUrl' => $postUrl
+                    );
                 }
+            }elseif (array_key_exists('post', $postImageResp)) {
+                return array(
+                    'isSuccess' => TRUE,
+                    'isScheduled' => TRUE
+                );
+            }else{
+                return array(
+                    'isSuccess' => FALSE
+                );
             }
         }catch (Exception $e){
             return NULL;
         }
         
         return NULL;
-    }
-}
+    
+}}
 
 if(!function_exists('getPostUrlFromId')) {
     /**
@@ -65,5 +83,14 @@ if(!function_exists('getPostUrlFromId')) {
         
 
         return NULL;
+    }
+}
+
+if(!function_exists('getFacebookPostAlbumId')){
+    /**
+     * @return string
+     */
+    function getFacebookPostAlbumId(){
+        return '672115002991670';
     }
 }

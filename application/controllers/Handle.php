@@ -1,11 +1,80 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-function getScheduledTimeString($scheduledWeekday) {
-    $time = new DateTime();
-    $currentWeekDay = date('w', $time->getTimestamp());
-    $delta = $scheduledWeekday - $currentWeekDay;
-    $expectedTimestring = $time->getTimestamp() + $delta*24*60*60;
+function timeCmp($a, $b) {
+    if($a['weekday'] == $b['weekday']){
+
+        $timeStrA = strtotime($a['time']);
+        $timeStrB = strtotime($b['time']);
+        if($timeStrA == $timeStrB){
+            return 0;
+        }
+
+        return ($timeStrA < $timeStrB) ? -1 : 1;
+    }
+
+    return ($a['weekday'] < $b['weekday']) ? -1 : 1;
+}
+
+function getScheduledTimeString() {
+    $timeMapping = array(
+        'SUN' => 0,
+        'MON' => 1,
+        'TUE' => 2,
+        'WED' => 3,
+        'THU' => 4,
+        'FRI' => 5,
+        'SAT' => 6
+    );
+
+
+    $scheduleTime = ['TUE|12:00', 'WED|12:00'];
+    $parsedTimeArr = array();
+    foreach ($scheduleTime as $key => $val) {
+        $parsedTime = explode("|", $val);
+        $weekday = $timeMapping[$parsedTime[0]];
+        $time = $parsedTime[1];
+        array_push($parsedTimeArr, array(
+            'weekday'   => $weekday,
+            'time'      => $time
+        ));
+    }
+
+    uasort($parsedTimeArr, 'timeCmp');
+
+    $currTime = new DateTime();
+    $currTime->setTimezone(new DateTimeZone('Asia/Ho_Chi_Minh'));
+    $currTimeStamp = $currTime->getTimestamp();
+    $currWeekDay = date('w', $currTimeStamp);
+
+    $currentWeekDay = date('w', $currTimeStamp);
+    $scheduledTime = NULL;
+    for ($i=0; $i < count($parsedTimeArr); $i++) {
+        if($currentWeekDay <= $parsedTimeArr[$i]['weekday']){
+            if($currentWeekDay == $parsedTimeArr[$i]['weekday']){
+                $deltaTimeStr = strtotime($parsedTimeArr[$i]['time'], $currTimeStamp) - $currTimeStamp;
+                if($deltaTimeStr > 300){
+                    $scheduledTime = $currTime;
+                    $scheduledTime->setTimestamp(strtotime($parsedTimeArr[$i]['time'], $currTimeStamp));
+                    break;
+                }
+            }else{
+                $scheduledTime = $currTime;
+                $scheduledTime->setTimestamp(strtotime($parsedTimeArr[$i]['time'], $currTimeStamp));
+                $deltaDay = $parsedTimeArr[$i]['weekday'] - $currWeekDay;
+                $scheduledTime->add(new DateInterval('P'.(string) $deltaDay . 'D'));
+                break;
+            }
+        }
+    }
+    if(empty($scheduledTime)){
+        $scheduledTime = $currTime;
+        $scheduledTime->setTimestamp(strtotime($parsedTimeArr[0]['time'], $currTimeStamp));
+        $deltaDay = 7 - ($currWeekDay - $parsedTimeArr[0]['weekday']);
+        $scheduledTime->add(new DateInterval('P'.(string) $deltaDay . 'D'));
+    }
+
+    $expectedTimestring = $scheduledTime->getTimestamp();
     return $expectedTimestring;
 }
 
@@ -46,7 +115,7 @@ class Handle extends CI_Controller {
             );
             $caption = $job->getCaption();
             $image = $job->getJobImage();
-            $postUrl = postImageToFacebook($image, $caption, '672115002991670');
+            $postResult = postImageToFacebook($image, $caption, false, getScheduledTimeString());
             $exportedVars['postUrl'] = $postUrl;
             $exportedVars['template'] = 'jobpostsuccess';
         }
