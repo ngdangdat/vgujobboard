@@ -182,6 +182,19 @@ small {
   .footer p {
     margin: 5px; }
 
+.uploadcare--widget {
+  padding-top: 5px;
+  width: 100%; }
+  @media only screen and (min-width: 768px) {
+    .uploadcare--widget {
+      width: 75%; } }
+  .uploadcare--widget .uploadcare--widget__button {
+    width: 100%;
+    height: 30px; }
+    @media only screen and (min-width: 768px) {
+      .uploadcare--widget .uploadcare--widget__button {
+        width: 50%; } }
+
 /* For mobile phones: */
 [class*="col-"] {
   width: 100%;
