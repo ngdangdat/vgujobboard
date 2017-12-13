@@ -54,7 +54,7 @@ body {
       margin-bottom: 20px; }
       @media only screen and (min-width: 992px) {
         .container .inner .form-post-error {
-          margin-left: 15.33%; } }
+          margin-left: 18.33%; } }
 
 h1 {
   color: #474544;
@@ -169,7 +169,7 @@ select {
   display: none; }
   @media screen and (min-width: 992px) {
     #jobOthersInput input {
-      margin-left: 15.3%; } }
+      margin-left: 18.3%; } }
 
 button.submit-btn {
   background: none;
@@ -206,7 +206,7 @@ small {
 
 @media screen and (min-width: 992px) {
   .form-row .error {
-    margin-left: 15.33%; } }
+    margin-left: 18.33%; } }
 
 .form-row .error .error-msg {
   margin-top: 5px; }
