@@ -79,11 +79,13 @@ form {
 label {
   font-size: 1.2em;
   font-weight: normal;
-  padding-right: 15px; }
+  padding-right: 15px;
+  margin-bottom: 5px; }
   @media screen and (min-width: 768px) {
     label {
       padding-left: 10px;
-      padding-top: 5px; } }
+      padding-top: 5px;
+      margin-bottom: 0; } }
   @media screen and (min-width: 1025px) {
     label {
       padding-left: 50px; } }
@@ -182,23 +184,57 @@ small {
   .footer p {
     margin: 5px; }
 
-.uploadcare--widget {
-  padding-top: 5px;
-  width: 100%; }
+.uploadcare-wrapper {
+  width: 100%;
+  display: inline-block; }
   @media only screen and (min-width: 768px) {
-    .uploadcare--widget {
-      width: 75%; } }
-  .uploadcare--widget .uploadcare--widget__button {
+    .uploadcare-wrapper {
+      width: 75%;
+      float: right;
+      margin-top: 5px; } }
+  .uploadcare-wrapper .uploadcare_image {
+    margin-bottom: 10px; }
+    @media only screen and (max-width: 767px) {
+      .uploadcare-wrapper .uploadcare_image {
+        text-align: center; }
+        .uploadcare-wrapper .uploadcare_image img {
+          width: 100%;
+          height: auto; } }
+  @media only screen and (max-width: 767px) {
+    .uploadcare-wrapper .uploadcare--widget {
+      width: 100%; } }
+  .uploadcare-wrapper .uploadcare--widget .uploadcare--widget__text {
+    display: none; }
+  .uploadcare-wrapper .uploadcare--widget .uploadcare--widget__button {
     width: 100%;
-    height: 30px; }
+    height: 30px;
+    background: #474544;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold; }
+    .uploadcare-wrapper .uploadcare--widget .uploadcare--widget__button:hover {
+      background: #fff;
+      border: dashed 1px #474544;
+      color: #474544; }
+    .uploadcare-wrapper .uploadcare--widget .uploadcare--widget__button.uploadcare--widget__button_type_remove {
+      background: #fff;
+      color: #474544;
+      border: dashed 1px #474544; }
+      .uploadcare-wrapper .uploadcare--widget .uploadcare--widget__button.uploadcare--widget__button_type_remove:hover {
+        color: #777;
+        border-color: #ccc; }
     @media only screen and (min-width: 768px) {
-      .uploadcare--widget .uploadcare--widget__button {
-        width: 50%; } }
+      .uploadcare-wrapper .uploadcare--widget .uploadcare--widget__button {
+        width: 200px; } }
 
 /* For mobile phones: */
 [class*="col-"] {
   width: 100%;
   float: left; }
+
+@media only screen and (max-width: 767px) {
+  img {
+    max-width: 100%; } }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   /* For tablets: */

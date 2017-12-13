@@ -143,7 +143,7 @@
                 <div class="uploadcare_image" style="display: none;">
                     <img class="image_preview">
                 </div>
-                <input type="hidden" role="uploadcare-uploader" name="content" data-images-only="true" />
+                <input type="hidden" role="uploadcare-uploader" name="job_image" data-images-only="true" />
             </div>
         </div>
         <div class="form-row btn">
