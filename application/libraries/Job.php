@@ -64,7 +64,7 @@ class Job {
     }
 
     public function getJobImage() {
-        if(!$this->jobImage) {
+        if($this->jobImage == '') {
             return static::DEFAULT_IMAGE_URL;
         }
 
@@ -73,7 +73,7 @@ class Job {
 
     private function getFieldWithPrefix($prefix, $value){
         if(!$value){
-            return '';
+            return NULL;
         }
 
         if(!$prefix){

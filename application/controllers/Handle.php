@@ -8,6 +8,7 @@ class Handle extends CI_Controller {
         $this->load->helper('facebook');
         $this->load->helper('time');
         $this->load->helper('form');
+        $this->lang->load('forms', 'english');
 
         $exportedVars = array();
         if($this->form_validation->run('job') === FALSE) {
@@ -24,8 +25,14 @@ class Handle extends CI_Controller {
             $deadline               = $this->input->post('deadline');
             $jobContactContributor  = $this->input->post('job_contact_contributor');
             $jobImage               = $this->input->post('job_image');
-            if(empty($jobImage)){
-                $jobImage = 'https://boardsource.org/wp-content/uploads/2016/05/Board-Member-Job-Description.png';
+
+            if($jobCat == 'other'){
+                $jobCat = $this->input->post('job_category_others');
+                if(empty($jobCat)){
+                    $jobCat = $this->lang->line('job.fields.other');
+                }
+            }else{
+                $jobCat = $this->lang->line('job.fields.' . $jobCat);
             }
 
             $job = new Job(

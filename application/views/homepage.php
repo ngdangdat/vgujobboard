@@ -1,4 +1,7 @@
-<?php echo form_open('handle/job'); ?>
+<?php
+    $this->lang->load('forms', 'english');
+    echo form_open('handle/job');
+?>
     <div class="row">
         <div class="job-category form-row col-12 col-m-12">
             <label class="col-3 col-m-12" for="job_category">Job Field <span class="required">*</span></label>
@@ -10,18 +13,18 @@
                     'value' => set_value('job_category')
                 ),
                 array(
-                    'acc_aud' => 'Accounting/Auditing',
-                    'art_design' => 'Arts/Design',
-                    'bank_consultant' => 'Banking/Consulting',
-                    'civil_construction' => 'Civil/Construction',
-                    'electrical_electric' => 'Electrical/Electrics',
-                    'finance' => 'Finance',
-                    'human_resource' => 'Human Resources',
-                    'it' => 'IT',
-                    'logistics' => 'Logistics/Suply Chain',
-                    'marketing' => 'Marketing',
-                    'sale_cs' => 'Sales/ Customer Services',
-                    'other' => 'Other',
+                    'acc_aud' => $this->lang->line('job.fields.acc_aud'),
+                    'art_design' => $this->lang->line('job.fields.art_design'),
+                    'bank_consultant' => $this->lang->line('job.fields.bank_consultant'),
+                    'civil_construction' => $this->lang->line('job.fields.civil_construction'),
+                    'electrical_electric' => $this->lang->line('job.fields.electrical_electric'),
+                    'finance' => $this->lang->line('job.fields.finance'),
+                    'human_resource' => $this->lang->line('job.fields.human_resource'),
+                    'it' => $this->lang->line('job.fields.it'),
+                    'logistics' => $this->lang->line('job.fields.logistics'),
+                    'marketing' => $this->lang->line('job.fields.marketing'),
+                    'sale_cs' => $this->lang->line('job.fields.sale_cs'),
+                    'other' => $this->lang->line('job.fields.other'),
                 )
             ); ?>
         </div>
