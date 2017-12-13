@@ -1,6 +1,7 @@
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo getStaticPath('js/lib/jquery.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo getStaticPath('js/select.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo getStaticPath('js/pikaday.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo getStaticPath('js/app.js'); ?>"></script>
 <script>
   UPLOADCARE_PUBLIC_KEY = "8cce25de0ec556667841";
   UPLOADCARE_CLEARABLE = true;
