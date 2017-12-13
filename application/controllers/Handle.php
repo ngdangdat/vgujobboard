@@ -23,6 +23,10 @@ class Handle extends CI_Controller {
             $jobContactSubmit       = $this->input->post('job_contact_submit');
             $deadline               = $this->input->post('deadline');
             $jobContactContributor  = $this->input->post('job_contact_contributor');
+            $jobImage               = $this->input->post('job_image');
+            if(empty($jobImage)){
+                $jobImage = 'https://boardsource.org/wp-content/uploads/2016/05/Board-Member-Job-Description.png';
+            }
 
             $job = new Job(
                 array (
@@ -36,7 +40,7 @@ class Handle extends CI_Controller {
                     'jobDeadline' => $deadline,
                     'contactPointSubmission' => $jobContactSubmit,
                     'contactPointContributor' => $jobContactContributor,
-                    'jobImage' => 'https://boardsource.org/wp-content/uploads/2016/05/Board-Member-Job-Description.png'
+                    'jobImage' => $jobImage
                 )
             );
 

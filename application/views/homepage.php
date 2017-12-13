@@ -139,14 +139,12 @@
         </div>
         <div class="job-image form-row col-12 col-m-12">
             <label class="col-3 col-m-12" for="job_image">Image</label>
-            <?php echo form_upload(
-                array(
-                    'name' => 'job_image',
-                    'id'   => 'jobImage',
-                    'class' => 'col-9 pull-right col-m-12'
-                )
-            ); ?>
-            <?php echo form_error('job_image'); ?>
+            <div class="uploadcare-wrapper">
+                <div class="uploadcare_image" style="display: none;">
+                    <img class="image_preview">
+                </div>
+                <input type="hidden" role="uploadcare-uploader" name="job_image" data-images-only="true" />
+            </div>
         </div>
         <div class="form-row btn">
             <button type="submit" class="submit-btn">
