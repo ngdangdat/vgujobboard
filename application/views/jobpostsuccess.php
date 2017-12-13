@@ -1,3 +1,7 @@
 <div class="success-message">
-	<p>Your job is posted successfully. Kindly click this <a href="<?php echo $postUrl; ?>" title="View Job" alt="View Job">URL</a> to view it in Facebook!
+	<?php if($isPostScheduled) { ?>
+		<p>Your job is scheduled successfully.</p>
+	<?php }else{ ?>
+		<p> Your post is posted successfully. Kindly click this <a href="<?php echo $postUrl; ?>">link</a> to view </p>
+	<?php } ?>
 </div>

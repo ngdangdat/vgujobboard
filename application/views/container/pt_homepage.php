@@ -5,11 +5,12 @@
 	<?php $this->load->view('component/htmlhead'); ?>
 </head>
 <body>
+	<div class="slider-loader"></div>
 	<div id="container" class="container">
 		<?php $this->load->view('component/header'); ?>
-
-		<?php $this->load->view($template); ?>
-
+		<div class="inner">
+			<?php $this->load->view($template); ?>
+		</div>
 		<?php $this->load->view('component/footer'); ?>
 	</div>
 
