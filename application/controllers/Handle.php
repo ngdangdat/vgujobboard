@@ -55,7 +55,15 @@ class Handle extends CI_Controller {
             $image                      = $job->getJobImage();
             $scheduledTimestamp         = getScheduledTimeString();
             $postResult                 = postImageToFacebook($image, $caption, false, $scheduledTimestamp);
-            $exportedVars['template']   = 'jobpostsuccess';
+            $isPostSuccess              = $postResult['isSuccess'];
+            if($isPostSuccess){
+                $exportedVars['template']   = 'jobpostsuccess';
+                $isPostScheduled            = $postResult['isScheduled'];
+                $exportedVars['isPostScheduled']   = $isPostScheduled;
+            }else{
+                $exportedVars['template']   = 'homepage';
+                $exportedVars['formError'] = TRUE;
+            }
         }
         $this->load->view('container/pt_homepage', $exportedVars);
     }

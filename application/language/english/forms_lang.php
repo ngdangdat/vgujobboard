@@ -13,3 +13,18 @@ $lang['job.fields.logistics'] = 'Logistics/Suply Chain';
 $lang['job.fields.marketing'] = 'Marketing';
 $lang['job.fields.sale_cs'] = 'Sales/ Customer Services';
 $lang['job.fields.other'] = 'Other';
+
+$lang['label.job.field'] = 'Job Field';
+$lang['label.job.title'] = 'Job Title';
+$lang['label.job.description'] = 'Job Description';
+$lang['label.job.requirement'] = 'Job Requirement';
+$lang['label.job.company'] = 'Company';
+$lang['label.job.salary'] = 'Salary';
+$lang['label.job.benefit'] = 'Benefit';
+$lang['label.job.resume'] = 'Resume Application';
+$lang['label.job.yourcontact.front'] = 'Your Contact';
+$lang['label.job.yourcontact.back'] = 'For more information';
+$lang['label.job.image'] = 'Image';
+$lang['label.job.deadline'] = 'Deadline';
+
+$lang['button.deadline'] = 'Submit';

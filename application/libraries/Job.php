@@ -3,20 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Job {
-    const PREFIXES = [
-        'jobCategory' => 'Job Field',
-        'jobTitle' => 'Job Title',
-        'jobDescription' => 'Job Description',
-        'jobRequirement' => 'Job Requirement',
-        'company' => 'Company',
-        'salary' => 'Salary',
-        'benefit' => 'Benefit',
-        'contactPointSubmission' => 'Resume Application',
-        'contactPointContributor' => 'For more information',
-        'jobDeadline' => 'Deadline'
-    ];
     const DEFAULT_IMAGE_URL = 'https://boardsource.org/wp-content/uploads/2016/05/Board-Member-Job-Description.png';
-
 
     protected $jobCategory;
     protected $jobTitle;
@@ -29,8 +16,14 @@ class Job {
     protected $contactPointContributor;
     protected $jobImage;
     protected $jobDeadline;
+    protected $prefix;
 
     public function __construct($fields = array()) {
+        $this->CI =& get_instance();
+        $this->CI->lang->load('forms', 'english');
+
+        
+
         if(count($fields) > 0) {
             $this->jobCategory = $fields['jobCategory'];
             $this->jobTitle = $fields['jobTitle'];
@@ -48,16 +41,16 @@ class Job {
 
     public function getCaption() {
         $fields = array(
-            $this->getFieldWithPrefix(static::PREFIXES['jobCategory'], $this->jobCategory),
-            $this->getFieldWithPrefix(static::PREFIXES['jobTitle'], $this->jobTitle),
-            $this->getFieldWithPrefix(static::PREFIXES['jobDescription'], $this->jobDescription),
-            $this->getFieldWithPrefix(static::PREFIXES['jobRequirement'], $this->jobRequirement),
-            $this->getFieldWithPrefix(static::PREFIXES['company'], $this->company),
-            $this->getFieldWithPrefix(static::PREFIXES['salary'], $this->salary),
-            $this->getFieldWithPrefix(static::PREFIXES['benefit'], $this->benefit),
-            $this->getFieldWithPrefix(static::PREFIXES['contactPointSubmission'], $this->contactPointSubmission),
-            $this->getFieldWithPrefix(static::PREFIXES['contactPointContributor'], $this->contactPointContributor),
-            $this->getFieldWithPrefix(static::PREFIXES['jobDeadline'], $this->jobDeadline)
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.field'), $this->jobCategory),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.title'), $this->jobTitle),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.description'), $this->jobDescription),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.requirement'), $this->jobRequirement),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.company'), $this->company),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.salary'), $this->salary),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.benefit'), $this->benefit),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.resume'), $this->contactPointSubmission),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.yourcontact.back'), $this->contactPointContributor),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.deadline'), $this->jobDeadline)
         );
 
         return join(chr(10).chr(10), $fields);

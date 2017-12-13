@@ -41,7 +41,7 @@ if(!function_exists(('postImageToFacebook'))) {
                         'postUrl' => $postUrl
                     );
                 }
-            }elseif (array_key_exists('post', $postImageResp)) {
+            }elseif (array_key_exists('id', $postImageResp)) {
                 return array(
                     'isSuccess' => TRUE,
                     'isScheduled' => TRUE
