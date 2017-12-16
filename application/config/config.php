@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost/intern';
+$config['base_url'] = 'https://vgu-alumni.herokuapp.com';
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
