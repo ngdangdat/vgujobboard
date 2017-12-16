@@ -43,14 +43,14 @@ class Job {
         $fields = array(
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.field'), $this->jobCategory),
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.title'), $this->jobTitle),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.company'), $this->company),
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.description'), $this->jobDescription),
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.requirement'), $this->jobRequirement),
-            $this->getFieldWithPrefix($this->CI->lang->line('label.job.company'), $this->company),
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.salary'), $this->salary),
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.benefit'), $this->benefit),
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.resume'), $this->contactPointSubmission),
-            $this->getFieldWithPrefix($this->CI->lang->line('label.job.yourcontact.back'), $this->contactPointContributor),
-            $this->getFieldWithPrefix($this->CI->lang->line('label.job.deadline'), $this->jobDeadline)
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.deadline'), $this->jobDeadline),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.yourcontact.back'), $this->contactPointContributor)
         );
 
         return join(chr(10).chr(10), $fields);
