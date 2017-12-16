@@ -60,6 +60,10 @@ class Handle extends CI_Controller {
                 $exportedVars['template']   = 'jobpostsuccess';
                 $isPostScheduled            = $postResult['isScheduled'];
                 $exportedVars['isPostScheduled']   = $isPostScheduled;
+                if($isPostScheduled){
+                    $date = new DateTime();
+                    $exportedVars['scheduledTime'] = $date->setTimestamp($scheduledTimestamp);
+                }
             }else{
                 $exportedVars['template']   = 'homepage';
                 $exportedVars['formError'] = TRUE;
