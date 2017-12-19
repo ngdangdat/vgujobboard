@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Homepage</title>
+	<title>VGU Job Board</title>
 	<?php $this->load->view('component/htmlhead'); ?>
 </head>
 <body>

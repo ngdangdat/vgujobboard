@@ -299,6 +299,14 @@ class CI_Config {
 		return 'static';
 	}
 
+	/**
+	 * Path for content in library
+	 * @return string
+	 */
+	public function content_path(){
+		return 'content';
+	}
+
 	// -------------------------------------------------------------
 
 	/**
