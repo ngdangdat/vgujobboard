@@ -90,7 +90,6 @@ class Job {
                 $jobCat = 'other';
             }
             $path = $this->defaultImageUrl[$this->jobCategory];
-            var_dump(getContentPath($path));
             return getContentPath($path);
         }
 
