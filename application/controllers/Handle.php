@@ -31,8 +31,6 @@ class Handle extends CI_Controller {
                 if(empty($jobCat)){
                     $jobCat = $this->lang->line('job.fields.other');
                 }
-            }else{
-                $jobCat = $this->lang->line('job.fields.' . $jobCat);
             }
 
             $job = new Job(
