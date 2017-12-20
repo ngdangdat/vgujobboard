@@ -40,7 +40,7 @@ class Facebook {
             'app_id'        => '686552844887170',
             'app_secret'    => 'bfbaed420f1ec6142820c3bafd44fc41',
             'api_version'   => 'v2.10',
-            'access_token'  => 'EAAJwaopwZAIIBANvVxssVAmnKi2f2Tb1Ddlcp95xQxvgGftVZBkm1xf4iwpC8R6H6hSTJDmDNENVFcU3O48oU1KfbbkzpK1Tub3LtdMdPLRZAV6F6S85RjkLDCy3l9hJi79aXamNKf2So4C5xiTSYhmaw808fbb64cbm6id4wZDZD',
+            'access_token'  => 'EAAJwaopwZAIIBAH4bv1zpHdIAXtVfLo1B9ZBKpHSspVZCZC6yDC9hP2ASTMUOwfYgZBcMXwpOAZAzga69sBH4JLSC6QSz3xl1GZB9hKM1Ewifga8FBX4GHiQpF7lLzNDApTJGyII0Y0DCTsmXRJbZAlC3Ia90FZBHZCstyboxZBsqYkoQZDZD',
         );
     }
 

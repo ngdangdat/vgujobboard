@@ -28,7 +28,7 @@ if(!function_exists('getScheduleList'))
             'SAT' => 6
         );
 
-        $scheduleTimes = ['TUE|12:00', 'WED|12:00'];
+        $scheduleTimes = ['TUE|12:00', 'SAT|20:50'];
         $parsedTimeArr = array();
         foreach ($scheduleTimes as $key => $val) {
             $parsedTime = explode("|", $val);

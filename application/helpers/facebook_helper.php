@@ -91,6 +91,6 @@ if(!function_exists('getFacebookPostAlbumId')){
      * @return string
      */
     function getFacebookPostAlbumId(){
-        return '672115002991670';
+        return '1608185402576108';
     }
 }

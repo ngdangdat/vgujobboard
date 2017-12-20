@@ -149,7 +149,8 @@
                     'name' => 'deadline',
                     'class' => 'input-text',
                     'id' => 'datepicker',
-                    'value' => set_value('deadline')
+                    'value' => set_value('deadline'),
+                    'readonly' => 'true'
                 )
             );?>
             <?php echo form_error('deadline'); ?>
