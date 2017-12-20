@@ -3,8 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Job {
-    const DEFAULT_IMAGE_URL = 'https://boardsource.org/wp-content/uploads/2016/05/Board-Member-Job-Description.png';
-
+    protected $defaultImageUrl;
     protected $jobCategory;
     protected $jobTitle;
     protected $jobDescription;
@@ -20,7 +19,22 @@ class Job {
 
     public function __construct($fields = array()) {
         $this->CI =& get_instance();
+        $this->CI->load->helper('static');
         $this->CI->lang->load('forms', 'english');
+        $this->defaultImageUrl = array(
+            'acc_aud' => 'images/job/accounting-auditing-min.jpg',
+            'art_design' => 'images/job/arts-design-min.jpg',
+            'bank_consultant' => 'images/job/banking-consulting-min.jpg',
+            'civil_construction' => 'images/job/civil-construction-min.jpg',
+            'electrical_electric' => 'images/job/electrical-electrics-min.jpg',
+            'finance' => 'images/job/finance-min.jpg',
+            'human_resource' => 'images/job/human-resources-min.jpg',
+            'it' => 'images/job/it-min.jpg',
+            'logistics' => 'images/job/logistics-supply-chain-min.jpg',
+            'marketing' => 'images/job/marketing-min.jpg',
+            'sale_cs' => 'images/job/other-min.jpg',
+            'other' => 'images/job/sales-customer-services-min.jpg'
+        );
 
         
 
@@ -39,9 +53,19 @@ class Job {
         }
     }
 
-    public function getCaption() {
+     public function getCaption() {
+        if(array_key_exists($this->jobCategory, $this->defaultImageUrl))
+        {
+            $jobCat = $this->CI->lang->line('job.fields.' . $this->jobCategory);
+        }else{
+            if(empty($this->jobCategory)){
+                $jobCat = $this->CI->lang->line('job.fields.other');
+            }else{
+                $jobCat = $this->jobCategory;
+            }
+        }
         $fields = array(
-            $this->getFieldWithPrefix($this->CI->lang->line('label.job.field'), $this->jobCategory),
+            $this->getFieldWithPrefix($this->CI->lang->line('label.job.field'), $jobCat),
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.title'), $this->jobTitle),
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.company'), $this->company),
             $this->getFieldWithPrefix($this->CI->lang->line('label.job.description'), $this->jobDescription),
@@ -57,9 +81,18 @@ class Job {
     }
 
     public function getJobImage() {
+
         if($this->jobImage == '') {
-            return static::DEFAULT_IMAGE_URL;
+            if(!empty($this->jobCategory) && array_key_exists($this->jobCategory, $this->defaultImageUrl))
+            {
+                $jobCat = $this->jobCategory;
+            }else{
+                $jobCat = 'other';
+            }
+            $path = $this->defaultImageUrl[$this->jobCategory];
+            return getContentPath($path);
         }
+
 
         return $this->jobImage;
     }
