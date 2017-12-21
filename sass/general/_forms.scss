@@ -58,7 +58,7 @@ body {
     .form-post-error{
       margin-bottom: 20px;
       @media only screen and (min-width: 992px) {
-        margin-left: 18.33%;
+        margin-left: 22.33%;
       }
     }
   }
@@ -135,10 +135,12 @@ form {
 label {
   font-size: 1.2em;
   font-weight: normal;
+  display: inline-block;
+  margin-bottom: 5px;
   @media screen and (min-width: 992px) {
-    display: inline-block;
     vertical-align: top;
-    width: 18%;
+    margin-bottom: 0;
+    width: 22%;
   }
   @media screen and (min-width: 1280px) {
     font-size: 1.3em;
@@ -160,7 +162,7 @@ input, textarea, select {
   }
   width: 100%;
   @media screen and (min-width: 992px) {
-    width: 80%;
+    width: 70%;
   }
 }
 
@@ -199,7 +201,7 @@ select {
   display: none;
   input {
     @media screen and (min-width: 992px) {
-      margin-left: 18.3%;
+      margin-left: 22.3%;
     }
   }
 }
@@ -250,10 +252,11 @@ small {
 .form-row {
   .error {
     @media screen and (min-width: 992px) {
-      margin-left: 18.33%;
+      margin-left: 22.33%;
     }
     .error-msg{
-      margin-top: 5px;
+      margin-top: 2px;
+      display: inline-block;
     }
   }
 }
@@ -278,7 +281,7 @@ small {
   width: 100%;
   display: inline-block;
   @media only screen and (min-width: 992px){
-      width: 80%;
+      width: 70%;
   }
   .uploadcare_image{
     margin-bottom: 10px;
