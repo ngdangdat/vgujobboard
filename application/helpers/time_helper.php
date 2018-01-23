@@ -69,8 +69,8 @@ function getScheduledTimeString()
 
             if($deltaTime > 14400){
                 $isScheduled = TRUE;
+                break;
             }
-            break;
         }
     }
 

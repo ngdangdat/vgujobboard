@@ -49,6 +49,6 @@ class Facebook {
     }
 
     public function post($endpoint, $params) {
-        return $this->FacebookApp->post($endpoint, $params)->getDecodedBody();;
+        return $this->FacebookApp->post($endpoint, $params)->getDecodedBody();
     }
 }
