@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block content %}
+    {% if job and job.is_posted %}
+    You job is scheduled successfully. If the content is valid, it will be published at  {{ job.scheduled_time|date:'H:i A, d F Y' }}.
+    {% elif form %}
+        {% if job and not job.is_posted %}
+            <div class="form-post-error error">
+                <span>
+                    Error occured while processing your inputs. Please submit form again or contact us! Sorry!
+                </span>
+            </div>
+        {% endif %}
+        <form action="{% url 'frontsite:index' %}" method="post" accept-charset="utf-8">
+            <div class="row">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <div class="form-row{% if field.field.required or field.name == 'field' or field.name == 'other_field' %} required{% endif %}">
+                        <label for="{{ field.name }}">{{ field.label }}</label>
+                        <div class="field-wrapper">
+                            {{ field }}
+                        </div>
+                        {% if field.errors %}
+                            <div class="error">
+                                {% for error in field.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+                <div class="form-row btn">
+                    <button type="submit" class="submit-btn">
+                        <svg version="1.1" class="send-icn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="36px" viewBox="0 0 100 36" enable-background="new 0 0 100 36" xml:space="preserve">
+                            <path d="M100,0L100,0 M23.8,7.1L100,0L40.9,36l-4.7-7.5L22,34.8l-4-11L0,30.5L16.4,8.7l5.4,15L23,7L23.8,7.1z M16.8,20.4l-1.5-4.3 l-5.1,6.7L16.8,20.4z M34.4,25.4l-8.1-13.1L25,29.6L34.4,25.4z M35.2,13.2l8.1,13.1L70,9.9L35.2,13.2z"/>
+                        </svg>
+                        <small>Submit</small>
+                    </button>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+    <script>
+        var picker = new Pikaday({ field: document.getElementById('datepicker') });
+    </script>
+{% endblock %}

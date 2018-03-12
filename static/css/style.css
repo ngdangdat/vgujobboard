@@ -49,12 +49,12 @@ body {
       border: solid 3px #474544;
       width: 90%; } }
   .container .inner {
-    padding: 0 15px; }
+    padding: 20px 15px 0; }
     .container .inner .form-post-error {
       margin-bottom: 20px; }
       @media only screen and (min-width: 992px) {
         .container .inner .form-post-error {
-          margin-left: 18.33%; } }
+          margin-left: 25.5%; } }
 
 h1 {
   color: #474544;
@@ -122,27 +122,37 @@ label {
     label {
       display: inline-block;
       vertical-align: top;
-      width: 18%; } }
+      width: 25%; } }
   @media screen and (min-width: 1280px) {
     label {
       font-size: 1.3em; } }
-  label span.required {
-    color: red; }
 
 input, textarea, select {
   color: #474544;
   border: 2px solid #474544;
   padding: 4px;
-  font-family: 'Montserrat', Arial, sans-serif;
-  width: 100%; }
+  width: 100%;
+  font-family: 'Montserrat', Arial, sans-serif; }
   input:focus, textarea:focus, select:focus {
     outline: none; }
-  @media screen and (min-width: 992px) {
-    input, textarea, select {
-      width: 80%; } }
+
+select.date-input-field {
+  width: 32%;
+  float: left;
+  margin-right: 2%; }
+  select.date-input-field:last-child {
+    margin-right: 0;
+    float: right; }
 
 input {
   height: 30px; }
+
+.field-wrapper {
+  display: inline-block;
+  width: 100%; }
+  @media screen and (min-width: 992px) {
+    .field-wrapper {
+      width: 70%; } }
 
 textarea {
   resize: none; }
@@ -194,6 +204,9 @@ small {
   margin-bottom: 10px; }
   .form-row.btn {
     text-align: right; }
+  .form-row.required label::after {
+    content: " *";
+    color: red; }
 
 .form-errors {
   margin-bottom: 20px; }
@@ -204,9 +217,12 @@ small {
     .form-errors h3 {
       padding-left: 70px; } }
 
+.form-row .error p {
+  margin: 5px 0; }
+
 @media screen and (min-width: 992px) {
   .form-row .error {
-    margin-left: 18.33%; } }
+    margin-left: 25.5%; } }
 
 .form-row .error .error-msg {
   margin-top: 5px; }
