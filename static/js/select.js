@@ -1,12 +1,11 @@
 $(document).ready(function(){
-   $("#jobSelectBox").change(function(){
-        if ($(this).val() == "other") {
-            $("#jobOthersInput input").attr("required", "");
-            $("#jobOthersInput").show();
-        }
-        else {
-            $("#jobOthersInput input").removeAttr("required");
-            $("#jobOthersInput").hide();
+   $("#id_field").change(function(){
+       var other_field_wrp = $("#id_other_field").parents('.form-row');
+        if (!$(this).val()) {
+            other_field_wrp.show();
+        } else {
+            other_field_wrp.hide();
         }
     });
+    $("#id_field").trigger('change');
 });

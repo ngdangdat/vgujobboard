@@ -1,3 +1,6 @@
-/node_modules/
-/static/css/style.css
-application/config/config.php
+__pycache__/
+node_modules/
+npm-debug.log
+.vscode
+static/css/
+local.env

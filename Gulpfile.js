@@ -12,7 +12,7 @@ const PATHS = {
 };
 
 gulp.task('css', function() {
-	gulp.src('sass/**/*.scss')
+	gulp.src('static/sass/**/*.scss')
 		.pipe(gulpIf(gulpUtil.env.sourcemaps, sourcemaps.init()))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulpIf(gulpUtil.env.sourcemaps, sourcemaps.write('./')))
@@ -22,7 +22,7 @@ gulp.task('css', function() {
 gulp.task('build', ['css']);
 
 gulp.task('watch', function() {
-	gulp.watch('sass/**/*.scss', ['css']);
+	gulp.watch('static/sass/**/*.scss', ['css']);
 })
 
 gulp.task('default', ['watch']);
