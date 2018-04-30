@@ -238,6 +238,10 @@ small {
   opacity: 0;
 }
 
+small .help_text {
+  color: gray;
+}
+
 .form-row {
   margin-bottom: 10px;
   &.btn {
