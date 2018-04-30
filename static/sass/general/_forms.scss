@@ -129,6 +129,12 @@ form {
   width: 100%;
   @media screen and (min-width: 768px) {
     width: 90%;
+    &.login-form {
+      width: 55%;
+    }
+    &.register-form {
+      width: 65%;
+    }
   }
 }
 
@@ -240,7 +246,7 @@ small {
 
 .form-row {
   margin-bottom: 10px;
-  &.btn {
+  &.btn-wrapper {
     text-align: right;
   }
   &.required{
@@ -349,6 +355,15 @@ small {
 [class*="col-"] {
     width: 100%;
     float: left;
+}
+
+.btn {
+  color: #fff;
+  background: #ffa500;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 767px) {
