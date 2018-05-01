@@ -565,3 +565,8 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 .pika-table abbr {
   border-bottom: none;
   cursor: help; }
+
+.login_input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: solid 1px gray; }
