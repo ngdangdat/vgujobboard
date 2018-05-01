@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'facebook',
     'job',
-    'frontsite'
+    'frontsite',
+    'accounts'
 ]
 
 MIDDLEWARE = [
