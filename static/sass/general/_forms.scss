@@ -170,6 +170,10 @@ input {
   height: 30px;
 }
 
+#id_username, #id_password1, #id_password2, #id_email {
+  width: 200px;
+}
+
 .field-wrapper{
   display: inline-block;
   width: 100%;
