@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+  Login
+{% endblock %}
+
+{% block content %}
+  <form class="login-form" action="#">
+    <div class="row">
+      <div class="form-row">
+        <label for="username">Username</label>
+        <div class="field-wrapper">
+          <input name="username" type="text" />
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="password">Password</label>
+        <div class="field-wrapper">
+          <input name="password" type="password" />
+        </div>
+      </div>
+      <div class="form-row btn-wrapper">
+        <button class="btn cta cta-login" type="submit">Login</button>
+      </div>
+    </div>
+  </form>  
+{% endblock %}

@@ -113,7 +113,11 @@ form {
   width: 100%; }
   @media screen and (min-width: 768px) {
     form {
-      width: 90%; } }
+      width: 90%; }
+      form.login-form {
+        width: 55%; }
+      form.register-form {
+        width: 65%; } }
 
 label {
   font-size: 1.2em;
@@ -202,7 +206,7 @@ small {
 
 .form-row {
   margin-bottom: 10px; }
-  .form-row.btn {
+  .form-row.btn-wrapper {
     text-align: right; }
   .form-row.required label::after {
     content: " *";
@@ -284,6 +288,14 @@ small {
 [class*="col-"] {
   width: 100%;
   float: left; }
+
+.btn {
+  color: #fff;
+  background: #ffa500;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; }
 
 @media only screen and (max-width: 767px) {
   img {

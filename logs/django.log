@@ -1,1 +1,1046 @@
 
+[30/Apr/2018 10:38:32] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.015) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 10:38:32] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 10:38:35] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/urls/resolvers.py", line 523, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'path': 'robots.txt', 'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern '' [name='index']>]]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+[30/Apr/2018 10:38:35] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py:93] Not Found: /robots.txt
+[30/Apr/2018 10:38:35] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /robots.txt HTTP/1.1" 404 2128
+[30/Apr/2018 10:38:35] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.011) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:38:35] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) DECLARE "_django_curs_140507521242880_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:38:35] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca74e46cc0>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca74637f98>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca74e471e0>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca74627c80>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:38:35] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca74e46cc0>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca74637f98>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca74e471e0>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca74627c80>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:38:35] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10705
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 11890
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/uploadcare.js HTTP/1.1" 200 1076
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/arrow-down.png HTTP/1.1" 200 331
+[30/Apr/2018 10:38:36] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/favicon.ico HTTP/1.1" 200 477
+[30/Apr/2018 10:40:00] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.005) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:40:00] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.005) DECLARE "_django_curs_140507521242880_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:40:00] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca74e6f710>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca746374a8>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743de8c8>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743bfe18>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:40:00] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca74e6f710>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca746374a8>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743de8c8>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743bfe18>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:40:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10875
+[30/Apr/2018 10:40:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 10:40:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/uploadcare.js HTTP/1.1" 304 0
+[30/Apr/2018 10:40:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 304 0
+[30/Apr/2018 10:40:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/favicon.ico HTTP/1.1" 200 477
+[30/Apr/2018 10:40:16] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.006) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:40:16] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.002) DECLARE "_django_curs_140507405596416_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:40:16] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca743d1d30>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca74e7b048>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743de6a8>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743de510>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:40:16] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca743d1d30>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca74e7b048>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743de6a8>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743de510>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:40:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10875
+[30/Apr/2018 10:40:17] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/favicon.ico HTTP/1.1" 200 477
+[30/Apr/2018 10:43:24] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.003) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:43:24] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) DECLARE "_django_curs_140507439167232_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:43:24] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca756e3710>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca74e7bb70>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743bfea0>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743de598>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:43:24] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca756e3710>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca74e7bb70>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743bfea0>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743de598>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:43:24] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10861
+[30/Apr/2018 10:43:24] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 10:43:24] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/uploadcare.js HTTP/1.1" 304 0
+[30/Apr/2018 10:43:24] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 304 0
+[30/Apr/2018 10:43:25] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/favicon.ico HTTP/1.1" 200 477
+[30/Apr/2018 10:43:26] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:43:26] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) DECLARE "_django_curs_140507413989120_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:43:26] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca74637390>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca743d8978>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743de620>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743de950>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:43:26] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca74637390>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca743d8978>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743de620>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743de950>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:43:26] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10861
+[30/Apr/2018 10:43:27] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:43:27] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) DECLARE "_django_curs_140507413989120_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:43:27] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca743d8550>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca743eb128>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743bfe18>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca74614510>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:43:27] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca743d8550>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca743eb128>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743bfe18>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca74614510>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:43:27] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10861
+[30/Apr/2018 10:43:34] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.002) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:43:34] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) DECLARE "_django_curs_140507413989120_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:43:34] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca74e7b4e0>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca743eb9b0>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743de510>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743de730>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:43:34] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'True': True, 'False': False, 'None': None}, {'DEFAULT_MESSAGE_LEVELS': {'INFO': 20, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'WARNING': 30}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7fca74e7b4e0>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7fca743eb9b0>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7fca743de510>>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7fca743de730>>, 'request': <WSGIRequest: GET '/'>}, {}, {'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:43:34] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10845
+[30/Apr/2018 10:43:34] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/favicon.ico HTTP/1.1" 200 477
+[30/Apr/2018 10:50:35] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 10:50:35] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 10:51:25] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.002) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 10:51:25] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 10:51:45] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 10:51:45] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 10:51:51] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 10:51:51] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 10:55:37] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 10:55:37] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 10:55:37] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.004) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:55:37] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) DECLARE "_django_curs_139749537150720_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 10:55:37] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'None': None, 'False': False, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f19f98ac080>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f19f98801e0>>, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'ERROR': 40, 'INFO': 20, 'SUCCESS': 25, 'DEBUG': 10}, 'request': <WSGIRequest: GET '/'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f19f988ee10>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f19f98c2488>>}, {}, {'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>, 'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us'}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:55:37] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'None': None, 'False': False, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f19f98ac080>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f19f98801e0>>, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'ERROR': 40, 'INFO': 20, 'SUCCESS': 25, 'DEBUG': 10}, 'request': <WSGIRequest: GET '/'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f19f988ee10>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f19f98c2488>>}, {}, {'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>, 'LANGUAGE_BIDI': False, 'LANGUAGE_CODE': 'en-us'}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 10:55:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10845
+[30/Apr/2018 10:55:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 10:55:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/uploadcare.js HTTP/1.1" 304 0
+[30/Apr/2018 10:55:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 304 0
+[30/Apr/2018 10:55:38] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/favicon.ico HTTP/1.1" 200 477
+[30/Apr/2018 10:55:40] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/urls/resolvers.py", line 523, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'path': 'login', 'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern 'admin/' [name='login']>]]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+[30/Apr/2018 10:55:40] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py:93] Not Found: /login
+[30/Apr/2018 10:55:40] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/urls/resolvers.py", line 523, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'path': 'robots.txt', 'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern 'admin/' [name='login']>]]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+[30/Apr/2018 10:55:40] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login HTTP/1.1" 404 2280
+[30/Apr/2018 10:55:40] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py:93] Not Found: /robots.txt
+[30/Apr/2018 10:55:40] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /robots.txt HTTP/1.1" 404 2295
+[30/Apr/2018 10:55:40] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/urls/resolvers.py", line 523, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'path': 'favicon.ico', 'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern 'admin/' [name='login']>]]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+[30/Apr/2018 10:55:40] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py:93] Not Found: /favicon.ico
+[30/Apr/2018 10:55:40] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /favicon.ico HTTP/1.1" 404 2298
+[30/Apr/2018 10:55:53] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/urls/resolvers.py", line 523, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'path': 'login', 'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern 'admin/' [name='login']>]]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+[30/Apr/2018 10:55:53] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py:93] Not Found: /login
+[30/Apr/2018 10:55:53] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login HTTP/1.1" 404 2280
+[30/Apr/2018 10:55:54] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 10:55:54] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 10:55:54] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login HTTP/1.1" 301 0
+[30/Apr/2018 10:55:54] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 2668
+[30/Apr/2018 10:58:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 2941
+[30/Apr/2018 10:58:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 10:58:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 304 0
+[30/Apr/2018 10:58:17] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/favicon.ico HTTP/1.1" 200 477
+[30/Apr/2018 10:58:45] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 3133
+[30/Apr/2018 10:58:45] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/favicon.ico HTTP/1.1" 200 477
+[30/Apr/2018 11:02:20] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 3133
+[30/Apr/2018 11:02:20] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:02:20] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 304 0
+[30/Apr/2018 11:03:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 3133
+[30/Apr/2018 11:03:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 11936
+[30/Apr/2018 11:03:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 11:03:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 11:03:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 11:03:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 11:03:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 11:03:17] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292
+[30/Apr/2018 11:03:56] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 3139
+[30/Apr/2018 11:03:56] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:03:57] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 3139
+[30/Apr/2018 11:04:29] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.002) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 11:04:29] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) DECLARE "_django_curs_140013090096896_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 11:04:29] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'False': False, 'None': None, 'True': True}, {'request': <WSGIRequest: GET '/'>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f575d6c1598>>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'SUCCESS': 25, 'ERROR': 40, 'WARNING': 30, 'INFO': 20}, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f575c382fd0>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f575c370e18>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f575cde9cc0>}, {}, {'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False, 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 11:04:29] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'False': False, 'None': None, 'True': True}, {'request': <WSGIRequest: GET '/'>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f575d6c1598>>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'SUCCESS': 25, 'ERROR': 40, 'WARNING': 30, 'INFO': 20}, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f575c382fd0>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f575c370e18>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f575cde9cc0>}, {}, {'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False, 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 11:04:29] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10851
+[30/Apr/2018 11:04:29] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:04:29] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/uploadcare.js HTTP/1.1" 304 0
+[30/Apr/2018 11:04:31] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 3139
+[30/Apr/2018 11:06:28] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 3139
+[30/Apr/2018 11:06:28] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:06:28] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 304 0
+[30/Apr/2018 11:06:57] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 3139
+[30/Apr/2018 11:06:57] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:07:36] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.002) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 11:07:36] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.004) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 11:09:46] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 11:09:46] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 11:09:48] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /login/ HTTP/1.1" 200 3139
+[30/Apr/2018 11:09:48] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:09:49] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.002) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+[30/Apr/2018 11:09:49] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[30/Apr/2018 11:09:50] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.001) SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 11:09:50] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/db/backends/utils.py:111] (0.000) DECLARE "_django_curs_140103837021952_1" NO SCROLL CURSOR WITH HOLD FOR SELECT "job_jobfield"."id", "job_jobfield"."name", "job_jobfield"."slug", "job_jobfield"."file_img_url" FROM "job_jobfield" ORDER BY "job_jobfield"."name" ASC; args=()
+[30/Apr/2018 11:09:50] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'False': False, 'None': None, 'True': True}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f6c77718f28>>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f6c77fb8f28>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f6c77702668>, 'request': <WSGIRequest: GET '/'>, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'DEBUG': 10, 'ERROR': 40, 'INFO': 20, 'SUCCESS': 25}, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f6c7773a198>}, {}, {'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>, 'LANGUAGE_BIDI': False}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 11:09:50] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'job' in template 'index.html'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 841, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'job'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [job] in [{'False': False, 'None': None, 'True': True}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f6c77718f28>>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f6c77fb8f28>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f6c77702668>, 'request': <WSGIRequest: GET '/'>, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'DEBUG': 10, 'ERROR': 40, 'INFO': 20, 'SUCCESS': 25}, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f6c7773a198>}, {}, {'LANGUAGE_CODE': 'en-us', 'form': <JobForm bound=False, valid=Unknown, fields=(field;other_field;title;company;description;requirement;salary;benefit;apply_contact;deadline;question_contact;img_url)>, 'LANGUAGE_BIDI': False}, {'block': <Block Node: content. Contents: [<TextNode: '\n    '>, <IfNode>, <TextNode: '\n'>]>}]
+[30/Apr/2018 11:09:50] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET / HTTP/1.1" 200 10851
+[30/Apr/2018 11:09:50] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/uploadcare.js HTTP/1.1" 304 0
+[30/Apr/2018 11:09:53] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register HTTP/1.1" 301 0
+[30/Apr/2018 11:09:53] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3546
+[30/Apr/2018 11:10:02] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3549
+[30/Apr/2018 11:10:02] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 304 0
+[30/Apr/2018 11:10:26] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3549
+[30/Apr/2018 11:10:31] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3549
+[30/Apr/2018 11:10:31] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 11985
+[30/Apr/2018 11:10:31] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 11:10:31] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 11:10:31] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 11:10:31] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 11:10:31] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 11:10:31] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292
+[30/Apr/2018 11:10:49] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3549
+[30/Apr/2018 11:10:49] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 11985
+[30/Apr/2018 11:10:49] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 11:10:49] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 11:10:49] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 11:10:49] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 11:10:49] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 11:10:49] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292
+[30/Apr/2018 11:32:50] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3643
+[30/Apr/2018 11:32:50] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:32:50] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 304 0
+[30/Apr/2018 11:33:17] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3643
+[30/Apr/2018 11:36:56] DEBUG [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py:878] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/urls/resolvers.py", line 523, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'path': 'robots.txt', 'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern 'login/' [name='login']>], [<URLResolver <module 'frontsite.route' from '/home/blackbird/Side/src/vgujobboard/frontsite/route.py'> (frontsite:frontsite) ''>, <URLPattern 'register/' [name='register']>]]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/template/base.py", line 856, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+[30/Apr/2018 11:36:56] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/handlers/base.py:93] Not Found: /robots.txt
+[30/Apr/2018 11:36:56] WARNING [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /robots.txt HTTP/1.1" 404 2468
+[30/Apr/2018 11:36:56] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/?email=&userName=&password=&passwordConfirm= HTTP/1.1" 200 3672
+[30/Apr/2018 11:36:56] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:41:22] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3672
+[30/Apr/2018 11:41:22] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 12092
+[30/Apr/2018 11:41:22] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 11:41:22] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 11:41:22] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 11:41:22] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 11:41:22] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 11:41:23] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292
+[30/Apr/2018 11:42:02] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3680
+[30/Apr/2018 11:42:02] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:48:43] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3680
+[30/Apr/2018 11:48:43] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 12100
+[30/Apr/2018 11:48:43] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 11:48:43] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 11:48:43] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 11:48:43] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 11:48:43] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 11:48:44] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292
+[30/Apr/2018 11:49:13] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3680
+[30/Apr/2018 11:49:17] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/ HTTP/1.1" 200 3680
+[30/Apr/2018 11:49:19] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/?email=&userName=&password=&passwordConfirm= HTTP/1.1" 200 3680
+[30/Apr/2018 11:50:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/?email=&userName=&password=&passwordConfirm= HTTP/1.1" 200 3680
+[30/Apr/2018 11:50:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 12119
+[30/Apr/2018 11:50:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 11:50:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 11:50:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 11:50:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 11:50:16] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 11:50:17] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292
+[30/Apr/2018 11:51:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/?email=&userName=&password=&passwordConfirm= HTTP/1.1" 200 3680
+[30/Apr/2018 11:51:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 12119
+[30/Apr/2018 11:51:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 11:51:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 11:51:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 11:51:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 11:51:00] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 11:51:01] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292
+[30/Apr/2018 11:51:06] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/?email=&userName=&password=&passwordConfirm= HTTP/1.1" 200 3680
+[30/Apr/2018 11:51:06] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:52:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/?email=&userName=&password=&passwordConfirm= HTTP/1.1" 200 3680
+[30/Apr/2018 11:52:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 12257
+[30/Apr/2018 11:52:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 11:52:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 11:52:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 11:52:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 11:52:37] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 11:52:38] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292
+[30/Apr/2018 11:53:41] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/?email=&userName=&password=&passwordConfirm= HTTP/1.1" 200 3680
+[30/Apr/2018 11:53:41] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 304 0
+[30/Apr/2018 11:53:44] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /register/?email=&userName=&password=&passwordConfirm= HTTP/1.1" 200 3680
+[30/Apr/2018 11:53:44] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/css/style.css HTTP/1.1" 200 12120
+[30/Apr/2018 11:53:44] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/vgu_logo.png HTTP/1.1" 200 67906
+[30/Apr/2018 11:53:45] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 86659
+[30/Apr/2018 11:53:45] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/select.js HTTP/1.1" 200 318
+[30/Apr/2018 11:53:45] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/pikaday.js HTTP/1.1" 200 40579
+[30/Apr/2018 11:53:45] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/js/app.js HTTP/1.1" 200 141
+[30/Apr/2018 11:53:45] INFO [/home/blackbird/Side/src/env/vgualumni/lib/python3.5/site-packages/django/core/servers/basehttp.py:124] "GET /static/images/slider.gif HTTP/1.1" 200 340292

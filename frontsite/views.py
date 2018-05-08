@@ -19,3 +19,15 @@ def index(request):
             'form': form,
             'job': job
         })
+
+def login(request):
+    template = 'login.html'
+
+    if request.method == 'GET':
+        return render(request, template)
+
+def register(request):
+    template = 'register.html'
+
+    if request.method == 'GET':
+        return render(request, template)
