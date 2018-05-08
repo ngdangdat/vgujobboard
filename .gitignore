@@ -4,3 +4,4 @@ npm-debug.log
 .vscode
 static/css/
 local.env
+logs/django.log
