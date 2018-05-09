@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+  Register Account
+{% endblock %}
+
+{% block content %}
+  <h2>Sign up</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="row">
+      
+      {% for field in user_form.visible_fields %}
+        <div class="form-row{% if field.field.required %} required{% endif %}">
+          <label for="{{ field.name }}">{{ field.label }}</label>
+          <div class="field-wrapper">
+              {{ field }}
+          </div>
+          {% if field.errors %}
+              <div class="error">
+                  {% for error in field.errors %}
+                      <p>{{ error }}</p>
+                  {% endfor %}
+              </div>
+          {% endif %}
+          {% for hidden in user_form.hidden_fields %}
+              {{ hidden }}
+          {% endfor %}
+        </div>
+      {% endfor %}
+      {% for field in profile_form.visible_fields %}
+        <div class="form-row{% if field.field.required %} required{% endif %}">
+          <label for="{{ field.name }}">{{ field.label }}</label>
+          <div class="field-wrapper">
+              {{ field }}
+          </div>
+          {% if field.errors %}
+              <div class="error">
+                  {% for error in field.errors %}
+                      <p>{{ error }}</p>
+                  {% endfor %}
+              </div>
+          {% endif %}
+          {% for hidden in profile_form.hidden_fields %}
+              {{ hidden }}
+          {% endfor %}
+        </div>
+      {% endfor %}
+      <div class="form-row btn-wrapper">
+        <button class="btn active cta-register" type="submit">Register</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}
