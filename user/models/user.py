@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.manager import Manager
 
 from django.contrib.auth.models import \
-  (AbstractBaseUser, PermissionsMixin, update_last_login, Group)
+  (AbstractBaseUser, PermissionsMixin, Group)
 
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -112,3 +112,9 @@ class User(AbstractUser):
         # ("change_status", "Can change status"),
         # Define other permission here
     )
+
+
+class Group(Group):
+  """Proxy class"""
+  class Meta:
+    proxy = True
