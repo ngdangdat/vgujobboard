@@ -6,35 +6,28 @@
 
 {% block content %}
     {% if message %}
-     {{message}}
-    {% else %}
-      <h1>Log in to VGU Alumni</h1>
-      <form id="login_form" method="post" action="{% url 'frontsite:user_login' %}">
-        {% csrf_token %}
-        Username: <input type="text" name="username" placeholder="Username" size="50" class="login_input"/>
-        <br />
-        Password: <input type="password" name="password" placeholder="Password" value="" size="50" class="login_input" />
-        <br />
-        <input type="submit" value="Log in" />
-      </form>
+     {{ message }}
     {% endif %}
-    <!-- <form class="login-form" action="#">
-    <div class="row">
-      <div class="form-row">
-        <label for="username">Username</label>
-        <div class="field-wrapper">
-          <input name="username" type="text" />
+    <h1>Log in to VGU Alumni</h1>
+    <form class="login-form" method="POST" action="{% url 'frontsite:login' %}">
+      {% csrf_token %}
+      <div class="row">
+        <div class="form-row">
+          <label for="email">Email</label>
+          <div class="field-wrapper">
+            <input name="email" type="text" />
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <div class="field-wrapper">
+            <input name="password" type="password" />
+          </div>
+        </div>
+        <div class="form-row btn-wrapper">
+          <a href="{% url 'frontsite:register' %}"><button class="btn inactive cta-register" type="button">Register</button></a>
+          <button class="btn active cta-login" type="submit">Login</button>
         </div>
       </div>
-      <div class="form-row">
-        <label for="password">Password</label>
-        <div class="field-wrapper">
-          <input name="password" type="password" />
-        </div>
-      </div>
-      <div class="form-row btn-wrapper">
-        <button class="btn cta cta-login" type="submit">Login</button>
-      </div>
-    </div>
-  </form> -->
+  </form>
 {% endblock %}

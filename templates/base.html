@@ -30,7 +30,11 @@
                             <a target="_blank" href="https://vgualumniqna.tumblr.com/">Q&amp;A</a>
                         </li>
                         <li class="col-3">
-                            <a class="js-login" href="{% url 'frontsite:user_login' %}">Login</a>
+                            {% if user.is_authenticated %}
+                                <a class="js-logout" href="{% url 'frontsite:logout' %}">Logout</a>
+                            {% else %}
+                                <a class="js-login" href="{% url 'frontsite:login' %}">Login</a>
+                            {% endif %}
                         </li>
                         <div class="clearfix"></div>
                     </ul>

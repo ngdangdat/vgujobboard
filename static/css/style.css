@@ -204,6 +204,9 @@ small {
   display: block;
   opacity: 0; }
 
+small .help_text {
+  color: gray; }
+
 .form-row {
   margin-bottom: 10px; }
   .form-row.btn-wrapper {
@@ -291,11 +294,14 @@ small {
 
 .btn {
   color: #fff;
-  background: #ffa500;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer; }
+  .btn.active {
+    background: #ffa500; }
+  .btn.inactive {
+    background: #999999; }
 
 @media only screen and (max-width: 767px) {
   img {

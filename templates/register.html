@@ -4,34 +4,30 @@
 {% endblock %}
 
 {% block content %}
-  <form class="register-form" action="#">
+  <h2>Sign up</h2>
+  <form method="POST">
+    {% csrf_token %}
     <div class="row">
-      <div class="form-row">
-        <label for="email">Email</label>
-        <div class="field-wrapper">
-          <input name="email" readonly type="text" />
+      {% for field in form.visible_fields %}
+        <div class="form-row{% if field.field.required %} required{% endif %}">
+          <label for="{{ field.name }}">{{ field.label }}</label>
+          <div class="field-wrapper">
+              {{ field }}
+          </div>
+          {% if field.errors %}
+              <div class="error">
+                  {% for error in field.errors %}
+                      <p>{{ error }}</p>
+                  {% endfor %}
+              </div>
+          {% endif %}
+          {% for hidden in form.hidden_fields %}
+              {{ hidden }}
+          {% endfor %}
         </div>
-      </div>
-      <div class="form-row">
-        <label for="userName">Name</label>
-        <div class="field-wrapper">
-          <input name="userName" type="text" />
-        </div>
-      </div>
-      <div class="form-row">
-        <label for="password">Password</label>
-        <div class="field-wrapper">
-          <input name="password" type="password" />
-        </div>
-      </div>
-      <div class="form-row">
-        <label for="passwordConfirm">Confirm password</label>
-        <div class="field-wrapper">
-          <input name="passwordConfirm" type="password" />
-        </div>
-      </div>
+      {% endfor %}
       <div class="form-row btn-wrapper">
-        <button class="btn cta cta-register" type="submit">Register</button>
+        <button class="btn active cta-register" type="submit">Register</button>
       </div>
     </div>
   </form>

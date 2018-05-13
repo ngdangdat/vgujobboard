@@ -2,41 +2,51 @@ import json
 from django.shortcuts import render
 from job.forms.job import JobForm
 from job.models.job import JobField
+from user.forms import RegisterForm
 
-from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth import authenticate, login as user_login, logout as user_logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 
 def index(request):
     template = 'index.html'
-
-    if request.method == 'GET':
-        form = JobForm()
-        return render(request, template, {'form': form})
+    context = {}
+    if request.user and request.user.is_authenticated:
+        if request.method == 'GET':
+            form = JobForm()
+            context['form'] = form
+        else:
+            post_data = request.POST.copy()
+            form = JobForm(post_data)
+            job = None
+            if form.is_valid():
+                job = form.save()
+            context['job'] = job
+        context['form'] = form
     else:
-        post_data = request.POST.copy()
-        form = JobForm(post_data)
-        job = None
-        if form.is_valid():
-            job = form.save()
-        return render(request, template, {
-            'form': form,
-            'job': job
-        })
-
-# def login(request):
-#     template = 'login.html'
-
-#     if request.method == 'GET':
-#         return render(request, template)
+        template = 'login.html'
+    return render(request, template, context)
 
 def register(request):
     template = 'register.html'
+    context = {}
 
     if request.method == 'GET':
-        return render(request, template)
+        form = RegisterForm()
+        context['form'] = form
+        return render(request, template, context)
+    else:
+        form = RegisterForm(request.POST)
+        context['form'] = form
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+        return render(request, template, context)
 
-def user_login(request):
+
+def login(request):
     template = 'login.html'
 
     if request.method == 'POST':
@@ -45,26 +55,21 @@ def user_login(request):
         # request.POST.get('<variable>') returns None if the
         # value does not exist, while request.POST['<variable>']
         # will raise a KeyError exception.
-        username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
         # Check username/pw. Returns a User object or None
-        user = authenticate(username=username, password=password)
-        # If we have a User object, the details are correct.
+        user = authenticate(username=email, password=password)
         if user:
             if user.is_active:
-                login(request, user)
-                return render(request, template, {'message': "You are logged in successfully!"})
+                user_login(request, user)
+                return HttpResponseRedirect('/')
             else:
                 return render(request, template, {'message': "Your account is disabled."})
         else:
-            print("Invalid login details: {0}, {1}".format(username, password))
-            # # Uncomment to create a dummy user and print all users on webpage
-            # user = User.objects.create_user(username='user',
-            #                      email='user@vgu.com',
-            #                      password='your_password')
-            # users = User.objects.all()
-            # string = '-'.join([str(i) for i in users])
-            # return render(request, template, {'message': string})
             return render(request, template, {'message': "Invalid login details supplied."})
     else:
         return render(request, template, {})
+
+def logout(request):
+    user_logout(request)
+    return HttpResponseRedirect('/')
