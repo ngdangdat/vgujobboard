@@ -38,7 +38,6 @@ class UserProfileInline(admin.StackedInline):
   verbose_name_plural = 'Profile'
   max_num = 1
   can_delete = False
-  template = 'admin/edit_inline/stacked.html'
 
   def get_fieldsets(self, request, obj=None):
     return PROFILE_FIELDS,
