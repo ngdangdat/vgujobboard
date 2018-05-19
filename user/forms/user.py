@@ -26,3 +26,10 @@ class RegisterForm(BaseUserCreationForm):
   class Meta:
     model = User
     fields = ('email', 'first_name', 'last_name' ,'password1', 'password2',)
+
+  def save(self, commit=True):
+    user = super().save(commit=False)
+    user.is_active = False
+    if commit:
+      user.save()
+    return user

@@ -2,13 +2,11 @@ from django.db import models
 from django.db.models.manager import Manager
 
 from django.contrib.auth.models import \
-  (AbstractBaseUser, PermissionsMixin, Group)
+  (AbstractBaseUser, PermissionsMixin, Group as RootGroup)
 
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.utils.crypto import get_random_string
-
-from user.const import USER_STATUS
 
 
 class BaseUserManager(Manager):
@@ -112,9 +110,12 @@ class User(AbstractUser):
         # ("change_status", "Can change status"),
         # Define other permission here
     )
+  
+  def __str__(self):
+    return "%s %s" % (self.first_name, self.last_name)
 
 
-class Group(Group):
+class Group(RootGroup):
   """Proxy class"""
   class Meta:
     proxy = True

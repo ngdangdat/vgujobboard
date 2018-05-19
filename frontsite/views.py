@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render
 from job.forms.job import JobForm
 from job.models.job import JobField
-from user.forms import RegisterForm
+from user.forms import RegisterForm, ProfileForm
 
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
@@ -34,14 +34,19 @@ def register(request):
     context = {}
 
     if request.method == 'GET':
-        form = RegisterForm()
-        context['form'] = form
+        user_form = RegisterForm()
+        profile_form = ProfileForm()
+        context['user_form'] = user_form
+        context['profile_form'] = profile_form
         return render(request, template, context)
     else:
-        form = RegisterForm(request.POST)
-        context['form'] = form
-        if form.is_valid():
-            form.save()
+        user_form = RegisterForm(request.POST)
+        profile_form = ProfileForm(request.POST)
+        context['user_form'] = user_form
+        context['profile_form'] = profile_form
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            profile_form.save(user=user)
             return HttpResponseRedirect('/')
         return render(request, template, context)
 
