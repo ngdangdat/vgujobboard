@@ -114,6 +114,10 @@ class User(AbstractUser):
   def __str__(self):
     return "%s %s" % (self.first_name, self.last_name)
 
+  def save(self, *args, **kwargs):
+    if not self.password:
+      self.set_password(get_random_string(30))
+    return super(User, self).save(*args, **kwargs)
 
 class Group(RootGroup):
   """Proxy class"""
