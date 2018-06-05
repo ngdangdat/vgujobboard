@@ -2,9 +2,17 @@ import json
 from django.shortcuts import render
 from job.forms.job import JobForm
 from job.models.job import JobField
-from user.forms import RegisterForm, ProfileForm
+from user.forms import RegisterForm, ProfileForm, PasswordResetForm
+from django.urls import reverse_lazy, reverse
 
 from django.contrib import messages
+from django.contrib.auth.views import \
+    (
+        PasswordResetView as BasePasswordResetView,
+        PasswordResetDoneView as BasePasswordResetDoneView,
+        PasswordResetConfirmView as BasePasswordResetConfirmView,
+        PasswordResetCompleteView as BasePasswordResetCompleteView,
+    )
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate, login as user_login, logout as user_logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -78,3 +86,17 @@ def login(request):
 def logout(request):
     user_logout(request)
     return HttpResponseRedirect('/')
+
+class PasswordResetView(BasePasswordResetView):
+    template_name = 'forgot_password.html'
+    email_template_name = 'email/password_reset_email.html'
+    success_url = reverse_lazy('frontsite:password_reset_complete')
+
+class PasswordResetDoneView(BasePasswordResetDoneView):
+    template_name = 'password_reset_done.html'
+
+class PasswordResetConfirmView(BasePasswordResetConfirmView):
+    template_name = 'password_reset_confirm.html'
+
+class PasswordResetCompleteView(BasePasswordResetCompleteView):
+    template_name = 'password_reset_complete.html'

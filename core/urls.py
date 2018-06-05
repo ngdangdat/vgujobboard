@@ -1,4 +1,3 @@
-from django.contrib import admin
 from admin.admin import admin_site
 from django.urls import path, include
 

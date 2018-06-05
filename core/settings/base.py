@@ -16,7 +16,8 @@ from os.path import dirname, join, exists
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = dirname(dirname(dirname(__file__)))
-
+EMAIL_HOST='localhost'
+EMAIL_PORT=1025
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -52,7 +53,7 @@ INSTALLED_APPS = [
     'user',
     'facebook',
     'job',
-    'frontsite'
+    'frontsite',
 ]
 
 AUTH_USER_MODEL = 'user.User'
@@ -68,7 +69,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# URLS
 ROOT_URLCONF = 'core.urls'
+LOGIN_URL='/login/'
 
 TEMPLATES = [
     {

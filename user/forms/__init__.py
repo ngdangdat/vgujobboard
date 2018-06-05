@@ -1,2 +1,2 @@
-from .user import RegisterForm
+from .user import RegisterForm, PasswordResetForm
 from .profile import ProfileForm
