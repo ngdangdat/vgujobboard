@@ -63,14 +63,8 @@ def login(request):
     template = 'login.html'
 
     if request.method == 'POST':
-        # We use request.POST.get('<variable>') as opposed
-        # to request.POST['<variable>'], because the
-        # request.POST.get('<variable>') returns None if the
-        # value does not exist, while request.POST['<variable>']
-        # will raise a KeyError exception.
         email = request.POST.get('email')
         password = request.POST.get('password')
-        # Check username/pw. Returns a User object or None
         user = authenticate(username=email, password=password)
         if user:
             if user.is_active:
@@ -90,13 +84,14 @@ def logout(request):
 class PasswordResetView(BasePasswordResetView):
     template_name = 'forgot_password.html'
     email_template_name = 'email/password_reset_email.html'
-    success_url = reverse_lazy('frontsite:password_reset_complete')
+    success_url = reverse_lazy('frontsite:password_reset_done')
 
 class PasswordResetDoneView(BasePasswordResetDoneView):
     template_name = 'password_reset_done.html'
 
 class PasswordResetConfirmView(BasePasswordResetConfirmView):
     template_name = 'password_reset_confirm.html'
+    success_url = reverse_lazy('frontsite:password_reset_complete')
 
 class PasswordResetCompleteView(BasePasswordResetCompleteView):
     template_name = 'password_reset_complete.html'
