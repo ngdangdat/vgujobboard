@@ -1,8 +1,7 @@
 __pycache__/
 node_modules/
-npm-debug.log
+*.log
 .vscode
 static/css/
 local.env
-logs/django.log
 package-lock.json
