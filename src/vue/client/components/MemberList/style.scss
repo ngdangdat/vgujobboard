@@ -1,0 +1,15 @@
+.user-card {
+  display: flex;
+  padding: 1rem;
+  cursor: pointer;
+  img {
+    max-width: 200px;
+    height: auto;
+  }
+  .info {
+    padding-left: 1.5rem;
+  }
+  &:hover {
+    border: dashed 1px orangered;
+  }
+}
