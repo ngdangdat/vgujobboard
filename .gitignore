@@ -5,3 +5,5 @@ node_modules/
 static/css/
 local.env
 package-lock.json
+yarn.lock
+dist/
