@@ -50,6 +50,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+
+    'api',
     'user',
     'facebook',
     'job',
@@ -210,3 +214,17 @@ PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 )
+
+PASSWORD_MIN_LENGTH = 6
+PASSWORD_MIN_DIGITS = 1
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': 'api.permissions.IsAuthenticated',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'api.authentications.TokenAuthentication',
+        'api.authentications.SessionAuthentication',
+    ],
+    'EXCEPTION_HANDLER': 'api.views.exception_handler',
+    'PAGE_SIZE': 20,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+}

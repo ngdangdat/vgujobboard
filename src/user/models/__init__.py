@@ -1,2 +1,2 @@
-from .user import User, Group
+from .user import User, Group, OneTimePassword
 from .profile import Profile

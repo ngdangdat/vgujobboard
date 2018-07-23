@@ -6,6 +6,7 @@
       :key="user.id"
       @click="viewUser(user.id)"
     >
+      <router-link :to="`member/${user.id}`">
         <div class="user-card">
           <img :src="user.avatar" :alt="user.name"/>
           <div class="info">
@@ -15,6 +16,7 @@
             <p>{{ `${user.city}, ${user.country}` }}</p>
           </div>
         </div>
+      </router-link>
     </li>
   </ul>
 </template>
@@ -68,11 +70,6 @@ const userList = [
 const MemberList = Vue.extend({
   mounted() {
     this.users = userList;
-  },
-  methods: {
-    viewUser: (id) => {
-      this.$router.push(`/member/${id}`);
-    },
   },
   data() {
     return {

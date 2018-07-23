@@ -22,3 +22,11 @@ class USER_STATUS(Const):
     (ACTIVE, 'Active'),
   ]
 
+class OTP_INTERVAL(Const):
+  OTP_LIVE_TIME = 60 * 3
+  OTP_REQUEST = 60 * 5
+  OTP_CHECK = 60 * 5
+
+class OTP_LIMIT(Const):
+  OTP_REQUEST = 3
+  OTP_CHECK = 5

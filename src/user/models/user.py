@@ -1,12 +1,16 @@
+import hashlib
+
 from django.db import models
 from django.db.models.manager import Manager
-
 from django.contrib.auth.models import \
   (AbstractBaseUser, PermissionsMixin, Group as RootGroup)
-
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.utils.crypto import get_random_string
+from django.conf import settings
+
+from api.models import Token
+from user.const import OTP_INTERVAL, OTP_LIMIT
 
 
 class BaseUserManager(Manager):
@@ -36,6 +40,7 @@ class BaseUserManager(Manager):
 
 
 class UserManager(BaseUserManager):
+
   def _create_user(self, email, password, **extra_fields):
     """
     Create and save a user with given email, password
@@ -64,6 +69,9 @@ class UserManager(BaseUserManager):
         raise ValueError('Superuser must have is_superuser=True.')
 
     return self._create_user(email, password, **extra_fields)
+
+  def get_active_users(self):
+    return self.filter(is_staff=False, is_active=True).order_by('-id')
 
 
 class AbstractUser(AbstractBaseUser, PermissionsMixin):
@@ -103,6 +111,8 @@ class User(AbstractUser):
   first_name = models.CharField(_('First name'), max_length=150, blank=True)
   last_name = models.CharField(_('Last name'), max_length=150, blank=True)
 
+  serializer_class =  'api.serializers.UserSerializer'
+
   class Meta:
     db_table = 'auth_user'
     swappable = 'AUTH_USER_MODEL'
@@ -119,7 +129,90 @@ class User(AbstractUser):
       self.set_password(get_random_string(30))
     return super(User, self).save(*args, **kwargs)
 
+  @property
+  def token(self):
+    try:
+      token = Token.objects.get(user=self)
+    except Exception:
+      token = None
+    return token
+
+  def get_otp_instance(self):
+    otp, created = OneTimePassword.objects.get_or_create(user=self)
+    return otp
+
 class Group(RootGroup):
   """Proxy class"""
   class Meta:
     proxy = True
+
+
+def generate_signature(*args):
+  """
+  Generate signature using given arguments
+  """
+  text = ''
+  for item in args:
+    text += str(item)
+  signature = '%s%s%s' % (text, settings.SECRET_KEY, timezone.now())
+  signature = hashlib.md5(signature.encode('utf-8')).hexdigest()
+  return signature
+
+
+def get_duration(from_time, to_time):
+  """
+  :param from_time:
+  :param to_time:
+  :return: int
+  """
+  delta = to_time - from_time
+  return delta.seconds
+
+
+class OneTimePassword(models.Model):
+  user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='otp_set')
+  signature = models.CharField(max_length=32, db_index=True)
+  send_counter = models.PositiveIntegerField(default=0)
+  last_send = models.DateTimeField(default=timezone.now)
+  check_counter = models.PositiveIntegerField(default=0)
+  last_check = models.DateTimeField(default=timezone.now)
+
+  objects = Manager()
+
+  def save(self, *args, **kwargs):
+    if not self.pk or not self.signature:
+      self.refresh_signature()
+    super(OneTimePassword, self).save(*args, **kwargs)
+
+  def refresh_signature(self, commit=False):
+    self.signature = generate_signature(self.user_id)
+    if commit:
+      self.save()
+
+  def can_request_otp(self):
+    now = timezone.now()
+    duration = get_duration(self.last_send, now)
+    if duration > OTP_INTERVAL.OTP_REQUEST:
+      allowed = True
+      self.send_counter = 1
+    else:
+      self.send_counter += 1
+      allowed = self.send_counter <= OTP_LIMIT.OTP_REQUEST
+    if allowed:
+      self.last_send = now
+    self.save()
+    return allowed
+
+  def can_check_otp(self):
+    now = timezone.now()
+    duration = get_duration(self.last_check, now)
+    if duration > OTP_INTERVAL.OTP_CHECK:
+      allowed = True
+      self.check_counter = 1
+    else:
+      self.check_counter += 1
+      allowed = self.check_counter <= OTP_LIMIT.OTP_CHECK
+    if allowed:
+      self.last_check = now
+    self.save()
+    return allowed

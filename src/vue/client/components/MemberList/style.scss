@@ -1,7 +1,9 @@
 .user-card {
   display: flex;
   padding: 1rem;
+  color: #000;
   cursor: pointer;
+  border: solid 1px #fff;
   img {
     max-width: 200px;
     height: auto;
