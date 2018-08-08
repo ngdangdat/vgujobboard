@@ -24,7 +24,7 @@
                 </router-link>
             </div>
             <div class="navbar-menu secondary">
-                <button v-if="!isLoggedIn" class="button">Login</button>
+                <router-link v-if="!isLoggedIn" to="/login" class="button">Login</router-link>
                 <div v-else class="dropdown is-hoverable is-right">
                     <div class="dropdown-trigger">
                         <div class="avatar" aria-haspopup="true" aria-controls="account-menu">
@@ -34,6 +34,9 @@
                     </div>
                     <div class="dropdown-menu has-text-centered" id="account-menu" role="menu">
                         <div class="dropdown-content">
+                            <div class="dropdown-item">
+                                <a href="#">Account</a>
+                            </div>
                             <div class="dropdown-item">
                                 <a href="#">Account</a>
                             </div>

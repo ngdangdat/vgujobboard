@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <NavigationBar :isLoggedIn="true" ></NavigationBar>
+        <NavigationBar :isLoggedIn="false"></NavigationBar>
         <div class="container">
             <section class="section">
                 <router-view></router-view>
