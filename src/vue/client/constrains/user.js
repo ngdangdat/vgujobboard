@@ -1,0 +1,7 @@
+const LOGIN_PENDING = 'LOGIN_PENDING';
+const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+
+export default {
+    LOGIN_PENDING,
+    LOGIN_SUCCESS,
+};

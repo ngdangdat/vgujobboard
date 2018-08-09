@@ -6,19 +6,19 @@
         <div class="login-form">
             <div class="field">
                 <p class="control">
-                    <input placeholder="Email" type="text" class="input">
+                    <input placeholder="Email" v-model="email" type="text" class="input">
                 </p>
             </div>
             <div class="field">
                 <p class="control">
-                    <input placeholder="Password" type="password" class="input">
+                    <input placeholder="Password" v-model="password" type="password" class="input">
                 </p>
             </div>
             <div class="forgot-block has-text-right">
                 <a href="#">Forgot password?</a>
             </div>
             <div class="buttons">
-                <a class="button is-dark is-fullwidth">
+                <a @click="login" class="button is-dark is-fullwidth">
                     Login
                 </a>
                 <div class="register">
@@ -31,9 +31,23 @@
 
 <script>
 import Vue from 'vue';
+// import USER_ACTIONS from './../../constrains/user';
 
 const LoginView = Vue.extend({
-    
+    data() {
+        return {
+            email: null,
+            password: null,
+        };
+    },
+    methods: {
+        login() {
+            this.$store.dispatch('login', {
+                email: this.email,
+                password: this.password,
+            });
+        },
+    },
 });
 
 export default LoginView;
