@@ -12,8 +12,8 @@ let config = {
     entry: path.resolve(__dirname, '../client/index.js'),
     output: {
         path: outputPath,
-        filename: 'static/js/[name].[chunkhash].js',
-        chunkFilename: 'static/js/[id].[chunkhash].js',
+        filename: 'static/js/[name].[hash].js',
+        chunkFilename: 'static/js/[id].[hash].js',
     },
     module: {
         rules: [
