@@ -4,15 +4,16 @@ const vueLoader = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const outputPath = path.resolve(__dirname, '../dist/');
+
+const outputPath = path.resolve(__dirname, '../../dist/');
 
 let config = {
     mode: process.env.NODE_ENV || 'production',
     entry: path.resolve(__dirname, '../client/index.js'),
     output: {
         path: outputPath,
-        publicPath: '/dist/',
-        filename: 'build.js'
+        filename: 'static/js/[name].[chunkhash].js',
+        chunkFilename: 'static/js/[id].[chunkhash].js',
     },
     module: {
         rules: [
@@ -64,11 +65,11 @@ let config = {
     devtool: '#eval-source-map',
     plugins: [
         new vueLoader.VueLoaderPlugin(),
-        // new HtmlWebpackPlugin({
-        //     title: "VGU Alumni",
-        //     template: path.resolve(__dirname, '../index.html'),
-        //     filename: path.join(outputPath, 'index.html'),
-        // }),
+        new HtmlWebpackPlugin({
+            title: "VGU Alumni",
+            template: path.resolve(__dirname, '../index.html'),
+            filename: path.join(outputPath, 'index.html'),
+        }),
         new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, '../static'),
