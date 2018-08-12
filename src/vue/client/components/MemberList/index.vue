@@ -14,6 +14,7 @@
             <p>{{ `${user.major} ${user.year}` }}</p>
             <p>{{ user.currentWork }}</p>
             <p>{{ `${user.city}, ${user.country}` }}</p>
+            <p><i>{{ `"This world is small for big people but it's big for small people..."` }}</i></p>
           </div>
         </div>
       </router-link>
@@ -57,6 +58,66 @@ const userList = [
   },
   {
     id: 3,
+    name: 'Hao Nguyen',
+    year: 2011,
+    major: 'FA',
+    currentWork: 'Unemployee at somewhere in Earth',
+    avatar: 'https://unsplash.it/200/200',
+    city: 'HCMC',
+    country: 'Vietnam',
+  },
+    {
+    id: 4,
+    name: 'Truc Lam',
+    year: 2011,
+    major: 'FA',
+    currentWork: 'Unemployee at somewhere in Earth',
+    avatar: 'https://unsplash.it/200/200',
+    city: 'HCMC',
+    country: 'Vietnam',
+  },
+  {
+    id: 5,
+    name: 'Luan Le',
+    year: 2011,
+    major: 'FA',
+    currentWork: 'Unemployee at somewhere in Earth',
+    avatar: 'https://unsplash.it/200/200',
+    city: 'HCMC',
+    country: 'Vietnam',
+  },
+  {
+    id: 6,
+    name: 'Hao Nguyen',
+    year: 2011,
+    major: 'FA',
+    currentWork: 'Unemployee at somewhere in Earth',
+    avatar: 'https://unsplash.it/200/200',
+    city: 'HCMC',
+    country: 'Vietnam',
+  },
+    {
+    id: 7,
+    name: 'Truc Lam',
+    year: 2011,
+    major: 'FA',
+    currentWork: 'Unemployee at somewhere in Earth',
+    avatar: 'https://unsplash.it/200/200',
+    city: 'HCMC',
+    country: 'Vietnam',
+  },
+  {
+    id: 8,
+    name: 'Luan Le',
+    year: 2011,
+    major: 'FA',
+    currentWork: 'Unemployee at somewhere in Earth',
+    avatar: 'https://unsplash.it/200/200',
+    city: 'HCMC',
+    country: 'Vietnam',
+  },
+  {
+    id: 9,
     name: 'Hao Nguyen',
     year: 2011,
     major: 'FA',

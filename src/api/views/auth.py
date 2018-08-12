@@ -6,8 +6,10 @@ from rest_framework.decorators import list_route
 from rest_framework.authentication import get_authorization_header
 
 from api.http import Response
-from api.serializers import AuthSerializer
+from api.serializers import AuthSerializer, ProfileSerializer
 from api.models import Token
+
+from user.models import Profile
 
 
 def get_token_from_header(request):
@@ -58,18 +60,19 @@ class AuthViewSet(viewsets.GenericViewSet):
             serializer.is_valid(raise_exception=True)
         except exceptions.ValidationError as e:
             user_login_failed.send(sender=__name__, credentials=request.data)
-            raise e
+            raise ee
         return self.login_success(serializer.validated_data['user'])
 
     def login_success(self, user):
         user_logged_in.send(sender=user.__class__, request=self.request, user=user)
         token = Token.objects.create(user=user)
+        profile = Profile.objects.get(user=user)
         return Response({
             'token': token.key,
             'user': {
                 'email': user.email,
                 'name': user.profile.name,
-                'is_staff': user.is_staff,
+                'profile': ProfileSerializer(instance=profile).data,
             }
         })
 

@@ -24,7 +24,7 @@
                 </router-link>
             </div>
             <div class="navbar-menu secondary">
-                <router-link v-if="!isLoggedIn" to="/login" class="button">Login</router-link>
+                <router-link v-if="user == null" to="/login" class="button">Login</router-link>
                 <div v-else class="dropdown is-hoverable is-right">
                     <div class="dropdown-trigger">
                         <div class="avatar" aria-haspopup="true" aria-controls="account-menu">
@@ -38,13 +38,12 @@
                                 <a href="#">Account</a>
                             </div>
                             <div class="dropdown-item">
-                                <a href="#">Account</a>
-                            </div>
-                            <hr class="dropdown-divider">
-                            <div class="dropdown-item">
                                 <router-link to="/member">
                                     Members
                                 </router-link>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="#" @click="$emit('logout')">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -61,21 +60,16 @@ export default {
         /**
          * Flag to check if user logged in
          */
-        isLoggedIn: {
-            type: Boolean,
-            default: false,
-        },
-        /**
-         * Object contains user information
-         */
         user: {
             type: Object,
-            default: () => {
-                return {
-                    name: 'Dat Nguyen',
-                };
-            },
-        }
+            default: null,
+            required: false,
+        },
+    },
+    methods: {
+        logout() {
+            this.$parent.$emit('logout');
+        },
     },
     data() {
         return {

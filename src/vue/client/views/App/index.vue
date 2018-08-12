@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <NavigationBar :isLoggedIn="false"></NavigationBar>
+        <NavigationBar :user="loggedInUser" @logout="logout"></NavigationBar>
         <div class="container">
             <section class="section">
                 <router-view></router-view>
@@ -12,6 +12,7 @@
 
 <script>
 import Vue from 'vue';
+import { mapGetters } from 'vuex';
 import NavigationBar from './../../components/NavigationBar/index.vue';
 import Footer from './../../components/Footer/index.vue';
 
@@ -19,6 +20,20 @@ const App = Vue.extend({
     components: {
         NavigationBar,
         Footer,
+    },
+    computed: {
+        ...mapGetters({
+            loggedInUser: 'loggedInUser',
+        }),
+    },
+    mounted() {
+        this.$store.dispatch('getUserProfile');
+    },
+    methods: {
+        logout() {
+            console.log('ahihi');
+            this.$store.dispatch('logout');
+        },
     },
 });
 

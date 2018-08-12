@@ -34,6 +34,10 @@ let config = {
                 exclude: /node_modules/
             },
             {
+                test: /\.es6$/,
+                loaders: ['babel-loader']
+            },
+            {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'file-loader',
                 options: {
