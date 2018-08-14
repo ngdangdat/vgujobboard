@@ -19,18 +19,29 @@ class ProfileManager(models.Manager):
 class Profile(models.Model):
   """
   Fields:
-  - major_intake
-  - phone_number
+  - major
+  - intake
+  - birthday
+  - phone_number - optional
   - state
   - country
-  - office
-  - job_title
+  - organization
   - title
-  - gender
+  - gender (drop-down box)
+  - LinkedIn
   - message
+  - avatar
   """
   user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE)
   gender = models.PositiveIntegerField(_('Gender'), choices=GENDER_CHOICES, default=GENDER.UNDEFINED)
+  avatar = models.ImageField(
+      _('Profile avatar'),
+      upload_to='profile_pics/%Y-%m-%d/',
+      null=True,
+      blank=True,
+      max_length=255,
+      validators=[validate_avatar]
+  )
   major_intake = models.CharField(_('Major - Intake'), default='', max_length=255)
   phone_number = models.CharField(_('Phone Number'),
     default=None,
@@ -41,9 +52,10 @@ class Profile(models.Model):
   )
   state = models.CharField(_('City of Residence'), default='', max_length=255)
   country = models.CharField(_('Country of Residence'), default='', max_length=255)
-  office = models.CharField(_('Organization you are working for/studying at'), default='', max_length=255)
-  job_title = models.CharField(_('Position/Major'), default='', max_length=255)
+  organization = models.CharField(_('Organization'), default='', max_length=255)
+  title = models.CharField(_('Position/Major'), default='', max_length=255)
   message = models.CharField(_('Message to VGU Alumni Community'), null=True, blank=True, default='', max_length=1000)
+  linkedin_url = models.URLField(_('LinkedIn Profile URL'), null=True, blank=True)
 
   objects = ProfileManager()
 

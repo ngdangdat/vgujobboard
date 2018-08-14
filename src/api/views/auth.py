@@ -60,19 +60,17 @@ class AuthViewSet(viewsets.GenericViewSet):
             serializer.is_valid(raise_exception=True)
         except exceptions.ValidationError as e:
             user_login_failed.send(sender=__name__, credentials=request.data)
-            raise ee
+            raise e
         return self.login_success(serializer.validated_data['user'])
 
     def login_success(self, user):
         user_logged_in.send(sender=user.__class__, request=self.request, user=user)
         token = Token.objects.create(user=user)
-        profile = Profile.objects.get(user=user)
         return Response({
             'token': token.key,
             'user': {
+                'id': user.id,
                 'email': user.email,
-                'name': user.profile.name,
-                'profile': ProfileSerializer(instance=profile).data,
             }
         })
 
