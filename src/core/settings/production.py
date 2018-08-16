@@ -17,12 +17,6 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'vgualumni-test.herokuapp.com', 'vgu-al
 
 logging.config.dictConfig(LOGGING)
 
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'dist/static'),
-]
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 

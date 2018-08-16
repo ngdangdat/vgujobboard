@@ -228,3 +228,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
 }
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [join(BASE_DIR, 'dist/static')]
+
+MEDIA_ROOT = join(BASE_DIR, env('MEDIA_ROOT', default='upload'))
