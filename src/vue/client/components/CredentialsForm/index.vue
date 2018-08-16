@@ -19,13 +19,14 @@
 </template>
 
 <script>
-export default {
+import Vue from 'vue';
+
+const CredentialsForm = Vue.extend({
   props: {
-    title: {
-      type: String,
-      required: false,
-    }
-  }
-};
+    title: String,
+  },
+});
+
+export default CredentialsForm;
 </script>
 

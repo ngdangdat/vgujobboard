@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
@@ -37,3 +39,7 @@ def validate_password(value):
         raise ValidationError(_('Require %d digits at least.'))
 
     return value
+
+def validate_intake(value):
+    current_year = datetime.now().year
+    return value < current_year - 4

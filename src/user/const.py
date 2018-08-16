@@ -11,6 +11,19 @@ GENDER_CHOICES = [
   (GENDER.UNDEFINED, 'Undefined'),
 ]
 
+class MAJOR(Const):
+  UNDEFINED = 1
+  EEIT = 3
+  FA = 5
+
+  choices = [
+    (EEIT, 'EEIT'),
+    (FA, 'FA'),
+  ]
+
+
+MIN_INTAKE = 2008
+
 class USER_STATUS(Const):
   CREATED = 1
   INACTIVE = 3
