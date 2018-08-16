@@ -120,6 +120,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+# CDN settings
+CDN = {
+    'DEFAULT': env('CDN_DEFAULT'),
+}
+
 #Default database
 DATABASES = {
     'default': {
