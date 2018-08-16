@@ -1,6 +1,10 @@
+from os import path
+from hashlib import md5
+import timezone
+
 from django.db import models
 from django.conf import settings
-
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 from core.validators import validate_phone_number, validate_intake
@@ -9,6 +13,16 @@ from core.models import ModelDiffMixin
 from user.const import GENDER, GENDER_CHOICES, MAJOR, MIN_INTAKE
 
 PROFILE_AVATAR_KEY = 'profile.avatar'
+
+def save_avatar(file_path):
+  """
+  :param file_path:
+  :return: url
+  """
+  file_name = path.basename(file_path)
+  name, ext = path.splitext(file_name)
+  file_name = '%s%s' % (md5(str(timezone.now())), ext)
+  new_file_path = get_storage_path(file_name)
 
 class ProfileManager(models.Manager):
   def get_or_create_profile(self, user, **data):
