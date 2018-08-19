@@ -1,30 +1,54 @@
-from os import path
+from os import path, makedirs
 from hashlib import md5
-import timezone
+
+from PIL import Image
 
 from django.db import models
+from django.core.files.base import ContentFile
 from django.conf import settings
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-from core.validators import validate_phone_number, validate_intake
+from core.validators import validate_phone_number, validate_intake, validate_avatar
 from core.models import ModelDiffMixin
+from core.modules.storage import get_storage_path, get_cdn_url
 
 from user.const import GENDER, GENDER_CHOICES, MAJOR, MIN_INTAKE
 
 PROFILE_AVATAR_KEY = 'profile.avatar'
 
-def save_avatar(file_path):
+def save_temp_avatar(file_stream):
+  """
+  Save avatar to upload dir
+  """
+  temp_dir = path.join(settings.BASE_DIR, settings.UPLOAD_TEMP_DIR)
+  if not path.exists(temp_dir):
+    makedirs(temp_dir)
+  file_path = path.join(temp_dir, file_stream.name)
+  with open(file_path, '+wb') as destination:
+    for chunk in file_stream.chunks():
+      destination.write(chunk)
+  return '%s%s' % (PROFILE_AVATAR_KEY, file_path)
+
+def save_avatar(file_path, path_to_save=''):
   """
   :param file_path:
   :return: url
   """
   file_name = path.basename(file_path)
   name, ext = path.splitext(file_name)
-  file_name = '%s%s' % (md5(str(timezone.now())), ext)
-  new_file_path = get_storage_path(file_name)
+  time_in_bytes = bytes(str(timezone.now()), 'utf-8')
+  file_name = '%s%s' % (md5(time_in_bytes).hexdigest(), ext)
+  # new_file_path = get_storage_path(file_name)
+  img = Image.open(file_path)
+  # img.name = file_name
+  # img = crop_it(img, AVATAR_SIZE)
+  # img.save(new_file_path)
+  return img
+
 
 class ProfileManager(models.Manager):
+
   def get_or_create_profile(self, user, **data):
     try:
       profile = self.get(user=user)
@@ -34,31 +58,16 @@ class ProfileManager(models.Manager):
 
 
 class Profile(ModelDiffMixin, models.Model):
-  """
-  Fields:
-  - major
-  - intake
-  - birthday
-  - phone_number - optional
-  - state
-  - country
-  - organization
-  - title
-  - gender (drop-down box)
-  - LinkedIn
-  - message
-  - avatar
-  """
   user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE)
   gender = models.PositiveSmallIntegerField(_('Gender'), choices=GENDER_CHOICES, default=GENDER.UNDEFINED)
-  birthday = models.DateTimeField(_('Birthday'), null=True, default=None, blank=True,)
+  birthday = models.DateField(_('Birthday'), null=True, default=None, blank=True,)
   avatar = models.ImageField(
       _('Profile avatar'),
       upload_to='profile_pics/%Y-%m-%d/',
       null=True,
       blank=True,
       max_length=255,
-      validators=[validate_avatar]
+      validators=[validate_avatar],
   )
   major = models.PositiveSmallIntegerField(_('Major'), choices=MAJOR.choices, default=MAJOR.UNDEFINED,)
   intake = models.PositiveSmallIntegerField(_('Intake'), default=MIN_INTAKE, validators=[validate_intake])
@@ -67,7 +76,7 @@ class Profile(ModelDiffMixin, models.Model):
     max_length=15,
     blank=True,
     null=True,
-    validators=[validate_phone_number]
+    validators=[validate_phone_number],
   )
   state = models.CharField(_('City of Residence'), default='', max_length=255)
   country = models.CharField(_('Country of Residence'), default='', max_length=255)
@@ -86,8 +95,13 @@ class Profile(ModelDiffMixin, models.Model):
     user = self.user
     return "%s %s" % (user.first_name, user.last_name)
 
+  def save(self, *args, **kwargs):
+    self.clean()
+    super(Profile, self).save(*args, **kwargs)
+
   def clean(self):
     if self.avatar:
       name = self.avatar.name
       if name.startswith(PROFILE_AVATAR_KEY):
-        self.avatar.name = name.replace(PROFILE_AVATAR_KEY, '')
+        avatar = save_avatar(name.replace(PROFILE_AVATAR_KEY, ''))
+        self.avatar = avatar

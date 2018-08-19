@@ -35,6 +35,9 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
     @apiParam {string} password user's password
     @apiParam {string} first_name user's first name
     @apiParam {string} last_name user's last name
+    @apiParam {string} profile__major user's major
+    @apiParam {string} profile__intake user's intake
+    @apiParam {integer} profile__gender user's gender
 
     @apiSuccessExample {json} Success-Response:
         HTTP/1.1 200 OK
@@ -54,10 +57,17 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
                   "intake": 2017,
                   "phone_number": "0905772919",
                   "state": "Quy Nhon",
+                  "birthday": "10/11/1994",
                   "country": "VN",
-                  "office": "Vinagame",
-                  "job_title": "Software Engineer",
-                  "message": null,
+                  "organization": "Vinagame",
+                  "title": "Software Engineer",
+                  "status": null,
+                },
+                "files": {
+                  "profile.avatar": {
+                    "name": "avatar.png",
+                    "data": "askdjakSJDAKJDSIQDKZCMKZJkmamakJASDKASKMkAJSDKmskdmaksdMKADMKA"
+                  }
                 }
             }
         }
@@ -72,7 +82,7 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
   def update(self, request, pk, *args, **kwargs):
     """
     @apiVersion 1.0.0
-    @api {POST} /user/:id
+    @api {PUT} /user/:id
     @apiName Update
     @apiGroup User
     @apiPermission none
@@ -91,7 +101,8 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
                 "last_name": "Nguyen",
                 "profile": {
                     "gender": 5,
-                    "major_intake": "Test 2",
+                    "major": "EEIT",
+                    "intake": 2012,
                     "phone_number": null,
                     "state": "Ahihi",
                     "country": "Test",
@@ -109,7 +120,13 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
     serializer = self.get_serializer(data=request.data, instance=request.user, partial=True)
     if serializer.is_valid(raise_exception=True):
       serializer.save()
-      return Response(serializer.data)
+    return Response(serializer.data)
+
+  def get_serializer_context(self):
+    context = super().get_serializer_context()
+    files = self.request.data.pop('files', {})
+    context['files'] = files
+    return context
 
   def list(self, *args, **kwargs):
     """

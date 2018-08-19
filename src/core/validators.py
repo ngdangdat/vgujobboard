@@ -1,8 +1,12 @@
 from datetime import datetime
+import os
 
 from django.core.exceptions import ValidationError
+from django.core.validators import URLValidator
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+
+PROFILE_AVATAR_KEY = settings.PROFILE_AVATAR_KEY
 
 import phonenumbers
 
@@ -43,3 +47,33 @@ def validate_password(value):
 def validate_intake(value):
     current_year = datetime.now().year
     return value < current_year - 4
+
+def validate_file(value, file_types=['jpeg', 'jpg', 'png'], max_size=None):
+    """
+    Validate file
+    :param value: file path
+    :param file_types: allowed file extensions
+    :param max_size: max file size
+    """
+    name, ext = os.path.splitext(value)
+    ext = ext.lower().replace('.', '')
+    if ext not in file_types:
+        raise ValidationError(_('Not allowed file extension.'))
+    return value
+
+validate_file.code = 'type_invalid'
+
+validate_url = URLValidator()
+
+def validate_avatar(value):
+    """
+    Validate avatar
+    :param value: string url or path to file with PROFILE_AVATAR_KEY flag
+    """
+    name = value.name if not isinstance(value, str) else value
+    if name.startswith(PROFILE_AVATAR_KEY):
+        validate_file(name.replace(PROFILE_AVATAR_KEY, ''))
+    else:
+        validate_url(name)
+
+validate_avatar.code = 'url_or_file_invalid'

@@ -24,17 +24,17 @@ class ModelDiffMixin(models.Model):
 
     @property
     def changed_fields(self):
-    """
-    Get changed fields
-    :return: list
-    """
+        """
+        Get changed fields
+        :return: list
+        """
         return [k for k in self.diff.keys()]
 
     def get_field_diff(self, field):
-    """
-    Return diff for a field if it's changed. Otherwise, None is returned.
-    :param field: str
-    """
+        """
+        Return diff for a field if it's changed. Otherwise, None is returned.
+        :param field: str
+        """
         return self.diff.get(field, None)
 
     def save(self, *args, **kwargs):

@@ -242,4 +242,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [join(BASE_DIR, 'dist/static')]
 
+MEDIA_URL = env('MEDIA_URL', default='/upload')
 MEDIA_ROOT = join(BASE_DIR, env('MEDIA_ROOT', default='upload'))
+UPLOAD_TEMP_DIR = join(MEDIA_ROOT, 'temp')
+
+PROFILE_AVATAR_KEY = 'profile.avatar'

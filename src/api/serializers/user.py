@@ -2,22 +2,42 @@ from django.contrib.auth import authenticate
 
 from rest_framework import serializers, exceptions
 
-from user.models import Profile, User
+from user.models import *
 from user.otp import get_otp_instance, is_valid_otp
 from user.exceptions import InvalidOTPException, LimitedException
 
 from api.serializers.base import ModelSerializer, Serializer
 from api.exceptions import CODE
 
-from core.validators import validate_password
+from core.validators import validate_password, validate_avatar
+from core.modules.storage import create_image_file
 
 PROFILE_FIELDS = (
-  'gender', 'major_intake', 'phone_number', 'state', 'country',
-  'office', 'job_title', 'message', 'name',
+  'gender', 'major', 'intake', 'phone_number', 'state', 'country',
+  'organization', 'title', 'status', 'avatar', 'birthday',
+  'linkedin',
 )
 
 
 class ProfileSerializer(ModelSerializer):
+  avatar = serializers.CharField(max_length=255, required=False)
+
+  def validate_avatar(self, value):
+    try:
+      validate_avatar(value)
+    except Exception as e:
+      raise exceptions.ValidationError('Invalid avatar.')
+    return value
+  
+  def to_internal_value(self, data):
+    files = self.context.get('files', {})
+    if PROFILE_AVATAR_KEY in files:
+      if 'avatar' in data:
+        del data['avatar']
+      avatar = files.get(PROFILE_AVATAR_KEY)
+      data['avatar'] = save_temp_avatar(create_image_file(avatar['data'], avatar['name']))
+    data = super(ProfileSerializer, self).to_internal_value(data)
+    return data
 
   class Meta:
     model = Profile
