@@ -4,7 +4,7 @@ from hashlib import md5
 from PIL import Image
 
 from django.db import models
-from django.core.files.base import ContentFile
+from django.core.files.base import File
 from django.conf import settings
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -30,7 +30,7 @@ def save_temp_avatar(file_stream):
       destination.write(chunk)
   return '%s%s' % (PROFILE_AVATAR_KEY, file_path)
 
-def save_avatar(file_path, path_to_save=''):
+def save_avatar(file_path):
   """
   :param file_path:
   :return: url
@@ -39,12 +39,15 @@ def save_avatar(file_path, path_to_save=''):
   name, ext = path.splitext(file_name)
   time_in_bytes = bytes(str(timezone.now()), 'utf-8')
   file_name = '%s%s' % (md5(time_in_bytes).hexdigest(), ext)
+
   # new_file_path = get_storage_path(file_name)
-  img = Image.open(file_path)
+  # img = Image.open(file_path)
   # img.name = file_name
   # img = crop_it(img, AVATAR_SIZE)
   # img.save(new_file_path)
-  return img
+  img_data = open(file_path, 'rb')
+  img_file = File(img_data)
+  return file_name, img_file
 
 
 class ProfileManager(models.Manager):
@@ -63,7 +66,7 @@ class Profile(ModelDiffMixin, models.Model):
   birthday = models.DateField(_('Birthday'), null=True, default=None, blank=True,)
   avatar = models.ImageField(
       _('Profile avatar'),
-      upload_to='profile_pics/%Y-%m-%d/',
+      upload_to='avatars/%Y-%m-%d/',
       null=True,
       blank=True,
       max_length=255,
@@ -103,5 +106,6 @@ class Profile(ModelDiffMixin, models.Model):
     if self.avatar:
       name = self.avatar.name
       if name.startswith(PROFILE_AVATAR_KEY):
-        avatar = save_avatar(name.replace(PROFILE_AVATAR_KEY, ''))
-        self.avatar = avatar
+        name, avatar = save_avatar(name.replace(PROFILE_AVATAR_KEY, ''))
+        self.avatar.save(name, avatar, save=False)
+        self.avatar.name = get_cdn_url(self.avatar.name)

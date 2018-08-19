@@ -62,12 +62,6 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
                   "organization": "Vinagame",
                   "title": "Software Engineer",
                   "status": null,
-                },
-                "files": {
-                  "profile.avatar": {
-                    "name": "avatar.png",
-                    "data": "askdjakSJDAKJDSIQDKZCMKZJkmamakJASDKASKMkAJSDKmskdmaksdMKADMKA"
-                  }
                 }
             }
         }

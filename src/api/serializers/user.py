@@ -75,10 +75,11 @@ class UserSerializer(ModelSerializer):
     return user
 
   def update(self, instance, validated_data):
-    if 'profile' in validated_data:
+    files = self.context.get('files', {})
+    if 'profile' in validated_data or PROFILE_AVATAR_KEY in files:
       profile = instance.profile
-      data = validated_data.pop('profile')
-      serializer = ProfileSerializer(instance=profile, data=data, partial=True, many=False)
+      data = validated_data.pop('profile', {})
+      serializer = ProfileSerializer(instance=profile, data=data, partial=True, many=False, context=self.context)
       serializer.is_valid()
       serializer.save()
     instance = super(UserSerializer, self).update(instance, validated_data)
