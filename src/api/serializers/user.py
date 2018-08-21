@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate
+from django.conf import settings
 
 from rest_framework import serializers, exceptions
 
@@ -10,7 +11,9 @@ from api.serializers.base import ModelSerializer, Serializer
 from api.exceptions import CODE
 
 from core.validators import validate_password, validate_avatar
-from core.modules.storage import create_image_file
+from core.modules.image import create_image_from_b64
+
+PROFILE_AVATAR_KEY = settings.PROFILE_AVATAR_KEY
 
 PROFILE_FIELDS = (
   'gender', 'major', 'intake', 'phone_number', 'state', 'country',
@@ -35,7 +38,7 @@ class ProfileSerializer(ModelSerializer):
       if 'avatar' in data:
         del data['avatar']
       avatar = files.get(PROFILE_AVATAR_KEY)
-      data['avatar'] = save_temp_avatar(create_image_file(avatar['data'], avatar['name']))
+      data['avatar'] = save_temp_avatar(create_image_from_b64(avatar['data'], avatar['name']))
     data = super(ProfileSerializer, self).to_internal_value(data)
     return data
 

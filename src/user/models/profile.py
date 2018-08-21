@@ -1,3 +1,4 @@
+import os
 from os import path, makedirs
 from hashlib import md5
 
@@ -12,10 +13,12 @@ from django.utils.translation import ugettext_lazy as _
 from core.validators import validate_phone_number, validate_intake, validate_avatar
 from core.models import ModelDiffMixin
 from core.modules.storage import get_storage_path, get_cdn_url
+from core.modules.image import crop_it
 
 from user.const import GENDER, GENDER_CHOICES, MAJOR, MIN_INTAKE
 
-PROFILE_AVATAR_KEY = 'profile.avatar'
+AVATAR_SIZE = 256, 256
+PROFILE_AVATAR_KEY = settings.PROFILE_AVATAR_KEY
 
 def save_temp_avatar(file_stream):
   """
@@ -30,6 +33,7 @@ def save_temp_avatar(file_stream):
       destination.write(chunk)
   return '%s%s' % (PROFILE_AVATAR_KEY, file_path)
 
+
 def save_avatar(file_path):
   """
   :param file_path:
@@ -38,14 +42,19 @@ def save_avatar(file_path):
   file_name = path.basename(file_path)
   name, ext = path.splitext(file_name)
   time_in_bytes = bytes(str(timezone.now()), 'utf-8')
-  file_name = '%s%s' % (md5(time_in_bytes).hexdigest(), ext)
+  file_name = '%s_%s%s' % (
+    PROFILE_AVATAR_KEY,
+    md5(time_in_bytes).hexdigest(),
+    ext,
+  )
 
-  # new_file_path = get_storage_path(file_name)
-  # img = Image.open(file_path)
-  # img.name = file_name
-  # img = crop_it(img, AVATAR_SIZE)
-  # img.save(new_file_path)
+  # Crop avatar
+  img = Image.open(file_path)
+  img = crop_it(img, AVATAR_SIZE)
+  img.save(file_path)
+
   img_data = open(file_path, 'rb')
+  os.remove(file_path)
   img_file = File(img_data)
   return file_name, img_file
 
@@ -66,7 +75,7 @@ class Profile(ModelDiffMixin, models.Model):
   birthday = models.DateField(_('Birthday'), null=True, default=None, blank=True,)
   avatar = models.ImageField(
       _('Profile avatar'),
-      upload_to='avatars/%Y-%m-%d/',
+      upload_to='avatars/',
       null=True,
       blank=True,
       max_length=255,
@@ -106,6 +115,7 @@ class Profile(ModelDiffMixin, models.Model):
     if self.avatar:
       name = self.avatar.name
       if name.startswith(PROFILE_AVATAR_KEY):
-        name, avatar = save_avatar(name.replace(PROFILE_AVATAR_KEY, ''))
-        self.avatar.save(name, avatar, save=False)
+        name = name.replace(PROFILE_AVATAR_KEY, '')
+        name_to_save, avatar = save_avatar(name)
+        self.avatar.save(name_to_save, avatar, save=False)
         self.avatar.name = get_cdn_url(self.avatar.name)

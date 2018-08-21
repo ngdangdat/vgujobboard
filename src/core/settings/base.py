@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'user',
     'facebook',
     'job',
-    'frontsite',
 ]
 
 AUTH_USER_MODEL = 'user.User'
