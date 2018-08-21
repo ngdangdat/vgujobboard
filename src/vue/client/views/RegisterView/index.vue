@@ -1,12 +1,13 @@
 <template>
-  <div class="columns">
-    <div class="column profile-form">
-      <h3 class="title">Profile</h3>
-      <profile-form />
-    </div>
-    <div class="column credentials-form is-one-quarter">
+  <div class="registration-form">
+    <div class="credentials-form">
       <h3 class="title">Credentials</h3>
       <credentials-form />
+    </div>
+    <hr />
+    <div class="profile-form">
+      <h3 class="title">Profile</h3>
+      <profile-form />
     </div>
   </div>
 </template>
@@ -24,3 +25,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  .registration-form {
+    width: 50%;
+    margin: 0 auto;
+  }
+</style>
+

@@ -10,8 +10,8 @@
         <input class="input" type="text" placeholder="Last Name">
       </p>
     </div>
-    <div class="field">
-      <div class="control">
+    <div class="field columns">
+      <div class="control column is-one-quarter">
         <div class="select">
           <select>
             <option value="">Gender</option>
@@ -20,9 +20,7 @@
           </select>
         </div>
       </div>
-    </div>
-    <div class="field">
-      <div class="control">
+      <div class="control column">
         <div class="select">
           <select>
             <option value="">Date of birth</option>
@@ -39,6 +37,9 @@
           </select>
         </div>
       </div>
+    </div>
+    <div class="field">
+      
     </div>
     <div class="field">
       <div class="control">
