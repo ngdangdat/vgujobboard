@@ -31,7 +31,6 @@ const App = Vue.extend({
     },
     methods: {
         logout() {
-            console.log('ahihi');
             this.$store.dispatch('logout');
         },
     },
@@ -40,4 +39,5 @@ const App = Vue.extend({
 export default App;
 </script>
 
-<style src="./styles/components.scss" />
+<style src="./styles/components.scss"></style>
+<style src="./styles/global.scss"></style>

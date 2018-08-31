@@ -1,14 +1,6 @@
 <template>
   <div class="registration-form">
-    <div class="credentials-form">
-      <h3 class="title">Credentials</h3>
-      <credentials-form />
-    </div>
-    <hr />
-    <div class="profile-form">
-      <h3 class="title">Profile</h3>
-      <profile-form />
-    </div>
+    <profile-form />
   </div>
 </template>
 
@@ -20,7 +12,6 @@ import ProfileForm from './../../components/ProfileForm/index.vue';
 export default {
   name: 'Register',
   components: {
-    'credentials-form': CredentialsForm,
     'profile-form': ProfileForm,
   },
 };
