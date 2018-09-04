@@ -1,0 +1,20 @@
+.three-cols,
+.two-cols {
+  display: flex;
+  justify-content: space-between;
+}
+.three-cols .col {
+  width: 32%;
+}
+.two-cols .col {
+  width: 49%;
+}
+.form {
+  margin-bottom: 1em;
+}
+.btns {
+  text-align: right;
+  a.button {
+    min-width: 10rem;
+  }
+}
