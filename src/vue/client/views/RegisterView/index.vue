@@ -6,7 +6,6 @@
 
 <script>
 
-import CredentialsForm from './../../components/CredentialsForm/index.vue';
 import ProfileForm from './../../components/ProfileForm/index.vue';
 
 export default {

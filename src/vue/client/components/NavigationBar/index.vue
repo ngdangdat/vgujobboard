@@ -43,7 +43,7 @@
                                 </router-link>
                             </div>
                             <div class="dropdown-item">
-                                <a href="#" @click="$emit('logout')">Logout</a>
+                                <a href="#" @click="logout">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ export default {
     },
     methods: {
         logout() {
-            this.$parent.$emit('logout');
+            this.$emit('logout');
         },
     },
     data() {
