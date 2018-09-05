@@ -80,6 +80,9 @@
 
     const DateSelectBox = Vue.extend({
         props: {
+            initDate: {
+                type: Date,
+            },
             dateLabel: {
                 type: String,
                 default: 'Date',
@@ -92,6 +95,9 @@
                 type: String,
                 default: 'Year',
             },
+            value: {
+                type: Date,
+            },
         },
         data() {
             return {
@@ -101,8 +107,48 @@
                 dateList: dates,
                 monthList: months,
                 yearList: years,
+                valid: true,
             };
-        }
+        },
+        mounted() {
+            if (this.initDate !== null) {
+                this.date = this.initDate.getDate();
+                this.month = this.initDate.getMonth();
+                this.year = this.initDate.getFullYear();
+            }
+        },
+        methods: {
+            validate() {
+                const selectedDate = this.selectedDate;
+                if (selectedDate === null) {
+                    return;
+                }
+
+                if (selectedDate.getDate() == this.date &&
+                    selectedDate.getMonth() == this.month &&
+                    selectedDate.getFullYear() == this.year) {
+                    this.valid = true;
+                } else {
+                    this.valid = false;
+                }
+            },
+        },
+        computed: {
+            selectedDate() {
+                if (this.year && this.month && this.date) {
+                    return new Date(this.year, this.month, this.date);
+                }
+                return null;
+            },
+        },
+        watch: {
+            selectedDate() {
+                this.validate();
+                if (this.valid) {
+                    this.$emit('change', selectedDate);
+                }
+            },
+        },
     });
 
 export default DateSelectBox;

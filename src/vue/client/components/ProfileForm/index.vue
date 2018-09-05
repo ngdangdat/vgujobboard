@@ -24,6 +24,7 @@
           date-label='Date of Birth'
           month-label='Month of Birth'
           year-label='Year of Birth'
+          :value='birthday'
         />
       </div>
       <div class="two-cols fields">
@@ -110,7 +111,7 @@
               <i class="fas fa-upload"></i>
             </span>
             <span class="file-label">
-              Image for avatar
+              Profile picture
             </span>
           </span>
           <span class="file-name">
