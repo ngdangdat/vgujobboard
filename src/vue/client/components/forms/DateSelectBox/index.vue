@@ -82,6 +82,7 @@
         props: {
             initDate: {
                 type: Date,
+                default: null,
             },
             dateLabel: {
                 type: String,
@@ -142,11 +143,13 @@
             },
         },
         watch: {
-            selectedDate() {
-                this.validate();
-                if (this.valid) {
-                    this.$emit('change', selectedDate);
+            selectedDate(value, oldValue) {
+                if (oldValue !== null && value == null) {
+                    this.valid = false;
+                } else {
+                    this.validate();
                 }
+                this.$emit('change', value);
             },
         },
     });

@@ -24,7 +24,7 @@
           date-label='Date of Birth'
           month-label='Month of Birth'
           year-label='Year of Birth'
-          :value='birthday'
+          @change="changeBirthday"
         />
       </div>
       <div class="two-cols fields">
@@ -157,7 +157,8 @@ const ProfileForm = Vue.extend({
       state: "",
       status: "",
       organization: "",
-      title: ""
+      title: "",
+      birthday: null,
     };
   },
   methods: {
@@ -182,7 +183,10 @@ const ProfileForm = Vue.extend({
       };
       payload["profile"] = profile;
       this.$emit("register", {});
-    }
+    },
+    changeBirthday(selectedDate) {
+      this.birthday = selectedDate;
+    },
   }
 });
 
