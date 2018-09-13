@@ -25,6 +25,7 @@
           month-label='Month of Birth'
           year-label='Year of Birth'
           @change="changeBirthday"
+          :value="birthday"
         />
       </div>
       <div class="two-cols fields">

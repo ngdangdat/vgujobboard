@@ -1,37 +1,40 @@
 <template>
     <div class="control three-cols">
         <div class="col select full-width">
-        <select v-model="date">
-            <option :value="null">{{ dateLabel }}</option>
-            <option v-for="dateOption in dateList"
-                :key="dateOption.value"
-                :value="dateOption.value"
-            >
-                {{ dateOption.display }}
-            </option>
-        </select>
+            <select v-model="date">
+                <option :value="null">{{ dateLabel }}</option>
+                <option v-for="dateOption in dateList"
+                    :key="dateOption.value"
+                    :value="dateOption.value"
+                >
+                    {{ dateOption.display }}
+                </option>
+            </select>
         </div>
         <div class="col select full-width">
-        <select v-model="month">
-            <option :value="null">{{ monthLabel }}</option>
-            <option v-for="monthOption in monthList"
-                :key="monthOption.value"
-                :value="monthOption.value"
-            >
-                {{ monthOption.display }}
-            </option>
-        </select>
+            <select v-model="month">
+                <option :value="null">{{ monthLabel }}</option>
+                <option v-for="monthOption in monthList"
+                    :key="monthOption.value"
+                    :value="monthOption.value"
+                >
+                    {{ monthOption.display }}
+                </option>
+            </select>
         </div>
         <div class="col select full-width">
-        <select v-model="year">
-            <option :value="null">{{ yearLabel }}</option>
-            <option v-for="yearOption in yearList"
-                :key="yearOption.value"
-                :value="yearOption.value"
-            >
-                {{ yearOption.display }}
-            </option>
-        </select>
+            <select v-model="year">
+                <option :value="null">{{ yearLabel }}</option>
+                <option v-for="yearOption in yearList"
+                    :key="yearOption.value"
+                    :value="yearOption.value"
+                >
+                    {{ yearOption.display }}
+                </option>
+            </select>
+        </div>
+        <div v-if="errorMessage" class="error col full">
+            <span>{{ errorMessage }}</span>
         </div>
     </div>
 </template>
@@ -80,10 +83,6 @@
 
     const DateSelectBox = Vue.extend({
         props: {
-            initDate: {
-                type: Date,
-                default: null,
-            },
             dateLabel: {
                 type: String,
                 default: 'Date',
@@ -99,6 +98,17 @@
             value: {
                 type: Date,
             },
+            required: {
+                type: Boolean,
+            },
+            requireMessage: {
+                type: String,
+                default: 'This field is required. Please choose a date.',
+            },
+            validationMessage: {
+                type: String,
+                default: 'Input date is invalid.',
+            },
         },
         data() {
             return {
@@ -109,13 +119,14 @@
                 monthList: months,
                 yearList: years,
                 valid: true,
+                errorMessage: '',
             };
         },
         mounted() {
-            if (this.initDate !== null) {
-                this.date = this.initDate.getDate();
-                this.month = this.initDate.getMonth();
-                this.year = this.initDate.getFullYear();
+            if (this.value !== null) {
+                this.date = this.value.getDate();
+                this.month = this.value.getMonth();
+                this.year = this.value.getFullYear();
             }
         },
         methods: {
@@ -131,6 +142,7 @@
                     this.valid = true;
                 } else {
                     this.valid = false;
+                    this.errorMessage = this.validationMessage;
                 }
             },
         },
@@ -144,12 +156,16 @@
         },
         watch: {
             selectedDate(value, oldValue) {
-                if (oldValue !== null && value == null) {
+                let valueToSet = value;
+                if (oldValue !== null && value === null) {
                     this.valid = false;
                 } else {
                     this.validate();
                 }
-                this.$emit('change', value);
+                if (!this.valid) {
+                    valueToSet = null;
+                }
+                this.$emit('change', valueToSet);
             },
         },
     });
