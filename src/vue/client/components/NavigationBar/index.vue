@@ -4,7 +4,7 @@
             <div class="navbar-brand">
                 <a class="navbar-item" href="./">
                     <img
-                        src="http://vgu.edu.vn/cms-vgu-theme-4/images/cms/vgu_logo.png"
+                        src="~static/images/vgu_logo.png"
                         alt="Vietnamese-German University"
                     />
                 </a>

@@ -3,6 +3,16 @@ import App from './views/App/index.vue';
 import store from './store';
 import router from './router';
 
+// Validator for forms
+import VeeValidate, { Validator } from 'vee-validate';
+import en from './components/forms/VeeValidator/dicts/en';
+
+Validator.localize(en);
+
+Vue.use(VeeValidate, {
+  events: 'blur|change',
+});
+
 let app = new Vue({
   store,
   router,

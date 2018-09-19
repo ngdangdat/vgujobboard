@@ -46,6 +46,7 @@ CORS_ALLOW_CREDENTIALS = False
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
+    '*'
 )
 
 logging.config.dictConfig(LOGGING)

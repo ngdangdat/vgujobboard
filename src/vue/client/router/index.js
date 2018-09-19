@@ -7,6 +7,9 @@ import Member from '../views/Member/index.vue';
 import Register from '../views/RegisterView/index.vue';
 import Login from '../views/LoginView/index.vue';
 
+// Test View
+import Test from '../views/Test/index.vue';
+
 Vue.use(Router);
 
 const router = new Router({
@@ -47,6 +50,10 @@ const router = new Router({
             meta: {
                 requiresAuth: false,
             },
+        },
+        {
+            path: '/test',
+            component: Test,
         },
     ],
 });

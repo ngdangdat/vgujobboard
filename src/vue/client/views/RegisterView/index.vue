@@ -1,6 +1,6 @@
 <template>
   <div class="registration-form">
-    <profile-form />
+    <profile-form @register="register"/>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
   components: {
     'profile-form': ProfileForm,
   },
+  methods: {
+    register(payload) {
+      this.$store.dispatch('register', payload);
+    },
+  }
 };
 </script>
 

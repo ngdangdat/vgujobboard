@@ -38,7 +38,7 @@ let config = {
                 loaders: ['babel-loader']
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
+                test: /\.(png|jpe?g|gif|svg)$/,
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]?[hash]'
@@ -56,7 +56,8 @@ let config = {
     },
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            'static': path.resolve(__dirname, '../static'),
         },
     },
     devServer: {

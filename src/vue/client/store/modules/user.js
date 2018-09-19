@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { joinUrl } from './../../utils/url';
 import { getHeaders } from './../../utils/request';
 import config from './../../../config/project.config';
-import { LOGIN_ACTIONS, PROFILE_ACTIONS, LOGOUT_ACTIONS } from './../../constrains/user';
+import { LOGIN_ACTIONS, PROFILE_ACTIONS, REGISTER_ACTIONS } from './../../constrains/user';
 
 const state = {
     loading: false,
@@ -30,6 +30,12 @@ const mutations = {
             state.user = user;
         }
     },
+    [REGISTER_ACTIONS.REGISTER_REQUEST_PENDING] (state) {
+        state.loading = true;
+    },
+    [REGISTER_ACTIONS.REGISTER_REQUEST_SUCCESS] (state) {
+        state.loading = false;
+    },
 };
 
 const actions = {
@@ -55,13 +61,23 @@ const actions = {
             url: joinUrl(config.API_ENDPOINT, 'auth'),
             data: payload,
         })
-        .then(response => commit(LOGIN_ACTIONS.LOGIN_SUCCESS, response.data.data))
-        .then(() => dispatch('getUserProfile'));
+            .then(response => commit(LOGIN_ACTIONS.LOGIN_SUCCESS, response.data.data))
+            .then(() => dispatch('getUserProfile'));
     },
     logout({ commit }, payload) {
         state.user = null;
         localStorage.removeItem('token');
-    }
+    },
+    register({ commit, dispatch }, payload) {
+        commit(REGISTER_ACTIONS.REGISTER_REQUEST_PENDING);
+        return axios({
+            method: 'post',
+            headers: getHeaders(),
+            url: joinUrl(config.API_ENDPOINT, 'user'),
+            data: payload,
+        })
+            .then(() => commit(REGISTER_ACTIONS.REGISTER_REQUEST_SUCCESS))
+    },
 };
 
 const getters = {
