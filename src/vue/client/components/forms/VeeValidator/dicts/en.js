@@ -8,6 +8,7 @@ export default {
             email: emailValidationMsg,
             emailConfirm: emailValidationMsg,
             confirmed: confirmFieldMsg,
+            required: (fN) => `Please input a valid ${fN}.`,
         },
         attributes: {
             emailConfirm: 'Email Confirmation',

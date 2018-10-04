@@ -4,21 +4,28 @@ import { joinUrl } from './../../utils/url';
 import { getHeaders } from './../../utils/request';
 import config from './../../../config/project.config';
 import { LOGIN_ACTIONS, PROFILE_ACTIONS, REGISTER_ACTIONS } from './../../constrains/user';
+import Vue from 'vue';
 
 const state = {
-    loading: false,
+    loadings: {},
     user: null,
+    errors: {},
 };
 
 const mutations = {
-    [LOGIN_ACTIONS.LOGIN_PENDING] (state) {
-        state.loading = true;
+    [LOGIN_ACTIONS.LOGIN_REQUEST_PENDING] (state) {
+        Vue.set(state.loadings, LOGIN_ACTIONS.LOGIN_REQUEST, true);
     },
-    [LOGIN_ACTIONS.LOGIN_SUCCESS] (state, payload = {}) {
-        state.loading = false;
+    [LOGIN_ACTIONS.LOGIN_REQUEST_SUCCESS] (state, payload = {}) {
+        Vue.set(state.loadings, LOGIN_ACTIONS.LOGIN_REQUEST, false);
         if (payload.token !== undefined) {
+            // Consider using session
             localStorage.setItem('token', payload.token);
         }
+    },
+    [LOGIN_ACTIONS.LOGIN_REQUEST_FAILED] (state, payload = {}) {
+        Vue.set(state.loadings, LOGIN_ACTIONS.LOGIN_REQUEST, false);
+        Vue.set(state.errors, LOGIN_ACTIONS.LOGIN_REQUEST, payload);
     },
     [PROFILE_ACTIONS.PROFILE_REQUEST_PENDING] (state) {
         state.loading = true;
@@ -54,15 +61,21 @@ const actions = {
         );
     },
     login({ commit, dispatch }, payload) {
-        commit(LOGIN_ACTIONS.LOGIN_PENDING);
+        commit(LOGIN_ACTIONS.LOGIN_REQUEST_PENDING);
         return axios({
             method: 'post',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, 'auth'),
             data: payload,
         })
-            .then(response => commit(LOGIN_ACTIONS.LOGIN_SUCCESS, response.data.data))
-            .then(() => dispatch('getUserProfile'));
+            .then(response => {
+                if (response.success) {
+                    commit(LOGIN_ACTIONS.LOGIN_REQUEST_SUCCESS, response.data.data);
+                    dispatch('getUserProfile');
+                } else {
+                    commit(LOGIN_ACTIONS.LOGIN_REQUEST_FAILED, response.data.errors);
+                }
+            });
     },
     logout({ commit }, payload) {
         state.user = null;
@@ -81,6 +94,7 @@ const actions = {
 };
 
 const getters = {
+    loginErrors: state => state.errors[LOGIN_ACTIONS.LOGIN_REQUEST] || null,
     loggedInUser: state => state.user || null,
     isUserLoading: state => state.loading || false,
 };

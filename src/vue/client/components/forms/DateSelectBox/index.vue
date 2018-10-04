@@ -1,7 +1,7 @@
 <template>
     <div class="control three-cols">
         <div class="col select full-width">
-            <select v-model="date">
+            <select class="input" :class="{'is-danger': error}" v-model="date">
                 <option :value="null">{{ dateLabel }}</option>
                 <option v-for="dateOption in dateList"
                     :key="dateOption.value"
@@ -12,7 +12,7 @@
             </select>
         </div>
         <div class="col select full-width">
-            <select v-model="month">
+            <select class="input" :class="{'is-danger': error}" v-model="month">
                 <option :value="null">{{ monthLabel }}</option>
                 <option v-for="monthOption in monthList"
                     :key="monthOption.value"
@@ -23,7 +23,7 @@
             </select>
         </div>
         <div class="col select full-width">
-            <select v-model="year">
+            <select class="input" :class="{'is-danger': error}" v-model="year">
                 <option :value="null">{{ yearLabel }}</option>
                 <option v-for="yearOption in yearList"
                     :key="yearOption.value"
@@ -33,14 +33,38 @@
                 </option>
             </select>
         </div>
-        <div v-if="errorMessage" class="error col full">
-            <span>{{ errorMessage }}</span>
-        </div>
     </div>
 </template>
 
 <script>
     import Vue from 'vue';
+
+    const isNullOrNaN = (val) => (!val || isNaN(val));
+
+    /**
+     * @param {Date} date
+     * @param {Number} day
+     * @param {Number} month
+     * @param {Number} year
+     * @return {Boolean}
+     */
+    const isDateValid = (date, day, month, year) => {
+        if (!(date instanceof Date)) {
+            console.log('ahoy');
+            return false;
+        }
+        
+        let isValid = true;
+
+        if (date.getDate() !== day ||
+            date.getMonth() !== month ||
+            date.getFullYear() !== year) {
+            console.log('ahoy 2');
+            isValid = false;
+        }
+
+        return isValid;
+    };
 
     const monthDisplays = [
         'January',
@@ -81,7 +105,15 @@
         });
     }
 
-    const DateSelectBox = Vue.extend({
+    const DateSelectBox = {
+        $_veeValidate: {
+            value() {
+                return this.value;
+            },
+            name() {
+                return this.name;
+            }
+        },
         props: {
             dateLabel: {
                 type: String,
@@ -98,16 +130,12 @@
             value: {
                 type: Date,
             },
-            required: {
+            name: {
+                type: String,
+            },
+            error: {
                 type: Boolean,
-            },
-            requireMessage: {
-                type: String,
-                default: 'This field is required. Please choose a date.',
-            },
-            validationMessage: {
-                type: String,
-                default: 'Input date is invalid.',
+                default: false,
             },
         },
         data() {
@@ -119,7 +147,6 @@
                 monthList: months,
                 yearList: years,
                 valid: true,
-                errorMessage: '',
             };
         },
         mounted() {
@@ -142,33 +169,27 @@
                     this.valid = true;
                 } else {
                     this.valid = false;
-                    this.errorMessage = this.validationMessage;
                 }
             },
         },
         computed: {
             selectedDate() {
+                let selectedDate;
                 if (this.year && this.month && this.date) {
-                    return new Date(this.year, this.month, this.date);
+                    const date = new Date(this.year, this.month, this.date);
+                    if (isDateValid(date, this.date, this.month, this.year)) {
+                        selectedDate = date;
+                    }
                 }
-                return null;
+                return selectedDate;
             },
         },
         watch: {
-            selectedDate(value, oldValue) {
-                let valueToSet = value;
-                if (oldValue !== null && value === null) {
-                    this.valid = false;
-                } else {
-                    this.validate();
-                }
-                if (!this.valid) {
-                    valueToSet = null;
-                }
-                this.$emit('change', valueToSet);
+            selectedDate(value) {
+                this.$emit('change', value);
             },
         },
-    });
+    };
 
 export default DateSelectBox;
 

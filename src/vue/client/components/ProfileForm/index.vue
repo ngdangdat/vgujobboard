@@ -24,7 +24,7 @@
             <input v-model="emailConfirm"
               class="input"
               :class="{
-                'is-danger': errors.has('email'),
+                'is-danger': errors.has('emailConfirm'),
               }"
               type="email"
               name="emailConfirm"
@@ -43,7 +43,7 @@
               v-model="password"
               class="input"
               :class="{
-                'is-danger': errors.has('password')
+                'is-danger': errors.has('passwordConfirm')
               }"
               v-validate="'required:true|min:6'"
               type="password"
@@ -75,9 +75,14 @@
           date-label='Date of Birth'
           month-label='Month of Birth'
           year-label='Year of Birth'
+          v-validate="'required:true'"
+          v-model="birthday"
+          name="birthday"
           @change="changeBirthday"
           :value="birthday"
+          :error="errors.has('birthday')"
         />
+        <span class="help is-danger">{{ errors.first('birthday') }}</span>
       </div>
       <div class="two-cols fields">
         <div class="field col">
@@ -132,7 +137,9 @@
           <input v-model="phoneNumber"
             name="phoneNumber"
             class="input"
-            v-validated="'required:false'"
+            :class="{
+              'is-danger': errors.has('phoneNumber'),
+            }"
             type="text"
             placeholder="Phone Number (optional)"
           >
@@ -342,8 +349,8 @@ const ProfileForm = Vue.extend({
       payload["profile"] = profile;
       this.$emit("register", payload);
     },
-    changeBirthday(selectedDate) {
-      this.birthday = selectedDate;
+    changeBirthday(date) {
+      this.birthday = date;
     },
   }
 });
