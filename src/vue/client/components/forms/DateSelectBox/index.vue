@@ -50,7 +50,6 @@
      */
     const isDateValid = (date, day, month, year) => {
         if (!(date instanceof Date)) {
-            console.log('ahoy');
             return false;
         }
         
@@ -59,7 +58,6 @@
         if (date.getDate() !== day ||
             date.getMonth() !== month ||
             date.getFullYear() !== year) {
-            console.log('ahoy 2');
             isValid = false;
         }
 
@@ -150,7 +148,8 @@
             };
         },
         mounted() {
-            if (this.value !== null) {
+            const date = this.value;
+            if (date !== null && date instanceof Date) {
                 this.date = this.value.getDate();
                 this.month = this.value.getMonth();
                 this.year = this.value.getFullYear();
@@ -175,7 +174,7 @@
         computed: {
             selectedDate() {
                 let selectedDate;
-                if (this.year && this.month && this.date) {
+                if (this.year !== null && this.month !== null && this.date !== null) {
                     const date = new Date(this.year, this.month, this.date);
                     if (isDateValid(date, this.date, this.month, this.year)) {
                         selectedDate = date;

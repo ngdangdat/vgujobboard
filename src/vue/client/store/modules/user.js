@@ -18,6 +18,7 @@ const mutations = {
     },
     [LOGIN_ACTIONS.LOGIN_REQUEST_SUCCESS] (state, payload = {}) {
         Vue.set(state.loadings, LOGIN_ACTIONS.LOGIN_REQUEST, false);
+        Vue.set(state.errors, LOGIN_ACTIONS.LOGIN_REQUEST, null);
         if (payload.token !== undefined) {
             // Consider using session
             localStorage.setItem('token', payload.token);
@@ -28,73 +29,84 @@ const mutations = {
         Vue.set(state.errors, LOGIN_ACTIONS.LOGIN_REQUEST, payload);
     },
     [PROFILE_ACTIONS.PROFILE_REQUEST_PENDING] (state) {
-        state.loading = true;
+        Vue.set(state.loadings, PROFILE_ACTIONS.PROFILE_REQUEST, true);
     },
     [PROFILE_ACTIONS.PROFILE_REQUEST_SUCCESS] (state, payload = {}) {
-        state.loading = false;
+        Vue.set(state.loadings, PROFILE_ACTIONS.PROFILE_REQUEST, false);
         if (payload.user !== undefined) {
             const { user } = payload;
-            state.user = user;
+            Vue.set(state, 'user', user);
         }
     },
     [REGISTER_ACTIONS.REGISTER_REQUEST_PENDING] (state) {
-        state.loading = true;
+        Vue.set(state.loadings, REGISTER_ACTIONS.REGISTER_REQUEST, true);
     },
     [REGISTER_ACTIONS.REGISTER_REQUEST_SUCCESS] (state) {
-        state.loading = false;
+        Vue.set(state.loadings, REGISTER_ACTIONS.REGISTER_REQUEST, false);
+    },
+    [REGISTER_ACTIONS.REGISTER_REQUEST_FAILED] (state, payload = {}) {
+        Vue.set(state.loadings, REGISTER_ACTIONS.REGISTER_REQUEST, false);
+        Vue.set(state.errors, REGISTER_ACTIONS.REGISTER_REQUEST, payload);
     },
 };
 
 const actions = {
-    getUserProfile({ commit }) {
+    [PROFILE_ACTIONS.PROFILE_REQUEST] ({ commit }) {
         commit(PROFILE_ACTIONS.PROFILE_REQUEST_PENDING);
         return axios({
-            method: 'get',
+            method: 'GET',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, 'user/profile'),
         }).then(
             response => {
-                commit(PROFILE_ACTIONS.PROFILE_REQUEST_SUCCESS, {
-                    user: response.data.data,
-                });
+                if (response.data.success) {
+                    commit(PROFILE_ACTIONS.PROFILE_REQUEST_SUCCESS, {
+                        user: response.data.data,
+                    });
+                }
             }
         );
     },
-    login({ commit, dispatch }, payload) {
+    [LOGIN_ACTIONS.LOGIN_REQUEST] ({ commit, dispatch }, payload) {
         commit(LOGIN_ACTIONS.LOGIN_REQUEST_PENDING);
-        return axios({
-            method: 'post',
+        axios({
+            method: 'POST',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, 'auth'),
             data: payload,
-        })
-            .then(response => {
-                if (response.success) {
-                    commit(LOGIN_ACTIONS.LOGIN_REQUEST_SUCCESS, response.data.data);
-                    dispatch('getUserProfile');
-                } else {
-                    commit(LOGIN_ACTIONS.LOGIN_REQUEST_FAILED, response.data.errors);
-                }
-            });
+        }).then(response => {
+            if (response.data.success) {
+                commit(LOGIN_ACTIONS.LOGIN_REQUEST_SUCCESS, response.data.data);
+                dispatch(PROFILE_ACTIONS.PROFILE_REQUEST);
+            } else {
+                commit(LOGIN_ACTIONS.LOGIN_REQUEST_FAILED, response.data.errors);
+            }
+        });
     },
     logout({ commit }, payload) {
         state.user = null;
         localStorage.removeItem('token');
     },
-    register({ commit, dispatch }, payload) {
+    [REGISTER_ACTIONS.REGISTER_REQUEST]  ({ commit }, payload) {
         commit(REGISTER_ACTIONS.REGISTER_REQUEST_PENDING);
         return axios({
             method: 'post',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, 'user'),
             data: payload,
-        })
-            .then(() => commit(REGISTER_ACTIONS.REGISTER_REQUEST_SUCCESS))
+        }).then(response => {
+            if (response.data.success) {
+                commit(REGISTER_ACTIONS.REGISTER_REQUEST_SUCCESS, response.data.data);
+            } else {
+                commit(REGISTER_ACTIONS.REGISTER_REQUEST_FAILED, response.data.errors);
+            }
+        });
     },
 };
 
 const getters = {
     loginErrors: state => state.errors[LOGIN_ACTIONS.LOGIN_REQUEST] || null,
+    registerErrors: state => state.errors[REGISTER_ACTIONS.REGISTER_REQUEST] || null,
     loggedInUser: state => state.user || null,
     isUserLoading: state => state.loading || false,
 };

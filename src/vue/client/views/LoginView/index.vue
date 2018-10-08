@@ -3,9 +3,13 @@
         <h2 class="title has-text-centered is-3">
             Login to VGU Alumni
         </h2>
-        <span v-if="loginErrors">
-            <span class="help is-danger" v-for="(value, key) in loginErrors" :key="key">{{ value }}</span>
-        </span>
+        <div v-if="loginErrors" class="errors message is-danger">
+            <div class="message-body">
+                <li class="help" v-for="(value, key) in loginErrors" :key="key">
+                    <span>{{ value }}</span>
+                </li>
+            </div>
+        </div>
         <div class="login-form">
             <div class="field">
                 <p class="control">
@@ -57,9 +61,15 @@
 <script>
 import Vue from 'vue';
 import { mapGetters } from 'vuex';
-// import USER_ACTIONS from './../../constrains/user';
+import { LOGIN_ACTIONS } from './../../constrains/user';
 
 const LoginView = Vue.extend({
+    mounted() {
+        window.addEventListener('keydown', this.handleKeyEvents);
+    },
+    beforeDestroy() {
+        window.removeEventListener('keydown', this.handleKeyEvents);
+    },
     data() {
         return {
             email: null,
@@ -72,10 +82,23 @@ const LoginView = Vue.extend({
         }),
     },
     methods: {
+        handleKeyEvents(e) {
+            switch(e.keyCode) {
+                case 13:
+                    this.login();
+                    break;
+                default:
+                    break;
+            }
+        },
         login() {
-            this.$store.dispatch('login', {
-                email: this.email,
-                password: this.password,
+            this.$validator.validate().then(result => {
+                if (result) {
+                    this.$store.dispatch(LOGIN_ACTIONS.LOGIN_REQUEST, {
+                        email: this.email,
+                        password: this.password,
+                    });
+                }
             });
         },
     },
@@ -87,7 +110,7 @@ export default LoginView;
 
 <style lang="scss" scoped>
     .login-form {
-        width: 60%;
+        max-width: 350px;
         margin: 0 auto;
         .forgot-block {
             margin-bottom: .5em;

@@ -256,7 +256,6 @@
         <div class="control">
           <textarea v-model="status"
             name="status"
-            v-validate="'required:false'"
             class="textarea"
             type="text"
             placeholder="Message to VGU"
@@ -328,26 +327,29 @@ const ProfileForm = Vue.extend({
         
     },
     register() {
-      // @TODO: Validation
-      let payload = {};
-      payload["email"] = this.email;
-      payload["password"] = this.password;
-      payload["first_name"] = this.firstName;
-      payload["last_name"] = this.lastName;
-      const profile = {
-        gender: this.gender,
-        major: this.major,
-        intake: this.intake,
-        phone_number: this.phoneNumber,
-        birthday: parseDate(this.birthday),
-        state: this.state,
-        country: this.country,
-        organization: this.organization,
-        title: this.title,
-        status: this.status,
-      };
-      payload["profile"] = profile;
-      this.$emit("register", payload);
+      this.$validator.validate().then(result => {
+        if (result) {
+          let payload = {};
+          payload["email"] = this.email;
+          payload["password"] = this.password;
+          payload["first_name"] = this.firstName;
+          payload["last_name"] = this.lastName;
+          const profile = {
+            gender: this.gender,
+            major: this.major,
+            intake: this.intake,
+            phone_number: this.phoneNumber,
+            birthday: parseDate(this.birthday),
+            state: this.state,
+            country: this.country,
+            organization: this.organization,
+            title: this.title,
+            status: this.status,
+          };
+          payload["profile"] = profile;
+        this.$emit("register", payload);
+        }
+      });
     },
     changeBirthday(date) {
       this.birthday = date;

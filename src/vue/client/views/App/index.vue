@@ -15,6 +15,7 @@ import Vue from 'vue';
 import { mapGetters } from 'vuex';
 import NavigationBar from './../../components/NavigationBar/index.vue';
 import Footer from './../../components/Footer/index.vue';
+import { PROFILE_ACTIONS } from './../../constrains/user';
 
 const App = Vue.extend({
     components: {
@@ -27,7 +28,7 @@ const App = Vue.extend({
         }),
     },
     mounted() {
-        this.$store.dispatch('getUserProfile');
+        this.$store.dispatch(PROFILE_ACTIONS.PROFILE_REQUEST);
     },
     methods: {
         logout() {

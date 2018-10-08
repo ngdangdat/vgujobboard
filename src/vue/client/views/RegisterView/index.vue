@@ -7,6 +7,7 @@
 <script>
 
 import ProfileForm from './../../components/ProfileForm/index.vue';
+import { REGISTER_ACTIONS } from './../../constrains/user';
 
 export default {
   name: 'Register',
@@ -15,7 +16,8 @@ export default {
   },
   methods: {
     register(payload) {
-      this.$store.dispatch('register', payload);
+      console.log(payload);
+      this.$store.dispatch(REGISTER_ACTIONS.REGISTER_REQUEST, payload);
     },
   }
 };
