@@ -16,7 +16,6 @@ export default {
   },
   methods: {
     register(payload) {
-      console.log(payload);
       this.$store.dispatch(REGISTER_ACTIONS.REGISTER_REQUEST, payload);
     },
   }
