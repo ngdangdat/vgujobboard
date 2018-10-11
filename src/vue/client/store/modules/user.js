@@ -9,7 +9,9 @@ import Vue from 'vue';
 const state = {
     loadings: {},
     user: null,
+    success: {},
     errors: {},
+    pathBeforeLogin: null,
 };
 
 const mutations = {
@@ -19,6 +21,7 @@ const mutations = {
     [LOGIN_ACTIONS.LOGIN_REQUEST_SUCCESS] (state, payload = {}) {
         Vue.set(state.loadings, LOGIN_ACTIONS.LOGIN_REQUEST, false);
         Vue.set(state.errors, LOGIN_ACTIONS.LOGIN_REQUEST, null);
+        Vue.set(state.success, LOGIN_ACTIONS.LOGIN_REQUEST, true);
         if (payload.token !== undefined) {
             // Consider using session
             localStorage.setItem('token', payload.token);
@@ -106,6 +109,7 @@ const actions = {
 
 const getters = {
     loginErrors: state => state.errors[LOGIN_ACTIONS.LOGIN_REQUEST] || null,
+    loginSuccess: state => state.success[LOGIN_ACTIONS.LOGIN_REQUEST] || false,
     registerErrors: state => state.errors[REGISTER_ACTIONS.REGISTER_REQUEST] || null,
     loggedInUser: state => state.user || null,
     isUserLoading: state => state.loading || false,

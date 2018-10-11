@@ -60,7 +60,7 @@ class Serializer(serializers.Serializer):
         if code is not None:
           append_error(field.field_name, code, ' '.join(exc.detail))
         else:
-          errors[field.field_name] = exc.detail
+          errors[field.field_name] = ' '.join(exc.detail)
       except DjangoValidationError as exc:
         errors[field.field_name] = ' '.join(exc.messages)
       except serializers.SkipField:

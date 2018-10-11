@@ -79,6 +79,7 @@ const LoginView = Vue.extend({
     computed: {
         ...mapGetters({
             loginErrors: 'loginErrors',
+            loginSuccess: 'loginSuccess',
         }),
     },
     methods: {
@@ -101,6 +102,13 @@ const LoginView = Vue.extend({
                 }
             });
         },
+    },
+    watch: {
+        loginSuccess(val) {
+            if(val) {
+                this.$router.push('/');
+            }
+        }
     },
 });
 
