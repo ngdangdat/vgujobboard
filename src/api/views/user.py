@@ -118,7 +118,7 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
 
   def get_serializer_context(self):
     context = super().get_serializer_context()
-    files = self.request.data.pop('files', {})
+    files = self.request.FILES
     context['files'] = files
     return context
 

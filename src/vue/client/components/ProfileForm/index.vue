@@ -3,6 +3,13 @@
     <h2 class="title has-text-centered is-3">
         Registration Form
     </h2>
+    <div v-if="registerErrors" class="errors message is-danger">
+        <div class="message-body">
+            <li class="help" v-for="(errorMsg, errorCode) in registerErrors" :key="errorCode">
+                <span>{{ errorMsg }}</span>
+            </li>
+        </div>
+    </div>
     <div class="form">
       <div class="field">
         <div class="control two-cols">
@@ -140,6 +147,7 @@
             :class="{
               'is-danger': errors.has('phoneNumber'),
             }"
+            v-validate="'numeric'"
             type="text"
             placeholder="Phone Number (optional)"
           >
@@ -264,7 +272,8 @@
       </div>
       <div class="file has-name is-fullwidth">
         <label class="file-label">
-          <input class="file-input" type="file" name="resume">
+          <input class="file-input" v-validate="'required|image'" ref="avatar" type="file" name="avatar">
+          <span class="help is-danger">{{ errors.first('avatar') }}</span>
           <span class="file-cta">
             <span class="file-icon">
               <i class="fas fa-upload"></i>
@@ -280,12 +289,6 @@
       </div>
     </div>
     <div class="btns">
-      <!-- <a class="button is-halfwidth">
-        Back
-      </a>
-      <a class="button is-dark is-halfwidth">
-        Next
-      </a> -->
       <a class="is-dark button is-halfwidth" @click="register">Register</a>
     </div>
   </div>
@@ -301,6 +304,11 @@ const parseDate = (date) => `${date.getFullYear()}-${date.getMonth()+1}-${date.g
 const ProfileForm = Vue.extend({
   components: {
     "date-select": DateSelectBox
+  },
+  props: {
+    registerErrors: {
+      type: Object,
+    },
   },
   data() {
     return {
@@ -329,24 +337,29 @@ const ProfileForm = Vue.extend({
     register() {
       this.$validator.validate().then(result => {
         if (result) {
+          const avatar = this.$refs.avatar.files[0];
           let payload = {};
-          payload["email"] = this.email;
-          payload["password"] = this.password;
-          payload["first_name"] = this.firstName;
-          payload["last_name"] = this.lastName;
-          const profile = {
-            gender: this.gender,
-            major: this.major,
-            intake: this.intake,
-            phone_number: this.phoneNumber,
-            birthday: parseDate(this.birthday),
-            state: this.state,
-            country: this.country,
-            organization: this.organization,
-            title: this.title,
-            status: this.status,
+          const user = {
+            "email": this.email,
+            "password": this.password,
+            "first_name": this.firstName,
+            "last_name": this.lastName,
           };
+          const profile = {
+            "gender": this.gender,
+            "major": this.major,
+            "intake": this.intake,
+            "phone_number": this.phoneNumber,
+            "birthday": parseDate(this.birthday),
+            "state": this.state,
+            "country": this.country,
+            "organization": this.organization,
+            "title": this.title,
+            "status": this.status,
+          };
+          payload["user"] = user;
           payload["profile"] = profile;
+          payload["avatar"] = avatar;
         this.$emit("register", payload);
         }
       });

@@ -25,6 +25,7 @@ def get_code_from_exc(exc):
     return { code: ' '.join(exc.detail) }
   return { code: exc.detail }
 
+
 class Serializer(serializers.Serializer):
   """
   Overwrite to inject error code
@@ -50,6 +51,8 @@ class Serializer(serializers.Serializer):
     for field in fields:
       validate_method = getattr(self, 'validate_' + field.field_name, None)
       primitive_value = field.get_value(data)
+      if field.field_name == 'avatar':
+        print(primitive_value)
 
       try:
         validated_value = field.run_validation(primitive_value)
@@ -67,7 +70,6 @@ class Serializer(serializers.Serializer):
         pass
       else:
         rest_fields.set_value(ret, field.source_attrs, validated_value)
-
       if errors:
         raise ValidationError(errors)
 

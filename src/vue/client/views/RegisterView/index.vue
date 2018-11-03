@@ -1,12 +1,16 @@
 <template>
   <div class="registration-form">
-    <profile-form @register="register"/>
+    <profile-form
+      @register="register"
+      :registerErrors="registerErrors"
+    />
   </div>
 </template>
 
 <script>
 
 import ProfileForm from './../../components/ProfileForm/index.vue';
+import { mapGetters } from 'vuex';
 import { REGISTER_ACTIONS } from './../../constrains/user';
 
 export default {
@@ -18,7 +22,12 @@ export default {
     register(payload) {
       this.$store.dispatch(REGISTER_ACTIONS.REGISTER_REQUEST, payload);
     },
-  }
+  },
+  computed: {
+    ...mapGetters({
+      registerErrors: 'registerErrors',
+    })
+  },
 };
 </script>
 

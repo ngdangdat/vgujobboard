@@ -12,7 +12,8 @@ export default {
         },
         attributes: {
             emailConfirm: 'Email Confirmation',
-            passwordConfirm: 'Password Confirmation'
+            passwordConfirm: 'Password Confirmation',
+            phoneNumber: 'Phone Number',
         },
         custom: {
 

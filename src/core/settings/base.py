@@ -231,7 +231,7 @@ REST_FRAMEWORK = {
     ],
     'EXCEPTION_HANDLER': 'api.views.exception_handler',
     'PAGE_SIZE': 20,
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'api.pagination.PageNumberPagination',
 }
 
 # Static files (CSS, JavaScript, Images)
