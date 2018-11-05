@@ -34,12 +34,10 @@ class ProfileSerializer(ModelSerializer):
   
   def to_internal_value(self, data):
     files = self.context.get('files', {})
-    print('profile', files)
     if PROFILE_AVATAR_KEY in files:
       if 'avatar' in data:
         del data['avatar']
-      avatar = files.get(PROFILE_AVATAR_KEY)
-      data['avatar'] = save_temp_avatar(create_image_from_b64(avatar['data'], avatar['name']))
+        data['avatar'] = save_temp_avatar(files.get(PROFILE_AVATAR_KEY))
     data = super(ProfileSerializer, self).to_internal_value(data)
     return data
 
@@ -75,7 +73,7 @@ class UserSerializer(ModelSerializer):
     user.set_password(validated_data['password'])
     user.is_active = False
     user.save()
-    user.profile = Profile.objects.get_or_create_profile(user=user, **_profile, context=self.context)
+    user.profile = Profile.objects.get_or_create_profile(user=user, **_profile)
     return user
 
   def update(self, instance, validated_data):

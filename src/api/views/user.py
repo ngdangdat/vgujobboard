@@ -122,7 +122,7 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
     context['files'] = files
     return context
 
-  def list(self, *args, **kwargs):
+  def list(self, request, *args, **kwargs):
     """
     @api {GET} /user
 
@@ -170,7 +170,8 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
         "errors": []
     }
     """
-    return super(UserViewSet, self).list(*args, **kwargs)
+    print(request.user.email)
+    return super(UserViewSet, self).list(request, *args, **kwargs)
 
   def retrieve(self, request, pk=None, *args, **kwargs):
     """
