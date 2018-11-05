@@ -9,16 +9,23 @@ LOGGING_DEV = {
     'loggers': {
         'django': {
             'propagate': True,
-            'level': 'DEBUG',
+            'level': 'INFO',
+            'handlers': ['console'],
         },
         'project': {
             'level': 'DEBUG',
+            'handlers': ['console'],
         },
         'request': {
             'level': 'DEBUG',
+            'handlers': ['console'],
         }
     }
 }
+
+LOGGING = dict(merge_dicts(LOGGING, LOGGING_DEV))
+
+logging.config.dictConfig(LOGGING)
 
 DATABASES['default'] = env.db()
 
@@ -26,8 +33,6 @@ FACEBOOK_ACCESS_TOKEN=env('FACEBOOK_ACCESS_TOKEN')
 FACEBOOK_ALBUM_ID=env('FACEBOOK_ALBUM_ID')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
-
-LOGGING = dict(merge_dicts(LOGGING, LOGGING_DEV))
 
 INSTALLED_APPS_DEV = [
     'corsheaders',
@@ -48,5 +53,3 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
     '*'
 )
-
-logging.config.dictConfig(LOGGING)
