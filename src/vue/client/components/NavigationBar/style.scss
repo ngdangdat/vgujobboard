@@ -1,0 +1,36 @@
+.navbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    .navbar-item {
+        img {
+            max-height: 2rem;
+        }
+    }
+
+    &-menu {
+        &.secondary {
+            align-items: center;
+            flex-grow: initial;
+            .dropdown {
+                .dropdown-trigger {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    .avatar {
+                        width: 32px;
+                        height: 32px;
+                        margin-right: 0.1rem;
+                    }
+                }
+                .dropdown-menu {
+                    min-width: 7rem;
+                    .dropdown-item {
+                        padding-top: 0.1rem;
+                        padding-bottom: 0.1rem;
+                    }
+                }
+            }
+       }
+    }
+}

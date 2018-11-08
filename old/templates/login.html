@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block content %}
+    {% if message %}
+     {{ message }}
+    {% endif %}
+    <h1>Log in to VGU Alumni</h1>
+    <form class="login-form" method="POST" action="{% url 'frontsite:login' %}">
+      {% csrf_token %}
+      <div class="row">
+        <div class="form-row">
+          <label for="email">Email</label>
+          <div class="field-wrapper">
+            <input name="email" type="text" />
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <div class="field-wrapper">
+            <input name="password" type="password" />
+          </div>
+        </div>
+        <div class="form-row btn-wrapper">
+          <a href="{% url 'frontsite:register' %}"><button class="btn inactive cta-register" type="button">Register</button></a>
+          <button class="btn active cta-login" type="submit">Login</button>
+        </div>
+      </div>
+  </form>
+{% endblock %}
