@@ -170,7 +170,6 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
         "errors": []
     }
     """
-    print(request.user.email)
     return super(UserViewSet, self).list(request, *args, **kwargs)
 
   def retrieve(self, request, pk=None, *args, **kwargs):

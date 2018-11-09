@@ -69,10 +69,9 @@ let config = {
     },
     devtool: '#eval-source-map',
     plugins: [
-        new vueLoader.VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             title: "VGU Alumni",
-            template: path.resolve(__dirname, '../index.html'),
+            template: path.resolve(__dirname, 'index.html'),
             filename: path.join(outputPath, 'index.html'),
         }),
         new CopyWebpackPlugin([
