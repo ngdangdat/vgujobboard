@@ -80,7 +80,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            join(BASE_DIR, 'dist'),
+            join(BASE_DIR, 'vue/dist'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -239,7 +239,7 @@ REST_FRAMEWORK = {
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [join(BASE_DIR, 'dist/static')]
+STATICFILES_DIRS = [join(BASE_DIR, 'vue/dist/static')]
 
 MEDIA_URL = env('MEDIA_URL', default='/upload')
 MEDIA_ROOT = join(BASE_DIR, env('MEDIA_ROOT', default='upload'))

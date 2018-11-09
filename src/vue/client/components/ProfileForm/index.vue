@@ -297,7 +297,6 @@
 <script>
 import DateSelectBox from "../forms/DateSelectBox/index.vue";
 import Vue from "vue";
-import Datepicker from "vuejs-datepicker";
 
 const parseDate = (date) => `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
 
