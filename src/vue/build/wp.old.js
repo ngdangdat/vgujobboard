@@ -22,8 +22,8 @@ let config = {
                 loaders: 'vue-loader',
                 options: {
                     loaders: {
-                        'scss': 'vue-style-loader!css-loader!sass-loader!postcss-loader',
-                        'sass': 'vue-style-loader!css-loader!sass-loader?intendedSyntax!postcss-loader',
+                        'scss': 'vue-style-loader!css-loader!sass-loader',
+                        'sass': 'vue-style-loader!css-loader!sass-loader?intendedSyntax',
                     }
                 },
                 // Vue loader options
@@ -50,22 +50,14 @@ let config = {
                     'vue-style-loader',
                     'css-loader',
                     'sass-loader',
-                    'postcss-loader',
                 ],
-            },
-            {
-                loader: `postcss-loader`,
-                options: {
-                    options: {},
-                    plugins: require('autoprefixer'),
-                }
-            },
+            }
         ]
     },
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@static': path.resolve(__dirname, '../static'),
+            'static': path.resolve(__dirname, '../static'),
         },
     },
     devServer: {
@@ -77,10 +69,9 @@ let config = {
     },
     devtool: '#eval-source-map',
     plugins: [
-        new vueLoader.VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             title: "VGU Alumni",
-            template: path.resolve(__dirname, '../index.html'),
+            template: path.resolve(__dirname, 'index.html'),
             filename: path.join(outputPath, 'index.html'),
         }),
         new CopyWebpackPlugin([

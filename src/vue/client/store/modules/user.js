@@ -2,7 +2,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import { joinUrl } from './../../utils/url';
 import { getHeaders } from './../../utils/request';
-import config from './../../../config/project.config';
+import config from '@/config/project.config.js';
 import { LOGIN_ACTIONS, PROFILE_ACTIONS, REGISTER_ACTIONS, MEMBER_LIST_ACTIONS } from './../../constrains/user';
 import Vue from 'vue';
 

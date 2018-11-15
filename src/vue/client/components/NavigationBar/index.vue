@@ -4,7 +4,7 @@
             <div class="navbar-brand">
                 <a class="navbar-item" href="./">
                     <img
-                        src="~static/images/vgu_logo.png"
+                        src="@/static/images/vgu_logo.png"
                         alt="Vietnamese-German University"
                     />
                 </a>
@@ -98,4 +98,4 @@ export default {
 };
 </script>
 
-<style src="./style.scss" />
+<style lang="scss" src="./style.scss" />
