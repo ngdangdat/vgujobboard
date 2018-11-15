@@ -40,7 +40,7 @@ def save_avatar(file_path):
   :return: url
   """
   file_name = path.basename(file_path)
-  name, ext = path.splitext(file_name)
+  _, ext = path.splitext(file_name)
   time_in_bytes = bytes(str(timezone.now()), 'utf-8')
   file_name = '%s_%s%s' % (
     PROFILE_AVATAR_KEY,

@@ -48,11 +48,16 @@ const mutations = {
     },
 
     // Register mutations
+    [REGISTER_ACTIONS.REGISTER_REQUEST_RESET] (state) {
+        Vue.set(state.success, REGISTER_ACTIONS.REGISTER_REQUEST, false);
+    },
     [REGISTER_ACTIONS.REGISTER_REQUEST_PENDING] (state) {
         Vue.set(state.loadings, REGISTER_ACTIONS.REGISTER_REQUEST, true);
     },
     [REGISTER_ACTIONS.REGISTER_REQUEST_SUCCESS] (state) {
         Vue.set(state.loadings, REGISTER_ACTIONS.REGISTER_REQUEST, false);
+        Vue.set(state.errors, REGISTER_ACTIONS.REGISTER_REQUEST, null);
+        Vue.set(state.success, REGISTER_ACTIONS.REGISTER_REQUEST, true);
     },
     [REGISTER_ACTIONS.REGISTER_REQUEST_FAILED] (state, payload = {}) {
         Vue.set(state.loadings, REGISTER_ACTIONS.REGISTER_REQUEST, false);
@@ -135,15 +140,10 @@ const actions = {
             formData.append(`${key}`, val);
         }
 
-        formData.append('profile.avatar', avatar, 'test.png');
-        console.log('avatar', avatar);
-        console.log('avatar keys', Object.keys(avatar));
-        
+        formData.append('profile.avatar', avatar);
         let headers = {
             'Content-Type': 'multipart/form-data',
         };
-
-        console.log(formData);
 
         return axios({
             method: 'post',
@@ -182,6 +182,7 @@ const getters = {
     loginErrors: state => state.errors[LOGIN_ACTIONS.LOGIN_REQUEST] || null,
     loginSuccess: state => state.success[LOGIN_ACTIONS.LOGIN_REQUEST] || false,
     registerErrors: state => state.errors[REGISTER_ACTIONS.REGISTER_REQUEST] || null,
+    registerSuccess: state => state.success[REGISTER_ACTIONS.REGISTER_REQUEST] || false,
     loggedInUser: state => state.user || null,
     isUserLoading: state => state.loading || false,
     membersByPage: state => page => state.membersByPage[page] || [],

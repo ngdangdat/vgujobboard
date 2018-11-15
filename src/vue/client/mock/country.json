@@ -1,0 +1,46 @@
+[
+    {
+        "value": "VN",
+        "display": "Vietnam",
+        "childrens": [
+            {
+                "display": "Binh Dinh",
+                "value": "BinhDinh"
+            },
+            {
+                "display": "Hue",
+                "value": "Hue"
+            },
+            {
+                "display": "Ho Chi Minh",
+                "value": "HoChiMinh"
+            },
+            {
+                "display": "An Giang",
+                "value": "AnGiang"
+            }
+        ]
+    },
+    {
+        "value": "DE",
+        "display": "Germany",
+        "childrens": [
+            {
+                "display": "Hamburg",
+                "value": "Hamburg"
+            },
+            {
+                "display": "Saxony",
+                "value": "Saxony"
+            },
+            {
+                "display": "Bremen",
+                "value": "Bremen"
+            },
+            {
+                "display": "Lower Saxony",
+                "value": "LowerSaxony"
+            }
+        ]
+    }
+]

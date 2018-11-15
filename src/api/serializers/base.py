@@ -51,8 +51,6 @@ class Serializer(serializers.Serializer):
     for field in fields:
       validate_method = getattr(self, 'validate_' + field.field_name, None)
       primitive_value = field.get_value(data)
-      if field.field_name == 'avatar':
-        print(primitive_value)
 
       try:
         validated_value = field.run_validation(primitive_value)

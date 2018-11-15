@@ -1,0 +1,46 @@
+[
+    {
+        "value": "CS",
+        "display": "Computer Science",
+        "childrens": [
+            {
+                "display": 2011,
+                "value": 2011
+            },
+            {
+                "display": 2012,
+                "value": 2012
+            },
+            {
+                "display": 2013,
+                "value": 2013
+            },
+            {
+                "display": 2014,
+                "value": 2014
+            }
+        ]
+    },
+    {
+        "value": "EEIT",
+        "display": "Electrical Engineering and Information Technology",
+        "childrens": [
+            {
+                "display": 2011,
+                "value": 2011
+            },
+            {
+                "display": 2012,
+                "value": 2012
+            },
+            {
+                "display": 2013,
+                "value": 2013
+            },
+            {
+                "display": 2014,
+                "value": 2014
+            }
+        ]
+    }
+]
