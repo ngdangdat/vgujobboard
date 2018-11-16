@@ -64,6 +64,11 @@ import { mapGetters } from 'vuex';
 import { LOGIN_ACTIONS } from './../../constrains/user';
 
 const LoginView = Vue.extend({
+    beforeMount() {
+        if (this.user !== null) {
+            this.$router.push('/');
+        }
+    },
     mounted() {
         window.addEventListener('keydown', this.handleKeyEvents);
     },
@@ -80,6 +85,7 @@ const LoginView = Vue.extend({
         ...mapGetters({
             loginErrors: 'loginErrors',
             loginSuccess: 'loginSuccess',
+            user: 'user',
         }),
     },
     methods: {
