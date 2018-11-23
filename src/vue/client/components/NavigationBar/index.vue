@@ -28,14 +28,16 @@
                 <div v-else class="dropdown is-hoverable is-right">
                     <div class="dropdown-trigger">
                         <div class="avatar" aria-haspopup="true" aria-controls="account-menu">
-                            <img src="https://unsplash.it/160/160" :alt="user.name">
+                            <img :src="user.profile.avatar" :alt="user.name">
                         </div>
                         <div class="caret-down"></div>
                     </div>
                     <div class="dropdown-menu has-text-centered" id="account-menu" role="menu">
                         <div class="dropdown-content">
                             <div class="dropdown-item">
-                                <a href="#">Account</a>
+                                <router-link to="/profile">
+                                    Profile
+                                </router-link>
                             </div>
                             <div class="dropdown-item">
                                 <router-link to="/member">
