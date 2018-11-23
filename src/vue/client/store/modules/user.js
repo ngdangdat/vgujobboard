@@ -191,6 +191,7 @@ const getters = {
         count: 1,
         currentPage: 1,
     }),
+    user: state => state.user || null,
 };
 
 export default {
