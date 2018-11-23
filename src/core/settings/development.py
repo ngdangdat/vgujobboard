@@ -9,13 +9,16 @@ LOGGING_DEV = {
     'loggers': {
         'django': {
             'propagate': True,
-            'level': 'DEBUG',
+            'level': 'INFO',
+            'handlers': ['console'],
         },
         'project': {
             'level': 'DEBUG',
+            'handlers': ['console'],
         },
         'request': {
             'level': 'DEBUG',
+            'handlers': ['console'],
         }
     }
 }

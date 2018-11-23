@@ -169,6 +169,9 @@
                 <option :value="null">Major</option>
                 <option :value="3">EEIT</option>
                 <option :value="5">FA</option>
+                <!-- <option v-for="(eachMajor, index) in availableMajors" :key="index" :value="eachMajor.value">
+                  {{ eachMajor.display }}
+                </option> -->
               </select>
             </div>
             <span class="help is-danger">{{ errors.first('major') }}</span>
@@ -186,6 +189,9 @@
                 <option :value="null">Intake</option>
                 <option :value="2011">2011</option>
                 <option :value="2012">2012</option>
+                <!-- <option v-for="(eachIntake, index) in availableIntakes" :key="index" :value="eachIntake.value">
+                  {{ eachIntake.display }}
+                </option> -->
               </select>
             </div>
             <span class="help is-danger">{{ errors.first('intake') }}</span>
@@ -207,6 +213,9 @@
                 <option :value="null">Current Country of Residence</option>
                 <option value="VN">Vietnam</option>
                 <option value="DE">Germany</option>
+                <!-- <option v-for="(eachCountry, index) in availableCountries" :key="index" :value="eachCountry.value">
+                  {{ eachCountry.display }}
+                </option> -->
               </select>
             </div>
             <span class="help is-danger">{{ errors.first('country') }}</span>
@@ -224,6 +233,9 @@
                 <option :value="null">Current City of Residence</option>
                 <option value="HCM">Ho Chi Minh</option>
                 <option value="HN">Ha Noi</option>
+                <!-- <option v-for="(eachState, index) in availableStates" :key="index" :value="eachState.value">
+                  {{ eachState.display }}
+                </option> -->
               </select>
             </div>
             <span class="help is-danger">{{ errors.first('state') }}</span>
@@ -270,22 +282,33 @@
           />
         </div>
       </div>
-      <div class="file has-name is-fullwidth">
-        <label class="file-label">
-          <input class="file-input" v-validate="'required|image'" ref="avatar" type="file" name="avatar">
-          <span class="help is-danger">{{ errors.first('avatar') }}</span>
-          <span class="file-cta">
-            <span class="file-icon">
-              <i class="fas fa-upload"></i>
+      <div class="field">
+        <div v-if="avatarDisplay">
+          <img :src="avatarDisplay" alt="Avatar">
+        </div>
+        <div class="file has-name is-fullwidth is-right">
+          <label class="file-label">
+            <input class="file-input" v-validate="'required|image'"
+              ref="avatar"
+              type="file"
+              name="avatar"
+              @change="handleAvatarChange"
+            />
+            <span class="file-cta">
+              <span class="file-icon">
+                <icon v-if="avatar" name="times" />
+                <icon v-else name="upload" />
+              </span>
+
+              <span v-if="avatar" class="file-label">Clear</span>
+              <span v-else class="file-label">Profile picture</span>
             </span>
-            <span class="file-label">
-              Profile picture
+            <span v-if="avatar" class="file-name">
+              {{ avatar.name }}
             </span>
-          </span>
-          <span class="file-name">
-            Screen Shot 2017-07-29 at 15.54.25.png
-          </span>
-        </label>
+          </label>
+        </div>
+        <span class="help is-danger">{{ errors.first('avatar') }}</span>
       </div>
     </div>
     <div class="btns">
@@ -295,14 +318,20 @@
 </template>
 
 <script>
-import DateSelectBox from "../forms/DateSelectBox/index.vue";
+import DateSelectBox from "@/components/forms/DateSelectBox/index.vue";
+import FontAwesomeIcon from "@/components/FontAwesomeIcon/index.vue";
+import { getBase64Image } from '@/utils/image.js';
 import Vue from "vue";
+
+import countries from '@/mock/country.json';
+import majors from '@/mock/major.json';
 
 const parseDate = (date) => `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
 
 const ProfileForm = Vue.extend({
   components: {
-    "date-select": DateSelectBox
+    "date-select": DateSelectBox,
+    "icon": FontAwesomeIcon,
   },
   props: {
     registerErrors: {
@@ -327,16 +356,19 @@ const ProfileForm = Vue.extend({
       organization: "", //string
       title: "", //string
       birthday: null, //date
+      avatar: null,
+      avatarDisplay: null,
+      availableCountries: countries,
+      availableStates: [],
+      availableMajors: majors,
+      availableIntakes: [],
     };
   },
   methods: {
-    validate() {
-        
-    },
     register() {
       this.$validator.validate().then(result => {
         if (result) {
-          const avatar = this.$refs.avatar.files[0];
+          const avatar = this.avatar;
           let payload = {};
           const user = {
             "email": this.email,
@@ -358,7 +390,7 @@ const ProfileForm = Vue.extend({
           };
           payload["user"] = user;
           payload["profile"] = profile;
-          payload["avatar"] = avatar;
+          payload["avatar"] = avatar.file;
         this.$emit("register", payload);
         }
       });
@@ -366,7 +398,44 @@ const ProfileForm = Vue.extend({
     changeBirthday(date) {
       this.birthday = date;
     },
-  }
+    handleAvatarChange(e) {
+      const imgFile = this.$refs.avatar.files[0];
+      if (imgFile) {
+        getBase64Image(imgFile)
+          .then(avatarDisplay => {
+            this.avatarDisplay = avatarDisplay;
+            this.avatar = {
+              'name': imgFile.name,
+              'url': '',
+              'file': imgFile,
+            };
+          })
+      } else {
+        this.avatarDisplay = null;
+        this.avatar = null;
+      }
+    }
+  },
+  watch: {
+  //   country(value) {
+  //     this.state = null;
+  //     if (value) {
+  //       const selectedCountry = this.availableCountries.find(country => country.value === value);
+  //       this.availableStates = selectedCountry.childrens;
+  //       return;
+  //     }
+  //     this.availableStates = [];
+  //   },
+  //   major(value) {
+  //     this.intake = null;
+  //     if (value) {
+  //       const selectedMajor = this.availableMajors.find(major => major.value === value);
+  //       this.availableIntakes = selectedMajor.childrens;
+  //       return;
+  //     }
+  //     this.availableIntakes = [];
+  //   },
+  },
 });
 
 export default ProfileForm;

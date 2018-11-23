@@ -6,6 +6,7 @@ import router from './router';
 // Validator for forms
 import VeeValidate, { Validator } from 'vee-validate';
 import en from './components/forms/VeeValidator/dicts/en';
+import '@/static/css/all.min.css';
 import '@/static/css/bulma.css';
 import '@/styles/components.scss';
 import '@/styles/global.scss';

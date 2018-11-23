@@ -14,6 +14,8 @@ export default {
             emailConfirm: 'Email Confirmation',
             passwordConfirm: 'Password Confirmation',
             phoneNumber: 'Phone Number',
+            firstName: 'First Name',
+            lastName: 'Last Name',
         },
         custom: {
 
