@@ -8,46 +8,68 @@
                         alt="Vietnamese-German University"
                     />
                 </a>
-                <div class="navbar-burger burger">
+                <div @click="changeMenuState"
+                    class="navbar-burger burger"
+                    :class="{
+                        'is-active': isMenuActive,
+                    }"
+                >
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
             </div>
-            <div class="navbar-menu">
-                <router-link v-for="navItem in navItems"
-                    :to="navItem.url"
-                    :key="navItem.id"
-                    class="navbar-item"
-                >
-                    {{ navItem.title }}
-                </router-link>
-            </div>
-            <div class="navbar-menu secondary">
-                <router-link v-if="user == null" to="/login" class="button">Login</router-link>
-                <div v-else class="dropdown is-hoverable is-right">
-                    <div class="dropdown-trigger">
-                        <div class="avatar" aria-haspopup="true" aria-controls="account-menu">
-                            <img :src="user.profile.avatar" :alt="user.name">
+            <div
+                class="navbar-menu"
+                :class="{
+                    'is-active': isMenuActive,
+                }"
+            >
+                <div class="navbar-start">
+                    <router-link v-for="navItem in navItems"
+                        :to="navItem.url"
+                        :key="navItem.id"
+                        class="navbar-item bd-navbar-item-documentation"
+                    >
+                        {{ navItem.title }}
+                    </router-link>
+                </div>
+                <div class="navbar-end">
+                    <router-link v-if="user == null" to="/login" class="is-hidden-touch button">Login</router-link>
+                    <div v-else class="is-hidden-touch dropdown is-hoverable is-right">
+                        <div class="dropdown-trigger">
+                            <div class="avatar is-hidden-touch button" aria-haspopup="true" aria-controls="account-menu">
+                                <img :src="user.profile.avatar" :alt="user.name">
+                            </div>
+                            <div class="caret-down"></div>
                         </div>
-                        <div class="caret-down"></div>
+                        <div class="dropdown-menu has-text-centered" id="account-menu" role="menu">
+                            <div class="dropdown-content">
+                                <div class="dropdown-item">
+                                    <router-link to="/profile">
+                                        Profile
+                                    </router-link>
+                                </div>
+                                <div class="dropdown-item">
+                                    <router-link to="/member">
+                                        Members
+                                    </router-link>
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="#" @click="logout">Logout</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="dropdown-menu has-text-centered" id="account-menu" role="menu">
-                        <div class="dropdown-content">
-                            <div class="dropdown-item">
-                                <router-link to="/profile">
-                                    Profile
-                                </router-link>
-                            </div>
-                            <div class="dropdown-item">
-                                <router-link to="/member">
-                                    Members
-                                </router-link>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="#" @click="logout">Logout</a>
-                            </div>
-                        </div>
+                    <router-link v-if="user == null" to="/login" class="navbar-item is-hidden-desktop">Login</router-link>
+                    <div v-else>
+                        <router-link class="navbar-item bd-navbar-item-documentation is-hidden-desktop" to="/profile">
+                            Profile
+                        </router-link>
+                        <router-link class="navbar-item bd-navbar-item-documentation is-hidden-desktop" to="/member">
+                            Members
+                        </router-link>
+                        <a href="#" class="navbar-item bd-navbar-item-documentation is-hidden-desktop" @click="logout">Logout</a>
                     </div>
                 </div>
             </div>
@@ -56,48 +78,59 @@
 </template>
 
 <script>
-export default {
-    name: 'NavigationBar',
-    props: {
-        /**
-         * Flag to check if user logged in
-         */
-        user: {
-            type: Object,
-            default: null,
-            required: false,
+import Vue from "vue";
+
+const NavigationBar = Vue.extend({
+  name: "NavigationBar",
+  props: {
+    /**
+     * Flag to check if user logged in
+     */
+    user: {
+      type: Object,
+      default: null,
+      required: false
+    }
+  },
+  data() {
+    return {
+      navItems: [
+        {
+          id: 0,
+          index: 0,
+          title: "Home",
+          url: "/",
+          external: false,
         },
-    },
-    methods: {
-        logout() {
-            this.$emit('logout');
+        {
+          id: 1,
+          index: 1,
+          title: "Facebook",
+          url: "https://www.facebook.com/VGUAlumniCommunity/",
+          external: true,
         },
+        {
+          id: 2,
+          index: 2,
+          title: "QnA",
+          url: "https://vgualumniqna.tumblr.com/",
+          external: true,
+        }
+      ],
+      isMenuActive: false
+    };
+  },
+  methods: {
+    logout() {
+      this.$emit("logout");
     },
-    data() {
-        return {
-            navItems: [
-                {
-                    id: 0,
-                    index: 0,
-                    title: 'Home',
-                    url: '/',
-                },
-                {
-                    id: 1,
-                    index: 1,
-                    title: 'Facebook',
-                    url: '/',
-                },
-                {
-                    id: 2,
-                    index: 2,
-                    title: 'QnA',
-                    url: '/',
-                },
-            ],
-        };
-    },
-};
+    changeMenuState() {
+      this.isMenuActive = !this.isMenuActive;
+    }
+  }
+});
+
+export default NavigationBar;
 </script>
 
 <style lang="scss" src="./style.scss" />

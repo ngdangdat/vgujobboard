@@ -33,6 +33,7 @@ const App = Vue.extend({
     methods: {
         logout() {
             this.$store.dispatch('logout');
+            this.$router.push('/');
         },
     },
 });
