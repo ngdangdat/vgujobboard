@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { joinUrl } from './../../utils/url';
 import { getHeaders } from './../../utils/request';
 import config from '@/config/project.config.js';
-import { LOGIN_ACTIONS, PROFILE_ACTIONS, REGISTER_ACTIONS, MEMBER_LIST_ACTIONS } from './../../constrains/user';
+import { LOGIN_ACTIONS, PROFILE_ACTIONS, REGISTER_ACTIONS } from './../../constrains/user';
 import Vue from 'vue';
 
 const state = {
@@ -12,9 +12,6 @@ const state = {
     success: {},
     errors: {},
     pathBeforeLogin: null,
-    membersListPagination: {},
-    membersByPage: [],
-    membersCurrentPage: [],
 };
 
 const mutations = {
@@ -63,29 +60,6 @@ const mutations = {
         Vue.set(state.loadings, REGISTER_ACTIONS.REGISTER_REQUEST, false);
         Vue.set(state.errors, REGISTER_ACTIONS.REGISTER_REQUEST, payload);
     },
-
-    // Member list mutations
-    [MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_PENDING] (state) {
-        Vue.set(state.loadings, MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST, true);
-    },
-    [MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_SUCCESS] (state, payload = {}) {
-        Vue.set(state.loadings, MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST, false);
-        const { current, num_pages, count, results } = payload;
-        const pageIndex = current - 1;
-        Vue.set(state, 'membersListPagination', Object.assign({}, {
-            totalPage: num_pages,
-            count: count,
-            currentPage: current,
-        }));
-        Vue.set(state.membersByPage, pageIndex, results);
-    },
-    [MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_FAILED] (state, payload = {}) {
-        Vue.set(state.loadings, MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST, false);
-        Vue.set(state.errors, MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST, payload);
-    },
-    [MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_CHANGE_PAGE] (state, payload = {}) {
-        Vue.set()
-    }
 };
 
 const actions = {
@@ -158,24 +132,6 @@ const actions = {
             }
         });
     },
-    [MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST] ({ commit }, payload) {
-        let page = 1;
-        if (Object.keys(payload).indexOf('page') > -1 && payload.page) {
-            page = payload.page;
-        }
-        commit(MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_PENDING);
-        return axios({
-            method: 'get',
-            headers: getHeaders(),
-            url: joinUrl(config.API_ENDPOINT, `user?page_size=${config.PAGINATION_PAGE_SIZE}&page=${page}`),
-        }).then(response => {
-            if (response.data.success) {
-                commit(MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_SUCCESS, response.data.data);
-            } else {
-                commit(MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_FAILED, response.data.errors);
-            }
-        });
-    },
 };
 
 const getters = {
@@ -185,12 +141,6 @@ const getters = {
     registerSuccess: state => state.success[REGISTER_ACTIONS.REGISTER_REQUEST] || false,
     loggedInUser: state => state.user || null,
     isUserLoading: state => state.loading || false,
-    membersByPage: state => page => state.membersByPage[page] || [],
-    membersListPagination: state => state.membersListPagination || Object.assign({}, {
-        totalPage: 1,
-        count: 1,
-        currentPage: 1,
-    }),
     user: state => state.user || null,
 };
 

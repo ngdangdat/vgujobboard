@@ -4,9 +4,12 @@
   color: #000;
   cursor: pointer;
   border: solid 1px #fff;
-  img {
-    max-width: 200px;
-    height: auto;
+  .avatar {
+    border: dashed 1px #ccc;
+    img {
+      max-width: 200px;
+      height: auto;
+    }
   }
   .info {
     padding-left: 1.5rem;
