@@ -1,16 +1,4 @@
-<template>
-  <div>
-    <member-detail
-      v-if="user"
-      :user="user"
-    />
-  </div>
-</template>
-
-<script>
 import Vue from 'vue';
-import { mapGetters } from 'vuex';
-import MemberDetailComponent from '@/components/Member/index.vue';
 
 const getMajorDisplay = (major) => {
     const mapping = {
@@ -34,17 +22,16 @@ const getCountryDisplay = (country) => {
         DE: "Germany",
     };
     return mapping[country];
-}
+};
 
-const ProfileView = Vue.extend({
-  name: 'ProfileView',
-  components: {
-    'member-detail': MemberDetailComponent,
+const MemberDetail = Vue.extend({
+  props: {
+    user: {
+        type: Object,
+        required: true,
+    },
   },
   computed: {
-    ...mapGetters({
-        user: 'user',
-    }),
     fullName() {
         return `${this.user.first_name} ${this.user.last_name}`
     },
@@ -56,5 +43,4 @@ const ProfileView = Vue.extend({
   },
 });
 
-export default ProfileView;
-</script>
+export default MemberDetail;

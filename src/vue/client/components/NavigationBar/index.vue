@@ -26,13 +26,19 @@
                 }"
             >
                 <div class="navbar-start">
-                    <router-link v-for="navItem in navItems"
-                        :to="navItem.url"
-                        :key="navItem.id"
-                        class="navbar-item bd-navbar-item-documentation"
+                    <router-link to="/" class="navbar-item bd-navbar-item-documentation">Home</router-link>
+                    <a class="navbar-item bd-navbar-item-documentation"
+                        href="https://www.facebook.com/VGUAlumniCommunity/"
+                        target="_blank"
                     >
-                        {{ navItem.title }}
-                    </router-link>
+                        Facebook
+                    </a>
+                    <a class="navbar-item bd-navbar-item-documentation"
+                        href="https://vgualumniqna.tumblr.com/"
+                        target="_blank"
+                    >
+                        QnA
+                    </a>
                 </div>
                 <div class="navbar-end">
                     <router-link v-if="user == null" to="/login" class="is-hidden-touch button">Login</router-link>

@@ -1,0 +1,23 @@
+<div v-if="user">
+  <div class="overview">
+    <div class="avatar">
+      <img :src="user.profile.avatar" :alt="fullName" />
+    </div>
+    <div class="column description">
+      <p class="head">
+        <strong>{{ fullName }}</strong>
+      </p>
+      <p class="sub">
+        {{ `${getMajorDisplay(user.profile.major)}, ${user.profile.intake}` }}
+      </p>
+      <p class="sub">
+        {{ `${getStateDisplay(user.profile.state)}, ${getCountryDisplay(user.profile.country)}` }}
+      </p>
+      <p class="sub">
+        <a :href="`mailto:${user.email}`">{{ user.email }}</a>
+      </p>
+    </div>
+  </div>
+  <div>
+  </div>
+</div>

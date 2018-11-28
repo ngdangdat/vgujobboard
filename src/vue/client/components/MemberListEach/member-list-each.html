@@ -1,0 +1,10 @@
+<div class="user-card">
+    <div class="avatar">
+        <img :src="user.profile.avatar" :alt="fullName"/>
+    </div>
+    <div class="info">
+        <p><strong>{{ fullName }}</strong></p>
+        <p>{{ `${user.profile.major} ${user.profile.intake}` }}</p>
+        <p>{{ `${user.profile.state}, ${user.profile.country}` }}</p>
+    </div>
+</div>
