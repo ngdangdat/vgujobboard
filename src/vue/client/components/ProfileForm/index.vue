@@ -284,7 +284,7 @@
       </div>
       <div class="field">
         <div v-if="avatarDisplay">
-          <img :src="avatarDisplay" alt="Avatar">
+          <img src="https://picsum.photos/256/256" alt="Avatar">
         </div>
         <div class="file has-name is-fullwidth is-right">
           <label class="file-label">
