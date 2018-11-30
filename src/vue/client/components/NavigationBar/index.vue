@@ -45,7 +45,7 @@
                     <div v-else class="is-hidden-touch dropdown is-hoverable is-right">
                         <div class="dropdown-trigger">
                             <div class="avatar is-hidden-touch button" aria-haspopup="true" aria-controls="account-menu">
-                                <img :src="user.profile.avatar" :alt="user.name">
+                                <img src="https://picsum.photos/256/256" :alt="user.name">
                             </div>
                             <div class="caret-down"></div>
                         </div>

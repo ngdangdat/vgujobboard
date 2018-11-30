@@ -1,0 +1,36 @@
+<div>
+    <ul class="columns pagination">
+        <li v-if="currentPage !== firstPage && isQuickNavShow" class="quick-nav left">
+            <a class="button" @click="changePage(firstPage)">
+                <<
+            </a>
+            <a class="button" @click="changePage(currentPage - 1)">
+                <
+            </a>
+        </li>
+        <li v-for="page in pages"
+            :key="page.num"
+            class="page"
+        >
+            <a v-if="!page.isDisabled" @click="changePage(page.num)">
+                {{ page.num }}
+            </a>
+            <input v-else
+                type="text" class="input has-text-centered"
+                :value="page.num"
+                @change="changePageWithInput"
+            />
+        </li>
+        <li v-if="currentPage !== lastPage && isQuickNavShow" class="quick-nav right">
+            <a class="button" @click="changePage(currentPage + 1)">
+                >
+            </a>
+            <a class="button" @click="changePage(lastPage)">
+                >>
+            </a>
+        </li>
+    </ul>
+    <div class="has-text-centered">
+        Total pages: <strong>{{ totalPages }}</strong>
+    </div>
+</div>

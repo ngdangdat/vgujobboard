@@ -49,6 +49,7 @@ let mutations = {
         Vue.set(state, 'totalMembers', count);
         Vue.set(state, 'totalPages', num_pages);
         Vue.set(state.memberIDsByPage, current, userIdsOfCurrentPage);
+        Vue.set(state, 'currentPage', current);
     },
     [MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_FAILED] (state, payload = {}) {
         Vue.set(state.loadings, MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST, false);

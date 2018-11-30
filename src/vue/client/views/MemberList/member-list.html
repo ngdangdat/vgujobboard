@@ -1,0 +1,23 @@
+<div>
+    <h2 class="title has-text-centered">
+        VGU Alumni Member List
+    </h2>
+    <ul style="width: 100%;" class="columns is-multiline">
+        <li
+            class="column is-half"
+            v-for="member in memberList"
+            :key="member.id"
+        >
+            <router-link :to="`/member/${member.id}`">
+                <member-list-each :user="member" />
+            </router-link>
+        </li>
+    </ul>
+    <pagination
+        v-if="totalPages > 1"
+        @changePage="changePage"
+        :total-pages="totalPages"
+        :current-page="currentPage"
+        :max-visible-buttons="3"
+    />
+</div>
