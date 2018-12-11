@@ -111,6 +111,20 @@ class UserChangePasswordMixin(Serializer):
     return user
 
 
+class CountrySerializer(ModelSerializer):
+
+  class Meta:
+    model = Country
+    fields = ('id', 'name', )
+
+
+class CitySerializer(ModelSerializer):
+
+  class Meta:
+    model = City
+    fields = ('id', 'name', )
+
+
 class UserChangePasswordSerializer(UserChangePasswordMixin):
   password = serializers.CharField(required=True)
 

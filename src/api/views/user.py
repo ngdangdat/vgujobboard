@@ -4,11 +4,14 @@ from rest_framework import status
 from rest_framework.settings import api_settings
 from rest_framework.exceptions import PermissionDenied, ParseError, NotFound, NotAuthenticated
 
-from api.serializers import UserSerializer, UserChangePasswordSerializer, UserChangePasswordByOTPSerializer
+from api.serializers import (
+  UserSerializer, UserChangePasswordSerializer, UserChangePasswordByOTPSerializer,
+  CountrySerializer, CitySerializer,
+)
 from api.http import Response
 from api.exceptions import Throttled, CODE
 
-from user.models import User, OneTimePassword
+from user.models import User, OneTimePassword, Country, City
 from user.otp import generate_otp_from_instance, is_valid_otp
 from user.exceptions import LimitedException, InvalidOTPException
 from user.const import OTP_INTERVAL
@@ -343,3 +346,27 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
       serializer.is_valid(raise_exception=True)
       serializer.save()
     return Response({})
+
+  @list_route(methods=['get'], permission_classes=())
+  def country(self, request, *args, **kwargs):
+    """
+    Get country list
+    """
+    countries = Country.objects.all().order_by('name')
+    serializer = CountrySerializer(countries, many=True)
+    return Response(serializer.data)
+
+  @list_route(url_path='country/(?P<country_id>[\\d]+)/cities', permission_classes=())
+  def cities(self, request, country_id, *args, **kwargs):
+    """
+    Get city list using country ID
+    """
+    try:
+      country = Country.objects.get(id=country_id)
+    except Country.DoesNotExist:
+      raise NotFound('User not found.')
+
+    cities = City.objects.filter(country=country)
+    print(cities)
+    serializer = CitySerializer(cities, many=True)
+    return Response(serializer.data)

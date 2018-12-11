@@ -43,4 +43,7 @@ class AuthSerializer(Serializer):
         attrs['user'] = user
         return attrs
 
-from .user import UserSerializer, ProfileSerializer, UserChangePasswordSerializer, UserChangePasswordByOTPSerializer
+from .user import (
+    UserSerializer, ProfileSerializer, UserChangePasswordSerializer, UserChangePasswordByOTPSerializer,
+    CountrySerializer, CitySerializer,
+)

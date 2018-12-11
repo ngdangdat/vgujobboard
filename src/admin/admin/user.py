@@ -23,7 +23,7 @@ DATE_FIELDS = (_('Important Dates'), {
 PROFILE_FIELDS = (_('Profile'), {
   'fields': (
       'major', 'intake', 'birthday', 'phone_number', 'gender',
-      'state', 'country', 'organization', 'title', 'status', 'avatar',
+      'city', 'country', 'organization', 'title', 'status', 'avatar',
   )
 })
 
