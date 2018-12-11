@@ -1,7 +1,6 @@
-import axios from 'axios';
 import _ from 'lodash';
-import { joinUrl } from './../../utils/url';
-import { getHeaders } from './../../utils/request';
+import { joinUrl } from '@/utils/url';
+import { getHeaders, apiClient } from '@/utils/request';
 import config from '@/config/project.config.js';
 import { LOGIN_ACTIONS, PROFILE_ACTIONS, REGISTER_ACTIONS } from './../../constrains/user';
 import Vue from 'vue';
@@ -65,7 +64,7 @@ const mutations = {
 const actions = {
     [PROFILE_ACTIONS.PROFILE_REQUEST] ({ commit }) {
         commit(PROFILE_ACTIONS.PROFILE_REQUEST_PENDING);
-        return axios({
+        return apiClient({
             method: 'GET',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, 'user/profile'),
@@ -81,7 +80,7 @@ const actions = {
     },
     [LOGIN_ACTIONS.LOGIN_REQUEST] ({ commit, dispatch }, payload) {
         commit(LOGIN_ACTIONS.LOGIN_REQUEST_PENDING);
-        axios({
+        apiClient({
             method: 'POST',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, 'auth'),
@@ -119,7 +118,7 @@ const actions = {
             'Content-Type': 'multipart/form-data',
         };
 
-        return axios({
+        return apiClient({
             method: 'post',
             headers: headers,
             url: joinUrl(config.API_ENDPOINT, 'user'),

@@ -1,5 +1,8 @@
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
+from django.views.decorators.csrf import csrf_exempt
+from django.middleware.csrf import rotate_token
+from django.contrib.auth import _get_backends
 
 from rest_framework import viewsets, exceptions, permissions
 from rest_framework.decorators import list_route
@@ -11,6 +14,9 @@ from api.models import Token
 
 from user.models import Profile
 
+SESSION_KEY = '_auth_user_id'
+BACKEND_SESSION_KEY = '_auth_user_backend'
+HASH_SESSION_KEY = '_auth_user_hash'
 
 def get_token_from_header(request):
     """ Get token from request's header """
@@ -28,6 +34,7 @@ class AuthViewSet(viewsets.GenericViewSet):
     permission_classes = ()
     serializer_class = AuthSerializer
 
+    @csrf_exempt
     def create(self, request, *args, **kwargs):
         """
         @apiVersion 1.0.0
@@ -61,13 +68,35 @@ class AuthViewSet(viewsets.GenericViewSet):
         except exceptions.ValidationError as e:
             user_login_failed.send(sender=__name__, credentials=request.data)
             raise e
-        return self.login_success(serializer.validated_data['user'])
+        return self.login_success(serializer.validated_data['user'], request)
 
-    def login_success(self, user):
+    def login_success(self, user, request):
+        # token = Token.objects.create(user=user)
+        try:
+            backend = user.backend
+        except AttributeError:
+            backends = _get_backends(return_tuples=True)
+            if len(backends) == 1:
+                _, backend = backends[0]
+            else:
+                raise ValueError(
+                    'You have multiple authentication backends configured and '
+                    'therefore must provide the `backend` argument or set the '
+                    '`backend` attribute on the user.'
+                )
+        session_auth_hash = ''
+        if hasattr(user, 'get_session_auth_hash'):
+            session_auth_hash = user.get_session_auth_hash()
+
+        request.session[SESSION_KEY] = user._meta.pk.value_to_string(user)
+        request.session[BACKEND_SESSION_KEY] = backend
+        request.session[HASH_SESSION_KEY] = session_auth_hash
         user_logged_in.send(sender=user.__class__, request=self.request, user=user)
-        token = Token.objects.create(user=user)
+        if hasattr(request, 'user'):
+            request.user = user
+        rotate_token(request)
         return Response({
-            'token': token.key,
+            # 'token': token.key,
             'user': {
                 'id': user.id,
                 'email': user.email,

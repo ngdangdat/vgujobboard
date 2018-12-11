@@ -22,5 +22,6 @@ class SessionAuthentication(authentication.SessionAuthentication):
   """
   Custom Session Authentication
   """
-  def enforce_csrf(self, request):
-    return
+  pass
+  # def enforce_csrf(self, request):
+  #   return

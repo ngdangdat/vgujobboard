@@ -1,7 +1,6 @@
-import axios from 'axios';
 import _ from 'lodash';
 import { joinUrl } from './../../utils/url';
-import { getHeaders } from './../../utils/request';
+import { getHeaders, apiClient } from '@/utils/request';
 import config from '@/config/project.config.js';
 import { MEMBER_LIST_ACTIONS, MEMBER_DETAIL_ACTIONS } from '@/constrains/member';
 import Vue from 'vue';
@@ -62,7 +61,7 @@ let actions = {
     [MEMBER_DETAIL_ACTIONS.MEMBER_DETAIL_REQUEST] ({ commit }, payload) {
         const { userId } = payload;
         commit(MEMBER_DETAIL_ACTIONS.MEMBER_DETAIL_REQUEST_PENDING);
-        return axios({
+        return apiClient({
             method: 'get',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, `user/${userId}`),
@@ -82,7 +81,7 @@ let actions = {
     [MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST] ({ commit }, payload) {
         const { page } = payload;
         commit(MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_PENDING);
-        return axios({
+        return apiClient({
             method: 'get',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, `user?page_size=${config.PAGINATION_PAGE_SIZE}&page=${page}`),

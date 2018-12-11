@@ -10,3 +10,13 @@ export const getHeaders = () => {
   }
   return headers;
 };
+
+/**
+ * Custom API client
+ */
+
+let axios = require('axios');
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
+export const apiClient = axios;

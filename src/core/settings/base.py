@@ -226,7 +226,7 @@ PASSWORD_MIN_DIGITS = 1
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': 'api.permissions.IsAuthenticated',
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'api.authentications.TokenAuthentication',
+        # 'api.authentications.TokenAuthentication',
         'api.authentications.SessionAuthentication',
     ],
     'EXCEPTION_HANDLER': 'api.views.exception_handler',
