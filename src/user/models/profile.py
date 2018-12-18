@@ -9,6 +9,7 @@ from django.core.files.base import File
 from django.conf import settings
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import slugify
 
 from core.validators import validate_phone_number, validate_intake, validate_avatar
 from core.models import ModelDiffMixin
@@ -69,6 +70,25 @@ class ProfileManager(models.Manager):
     return profile
 
 
+class Country(models.Model):
+  name = models.CharField(max_length=70)
+
+  objects = models.Manager()
+
+  def __str__(self):
+    return self.name
+
+
+class City(models.Model):
+  country = models.ForeignKey(Country, on_delete=models.CASCADE)
+  name = models.CharField(max_length=100)
+
+  objects = models.Manager()
+
+  def __str__(self):
+    return self.name
+
+
 class Profile(ModelDiffMixin, models.Model):
   user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, on_delete=models.CASCADE)
   gender = models.PositiveSmallIntegerField(_('Gender'), choices=GENDER_CHOICES, default=GENDER.UNDEFINED)
@@ -90,8 +110,8 @@ class Profile(ModelDiffMixin, models.Model):
     null=True,
     validators=[validate_phone_number],
   )
-  state = models.CharField(_('City of Residence'), default='', max_length=255)
-  country = models.CharField(_('Country of Residence'), default='', max_length=255)
+  city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+  country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
   organization = models.CharField(_('Organization'), default='', max_length=255)
   title = models.CharField(_('Position/Major'), default='', max_length=255)
   linkedin = models.URLField(_('LinkedIn Profile URL'), null=True, blank=True)
