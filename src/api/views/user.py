@@ -366,7 +366,6 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
     except Country.DoesNotExist:
       raise NotFound('User not found.')
 
-    cities = City.objects.filter(country=country)
-    print(cities)
+    cities = City.objects.filter(country=country).order_by('name')
     serializer = CitySerializer(cities, many=True)
     return Response(serializer.data)
