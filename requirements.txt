@@ -10,7 +10,7 @@ pytz==2018.3
 requests==2.20.0
 six==1.11.0
 Unidecode==1.0.22
-urllib3==1.22
+urllib3==1.23
 dj-database-url==0.4.2
 gunicorn==19.7.1
 postgres==2.2.1

@@ -16,7 +16,7 @@ from core.modules.image import create_image_from_b64
 PROFILE_AVATAR_KEY = settings.PROFILE_AVATAR_KEY
 
 PROFILE_FIELDS = (
-  'gender', 'major', 'intake', 'phone_number', 'state', 'country',
+  'gender', 'major', 'intake', 'phone_number', 'city', 'country',
   'organization', 'title', 'status', 'avatar', 'birthday',
   'linkedin',
 )
