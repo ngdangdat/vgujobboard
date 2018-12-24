@@ -57,6 +57,22 @@ const router = new Router({
                 requiresAuth: true,
             },
         },
+        {
+            path: '/resetpassword',
+            component: ResetPassword,
+            props: true,
+            meta: {
+                requiresAuth: false,
+            },
+        },
+        {
+            path: '/newpassword',
+            component: NewPassword,
+            props: true,
+            meta: {
+                requiresAuth: false,
+            },
+        },
     ],
 });
 
