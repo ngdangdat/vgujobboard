@@ -27,8 +27,6 @@ class Command(BaseCommand):
             self.seed_country()
         elif action == 'clearcountry':
             self.clear_country()
-        elif action == 'clearcity':
-            self.clear_city()
         else:
             self.stdout.write('Cannot found action %s' % action)
 
@@ -78,11 +76,3 @@ class Command(BaseCommand):
             c.delete()
 
         self.stdout.write('Done clearing %s countries' % len(countries))
-    
-    def clear_city(self):
-        cities = City.objects.all()
-        for c in cities:
-            c.delete()
-
-        self.stdout.write('Done clearing %s cities' % len(cities))
-
