@@ -3,7 +3,7 @@ from django.conf import settings
 
 from rest_framework import serializers, exceptions
 
-from user.models import *
+from user.models import Major, User, UserMajor, Profile, save_temp_avatar, Country, City
 from user.otp import get_otp_instance, is_valid_otp
 from user.exceptions import InvalidOTPException, LimitedException
 
@@ -16,10 +16,30 @@ from core.modules.image import create_image_from_b64
 PROFILE_AVATAR_KEY = settings.PROFILE_AVATAR_KEY
 
 PROFILE_FIELDS = (
-  'gender', 'major', 'intake', 'phone_number', 'city', 'country',
+  'gender', 'phone_number', 'city', 'country',
   'organization', 'title', 'status', 'avatar', 'birthday',
   'linkedin',
 )
+
+
+class UserMajorSerializer(ModelSerializer):
+
+
+  def to_representation(self, instance):
+    data = super(UserMajorSerializer, self).to_representation(instance)
+    data['name'] = instance.major.name
+    data['shorten'] = instance.major.shorten
+
+    degree_dict = dict()
+    degree_dict['value'] = instance.major.degree
+    degree_dict['display'] = instance.major.degree_display
+
+    data['degree'] = degree_dict
+    return data
+
+  class Meta:
+    model = UserMajor
+    fields = ('major', 'intake', )
 
 
 class ProfileSerializer(ModelSerializer):
@@ -28,7 +48,7 @@ class ProfileSerializer(ModelSerializer):
   def validate_avatar(self, value):
     try:
       validate_avatar(value)
-    except Exception as e:
+    except Exception:
       raise exceptions.ValidationError('Invalid avatar.')
     return value
   
@@ -49,6 +69,7 @@ class ProfileSerializer(ModelSerializer):
 
 class UserSerializer(ModelSerializer):
   profile = ProfileSerializer(required=False, many=False)
+  majors = UserMajorSerializer(required=False, many=True)
   password = serializers.CharField(write_only=True)
 
   def to_internal_value(self, data):
@@ -67,6 +88,10 @@ class UserSerializer(ModelSerializer):
     if 'profile' in validated_data:
       _profile = dict(validated_data.pop('profile'))
 
+    _majors = {}
+    if 'majors' in validated_data:
+      _majors = list(validated_data.pop('majors'))
+
     if 'email' not in validated_data or not validated_data['email']:
       raise exceptions.ParseError('Please enter email.', CODE.USER.REQUIRED_EMAIL)
     
@@ -74,17 +99,28 @@ class UserSerializer(ModelSerializer):
     user.set_password(validated_data['password'])
     user.is_active = False
     user.save()
+
+    for major in _majors:
+      UserMajor.objects.create(user=user, **major)
+
     user.profile = Profile.objects.get_or_create_profile(user=user, **_profile)
     return user
 
   def update(self, instance, validated_data):
-    files = self.context.get('files', {})
     if 'profile' in validated_data:
       profile = instance.profile
       data = validated_data.pop('profile', {})
       serializer = ProfileSerializer(instance=profile, data=data, partial=True, many=False, context=self.context)
       serializer.is_valid()
       serializer.save()
+    if 'majors' in validated_data:
+      _majors = instance.majors
+      for _major in _majors:
+        _major.delete()
+      _majors = list(validated_data.pop('majors', {}))
+      for _major in _majors:
+        UserMajor.objects.create(user=instance, **_major)
+
     instance = super(UserSerializer, self).update(instance, validated_data)
     return instance
 
@@ -92,7 +128,7 @@ class UserSerializer(ModelSerializer):
     model = User
     extra_kwargs = {'password': {'write_only': True}}
     fields = (
-      'id', 'email', 'first_name', 'last_name', 'profile', 'password',
+      'id', 'email', 'first_name', 'last_name', 'profile', 'password', 'majors',
     )
 
 
@@ -113,6 +149,7 @@ class UserChangePasswordMixin(Serializer):
 
 class CountrySerializer(ModelSerializer):
 
+
   class Meta:
     model = Country
     fields = ('id', 'name', )
@@ -120,9 +157,25 @@ class CountrySerializer(ModelSerializer):
 
 class CitySerializer(ModelSerializer):
 
+
   class Meta:
     model = City
     fields = ('id', 'name', )
+
+
+class MajorSerializer(ModelSerializer):
+  def to_representation(self, instance):
+    data = super(MajorSerializer, self).to_representation(instance)
+    degree_dict = dict()
+    degree_dict['value'] = instance.degree
+    degree_dict['display'] = instance.degree_display
+    data['degree'] = degree_dict
+    return data
+
+
+  class Meta:
+    model = Major
+    fields = ('id', 'name', 'shorten', 'start_from', )
 
 
 class UserChangePasswordSerializer(UserChangePasswordMixin):

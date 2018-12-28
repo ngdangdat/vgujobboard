@@ -26,6 +26,7 @@ from .job import JobAdmin
 from .job import JobFieldAdmin
 from user.models import *
 from admin.admin.user import UserAdmin
+from admin.admin.major import MajorAdmin
 from django.contrib.auth.admin import GroupAdmin
 
 # Job
@@ -35,3 +36,4 @@ admin_site.register(JobField, JobFieldAdmin)
 # User
 admin_site.register(User, UserAdmin)
 admin_site.register(Group, GroupAdmin)
+admin_site.register(Major, MajorAdmin)

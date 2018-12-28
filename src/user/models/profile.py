@@ -16,7 +16,7 @@ from core.models import ModelDiffMixin
 from core.modules.storage import get_storage_path, get_cdn_url
 from core.modules.image import crop_it
 
-from user.const import GENDER, GENDER_CHOICES, MAJOR, MIN_INTAKE
+from user.const import GENDER, GENDER_CHOICES
 
 AVATAR_SIZE = 256, 256
 PROFILE_AVATAR_KEY = settings.PROFILE_AVATAR_KEY
@@ -101,8 +101,6 @@ class Profile(ModelDiffMixin, models.Model):
       max_length=255,
       validators=[validate_avatar],
   )
-  major = models.PositiveSmallIntegerField(_('Major'), choices=MAJOR.choices, default=MAJOR.UNDEFINED,)
-  intake = models.PositiveSmallIntegerField(_('Intake'), default=MIN_INTAKE, validators=[validate_intake])
   phone_number = models.CharField(_('Phone Number'),
     default=None,
     max_length=15,
