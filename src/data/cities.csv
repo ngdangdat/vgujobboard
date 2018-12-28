@@ -29,7 +29,7 @@
 29	Nili	1
 30	Parun	1
 31	Pol-e Khomri	1
-32	Pul-e `Alam	1
+32	Pul-e Alam	1
 33	Qala i Naw	1
 34	Qalat	1
 35	Sar-e Pul	1
@@ -654,9 +654,9 @@
 654	Zangilan	14
 655	Zaqatala	14
 656	Zardab	14
-657	Freeport	14
-658	Nassau	14
-659	Manama	14
+657	Freeport	15
+658	Nassau	15
+659	Manama	16
 660	Barisal	17
 661	Chittagong	17
 662	Comilla	17
@@ -2467,32 +2467,32 @@
 2467	Prague	54
 2468	Usti Nad Labem	54
 2469	Zlin	54
-2470	Abengourou	102
-2471	Abidjan	102
-2472	Aboisso	102
-2473	Agboville	102
-2474	Bangolo	102
-2475	Bondoukou	102
-2476	Bouafle	102
-2477	Bouake	102
-2478	Dabou	102
-2479	Daloa	102
-2480	Dimbokro	102
-2481	Divo	102
-2482	Ferkessedougou	102
-2483	Gagnoa	102
-2484	Grand Bassam	102
-2485	Guiglo	102
-2486	Korhogo	102
-2487	Man	102
-2488	Odienne	102
-2489	San-Pedro	102
-2490	Sassandra	102
-2491	Seguela	102
-2492	Soubre	102
-2493	Touba	102
-2494	Toumodi	102
-2495	Yamoussoukro	102
+2470	Abengourou	55
+2471	Abidjan	55
+2472	Aboisso	55
+2473	Agboville	55
+2474	Bangolo	55
+2475	Bondoukou	55
+2476	Bouafle	55
+2477	Bouake	55
+2478	Dabou	55
+2479	Daloa	55
+2480	Dimbokro	55
+2481	Divo	55
+2482	Ferkessedougou	55
+2483	Gagnoa	55
+2484	Grand Bassam	55
+2485	Guiglo	55
+2486	Korhogo	55
+2487	Man	55
+2488	Odienne	55
+2489	San-Pedro	55
+2490	Sassandra	55
+2491	Seguela	55
+2492	Soubre	55
+2493	Touba	55
+2494	Toumodi	55
+2495	Yamoussoukro	55
 2496	Aalborg	56
 2497	Aarhus	56
 2498	Esbjerg	56
@@ -2826,104 +2826,104 @@
 2826	Oyem	74
 2827	Port-Gentil	74
 2828	Tchibanga	74
-2829	Banjul	74
-2830	Bansang	74
-2831	Basse Santa Su	74
-2832	Brikama	74
-2833	Georgetown	74
-2834	Kanifing	74
-2835	Kerewan	74
-2836	Mansa Konko	74
-2837	Akhaltsikhe	74
-2838	Ambrolauri	74
-2839	Batumi	74
-2840	Gori	74
-2841	Kutaisi	74
-2842	Mtskheta	74
-2843	Ozurgeti	74
-2844	Poti	74
-2845	Rustavi	74
-2846	Rustavi	74
-2847	Sukhumi	74
-2848	Tbilisi	74
-2849	Telavi	74
-2850	Tskhinvali	74
-2851	Zugdidi	74
-2852	Augsburg	74
-2853	Berlin	74
-2854	Bielefeld	74
-2855	Bonn	74
-2856	Braunschweig	74
-2857	Bremen	74
-2858	Bremerhaven	74
-2859	Chemnitz	74
-2860	Coburg	74
-2861	Cologne	74
-2862	Cottbus	74
-2863	Dortmund	74
-2864	Dresden	74
-2865	Duisburg	74
-2866	Dusseldorf	74
-2867	Emden	74
-2868	Erfurt	74
-2869	Essen	74
-2870	Flensburg	74
-2871	Frankfurt	74
-2872	Freiburg	74
-2873	Furth	74
-2874	Gera	74
-2875	Giessen	74
-2876	Gottingen	74
-2877	Hamburg	74
-2878	Hannover	74
-2879	Heidelberg	74
-2880	Hof	74
-2881	Ingolstadt	74
-2882	Jena	74
-2883	Karlsruhe	74
-2884	Kassel	74
-2885	Kiel	74
-2886	Koblenz	74
-2887	Leipzig	74
-2888	Lubeck	74
-2889	Magdeburg	74
-2890	Mainz	74
-2891	Mannheim	74
-2892	Munich	74
-2893	Munster	74
-2894	Nurnberg	74
-2895	Oldenburg	74
-2896	Osnabruck	74
-2897	Passau	74
-2898	Potsdam	74
-2899	Regensburg	74
-2900	Rosenheim	74
-2901	Rostock	74
-2902	Saarbrucken	74
-2903	Schwerin	74
-2904	Stralsund	74
-2905	Stuttgart	74
-2906	Ulm	74
-2907	Wiesbaden	74
-2908	Wuppertal	74
-2909	Wurzburg	74
-2910	Accra	74
-2911	Bawku	74
-2912	Berekum	74
-2913	Bolgatanga	74
-2914	Cape Coast	74
-2915	Ho	74
-2916	Koforidua	74
-2917	Kumasi	74
-2918	Nkawkaw	74
-2919	Obuasi	74
-2920	Sekondi	74
-2921	Sunyani	74
-2922	Tamale	74
-2923	Tema	74
-2924	Wa	74
-2925	Winneba	74
-2926	Yendi	74
+2829	Banjul	75
+2830	Bansang	75
+2831	Basse Santa Su	75
+2832	Brikama	75
+2833	Georgetown	75
+2834	Kanifing	75
+2835	Kerewan	75
+2836	Mansa Konko	75
+2837	Akhaltsikhe	76
+2838	Ambrolauri	76
+2839	Batumi	76
+2840	Gori	76
+2841	Kutaisi	76
+2842	Mtskheta	76
+2843	Ozurgeti	76
+2844	Poti	76
+2845	Rustavi	76
+2846	Rustavi	76
+2847	Sukhumi	76
+2848	Tbilisi	76
+2849	Telavi	76
+2850	Tskhinvali	76
+2851	Zugdidi	76
+2852	Augsburg	77
+2853	Berlin	77
+2854	Bielefeld	77
+2855	Bonn	77
+2856	Braunschweig	77
+2857	Bremen	77
+2858	Bremerhaven	77
+2859	Chemnitz	77
+2860	Coburg	77
+2861	Cologne	77
+2862	Cottbus	77
+2863	Dortmund	77
+2864	Dresden	77
+2865	Duisburg	77
+2866	Dusseldorf	77
+2867	Emden	77
+2868	Erfurt	77
+2869	Essen	77
+2870	Flensburg	77
+2871	Frankfurt	77
+2872	Freiburg	77
+2873	Furth	77
+2874	Gera	77
+2875	Giessen	77
+2876	Gottingen	77
+2877	Hamburg	77
+2878	Hannover	77
+2879	Heidelberg	77
+2880	Hof	77
+2881	Ingolstadt	77
+2882	Jena	77
+2883	Karlsruhe	77
+2884	Kassel	77
+2885	Kiel	77
+2886	Koblenz	77
+2887	Leipzig	77
+2888	Lubeck	77
+2889	Magdeburg	77
+2890	Mainz	77
+2891	Mannheim	77
+2892	Munich	77
+2893	Munster	77
+2894	Nurnberg	77
+2895	Oldenburg	77
+2896	Osnabruck	77
+2897	Passau	77
+2898	Potsdam	77
+2899	Regensburg	77
+2900	Rosenheim	77
+2901	Rostock	77
+2902	Saarbrucken	77
+2903	Schwerin	77
+2904	Stralsund	77
+2905	Stuttgart	77
+2906	Ulm	77
+2907	Wiesbaden	77
+2908	Wuppertal	77
+2909	Wurzburg	77
+2910	Accra	78
+2911	Bawku	78
+2912	Berekum	78
+2913	Bolgatanga	78
+2914	Cape Coast	78
+2915	Ho	78
+2916	Koforidua	78
+2917	Kumasi	78
+2918	Nkawkaw	78
+2919	Obuasi	78
+2920	Sekondi	78
+2921	Sunyani	78
+2922	Tamale	78
+2923	Tema	78
+2924	Wa	78
+2925	Winneba	78
+2926	Yendi	78
 2927	Gibraltar	79
 2928	Agrinio	80
 2929	Alexandroupoli	80
@@ -3725,7 +3725,7 @@
 3725	Yamaguchi	104
 3726	Yokohama	104
 3727	Saint Helier	105
-3728	`Ajlun	106
+3728	Ajlun	106
 3729	Al Aqabah	106
 3730	Al Karak	106
 3731	Al Mafraq	106
@@ -3896,103 +3896,103 @@
 3896	Witu	108
 3897	Wote	108
 3898	Tarawa	109
-3899	Changyon	109
-3900	Chongjin	109
-3901	Chongju	109
-3902	Chosan	109
-3903	Haeju	109
-3904	Hamhung	109
-3905	Hungnam	109
-3906	Hyeson	109
-3907	Kaesong	109
-3908	Kanggye	109
-3909	Kilchu	109
-3910	Kimchaek	109
-3911	Kimhyonggwon	109
-3912	Manpo	109
-3913	Munchon	109
-3914	Musan	109
-3915	Nampo	109
-3916	Ongjin	109
-3917	P'yongsong	109
-3918	Pyongsan	109
-3919	Pyongyang	109
-3920	Rajin	109
-3921	Sariwon	109
-3922	Sin-Ni	109
-3923	Sinuiju	109
-3924	Sonbong	109
-3925	Sunchon	109
-3926	Taedong	109
-3927	Wonsan	109
-3928	Andong	109
-3929	Ansan	109
-3930	Busan	109
-3931	Changwon	109
-3932	Cheongju	109
-3933	Chuncheon	109
-3934	Daegu	109
-3935	Daejeon	109
-3936	Eumseong	109
-3937	Gangneung	109
-3938	Goyang	109
-3939	Gunsan	109
-3940	Gwangju	109
-3941	Gyeongju	109
-3942	Hongseong	109
-3943	Iksan	109
-3944	Incheon	109
-3945	Jeju	109
-3946	Jeonju	109
-3947	Mokpo	109
-3948	Muan	109
-3949	Pohang	109
-3950	Puch'on	109
-3951	Sejong	109
-3952	Seoul	109
-3953	Sokcho	109
-3954	Songnam	109
-3955	Suwon	109
-3956	Ulsan	109
-3957	Wonju	109
-3958	Yeosu	109
-3959	Decan	109
-3960	Dragash	109
-3961	Ferizaj	109
-3962	Fushe Kosove	109
-3963	Gjakove	109
-3964	Gjilan	109
-3965	Gllogovc	109
-3966	Gracanice	109
-3967	Hani i Elezit	109
-3968	Istog	109
-3969	Junik	109
-3970	Kacanik	109
-3971	Kamenice	109
-3972	Kline	109
-3973	Kllokot	109
-3974	Leposaviq	109
-3975	Lipjan	109
-3976	Malisheve	109
-3977	Mamushe	109
-3978	Mitrovice	109
-3979	Novoberde	109
-3980	Obiliq	109
-3981	Partesh	109
-3982	Peje	109
-3983	Podujeve	109
-3984	Pristina	109
-3985	Prizren	109
-3986	Rahovec	109
-3987	Ranillug	109
-3988	Shterpce	109
-3989	Shtime	109
-3990	Skenderaj	109
-3991	Suhareke	109
-3992	Viti	109
-3993	Vushtrri	109
-3994	Zubin Potok	109
-3995	Zvecan	109
+3899	Changyon	110
+3900	Chongjin	110
+3901	Chongju	110
+3902	Chosan	110
+3903	Haeju	110
+3904	Hamhung	110
+3905	Hungnam	110
+3906	Hyeson	110
+3907	Kaesong	110
+3908	Kanggye	110
+3909	Kilchu	110
+3910	Kimchaek	110
+3911	Kimhyonggwon	110
+3912	Manpo	110
+3913	Munchon	110
+3914	Musan	110
+3915	Nampo	110
+3916	Ongjin	110
+3917	P'yongsong	110
+3918	Pyongsan	110
+3919	Pyongyang	110
+3920	Rajin	110
+3921	Sariwon	110
+3922	Sin-Ni	110
+3923	Sinuiju	110
+3924	Sonbong	110
+3925	Sunchon	110
+3926	Taedong	110
+3927	Wonsan	110
+3928	Andong	111
+3929	Ansan	111
+3930	Busan	111
+3931	Changwon	111
+3932	Cheongju	111
+3933	Chuncheon	111
+3934	Daegu	111
+3935	Daejeon	111
+3936	Eumseong	111
+3937	Gangneung	111
+3938	Goyang	111
+3939	Gunsan	111
+3940	Gwangju	111
+3941	Gyeongju	111
+3942	Hongseong	111
+3943	Iksan	111
+3944	Incheon	111
+3945	Jeju	111
+3946	Jeonju	111
+3947	Mokpo	111
+3948	Muan	111
+3949	Pohang	111
+3950	Puch'on	111
+3951	Sejong	111
+3952	Seoul	111
+3953	Sokcho	111
+3954	Songnam	111
+3955	Suwon	111
+3956	Ulsan	111
+3957	Wonju	111
+3958	Yeosu	111
+3959	Decan	112
+3960	Dragash	112
+3961	Ferizaj	112
+3962	Fushe Kosove	112
+3963	Gjakove	112
+3964	Gjilan	112
+3965	Gllogovc	112
+3966	Gracanice	112
+3967	Hani i Elezit	112
+3968	Istog	112
+3969	Junik	112
+3970	Kacanik	112
+3971	Kamenice	112
+3972	Kline	112
+3973	Kllokot	112
+3974	Leposaviq	112
+3975	Lipjan	112
+3976	Malisheve	112
+3977	Mamushe	112
+3978	Mitrovice	112
+3979	Novoberde	112
+3980	Obiliq	112
+3981	Partesh	112
+3982	Peje	112
+3983	Podujeve	112
+3984	Pristina	112
+3985	Prizren	112
+3986	Rahovec	112
+3987	Ranillug	112
+3988	Shterpce	112
+3989	Shtime	112
+3990	Skenderaj	112
+3991	Suhareke	112
+3992	Viti	112
+3993	Vushtrri	112
+3994	Zubin Potok	112
+3995	Zvecan	112
 3996	Al Ahmadi	113
 3997	Al Jahra	113
 3998	Kuwait	113
@@ -4179,7 +4179,7 @@
 4179	Voinjama	119
 4180	Zwedru	119
 4181	Ajdabiya	120
-4182	Al `Aziziyah	120
+4182	Al Aziziyah	120
 4183	Al Bayda	120
 4184	Al Jaghbub	120
 4185	Al Jawf	120
@@ -4576,369 +4576,369 @@
 4576	Zebbug	131
 4577	Zejtun	131
 4578	Zurrieq	131
-4579	Majuro	14
-4580	Fort-de-France	14
-4581	Akjoujt	14
-4582	Aleg	14
-4583	Arafat	14
-4584	Atar	14
-4585	Ayoun el Atrous	14
-4586	Bir Mogrein	14
-4587	Bogue	14
-4588	Boutilimit	14
-4589	Chegga	14
-4590	Dar Naim	14
-4591	Fderik	14
-4592	Kaedi	14
-4593	Kiffa	14
-4594	Nema	14
-4595	Nouadhibou	14
-4596	Nouakchott	14
-4597	Rosso	14
-4598	Selibaby	14
-4599	Tevragh Zeina	14
-4600	Tidjikdja	14
-4601	Timbedra	14
-4602	Zouirat	14
-4603	Curepipe	14
-4604	Port Louis	14
-4605	Dzaoudzi	14
-4606	Acapulco	14
-4607	Acatlan	14
-4608	Agua Prieta	14
-4609	Aguascalientes	14
-4610	Aldama	14
-4611	Allende	14
-4612	Altata	14
-4613	Apatzingan	14
-4614	Ascension	14
-4615	Atlixco	14
-4616	Atoyac	14
-4617	Autlan	14
-4618	Ayutla	14
-4619	Balancan	14
-4620	Cabo San Lucas	14
-4621	Caborca	14
-4622	Campeche	14
-4623	Cananea	14
-4624	Canatlan	14
-4625	Cancun	14
-4626	Cardenas	14
-4627	Celaya	14
-4628	Champoton	14
-4629	Chetumal	14
-4630	Chihuahua	14
-4631	Chilpancingo	14
-4632	Ciudad Altamirano	14
-4633	Ciudad Camargo	14
-4634	Ciudad Constitucion	14
-4635	Ciudad del Carmen	14
-4636	Ciudad Guzman	14
-4637	Ciudad Hidalgo	14
-4638	Ciudad Juarez	14
-4639	Ciudad Madero	14
-4640	Ciudad Mante	14
-4641	Ciudad Obregon	14
-4642	Ciudad Valles	14
-4643	Ciudad Victoria	14
-4644	Coalcoman	14
-4645	Coatzacoalcos	14
-4646	Colima	14
-4647	Compostela	14
-4648	Cordoba	14
-4649	Cozumel	14
-4650	Cuauhtemoc	14
-4651	Cuencame	14
-4652	Cuernavaca	14
-4653	Culiacan	14
-4654	Delicias	14
-4655	Durango	14
-4656	El Fuerte	14
-4657	Eldorado	14
-4658	Ensenada	14
-4659	Escuinapa	14
-4660	Escuintla	14
-4661	Esperanza	14
-4662	Felipe Carrillo Puerto	14
-4663	Fresnillo	14
-4664	Frontera	14
-4665	Gomez Palacio	14
-4666	Guadalajara	14
-4667	Guamuchil	14
-4668	Guanajuato	14
-4669	Guasave	14
-4670	Guaymas	14
-4671	Guerrero Negro	14
-4672	Halacho	14
-4673	Hermosillo	14
-4674	Hidalgo del Parral	14
-4675	Huajuapan de Leon	14
-4676	Huatabampo	14
-4677	Iguala	14
-4678	Irapuato	14
-4679	Isla Mujeres	14
-4680	Izamal	14
-4681	Jaltipan	14
-4682	Juan Aldama	14
-4683	Juchitan	14
-4684	La Barca	14
-4685	La Cruz	14
-4686	La Paz	14
-4687	Lagos de Moreno	14
-4688	Lazaro Cardenas	14
-4689	Leon	14
-4690	Linares	14
-4691	Loreto	14
-4692	Los Mochis	14
-4693	Magdalena	14
-4694	Manzanillo	14
-4695	Matamoros	14
-4696	Matehuala	14
-4697	Mazatlan	14
-4698	Mazatlan	14
-4699	Merida	14
-4700	Mexicali	14
-4701	Mexico City	14
-4702	Miahuatlan	14
-4703	Minatitlan	14
-4704	Mitla	14
-4705	Monclova	14
-4706	Montemorelos	14
-4707	Monterrey	14
-4708	Morelia	14
-4709	Motul	14
-4710	Nacozari de Garcia	14
-4711	Nautla	14
-4712	Navajoa	14
-4713	Nezahualcoyotl	14
-4714	Nogales	14
-4715	Nueva Rosita	14
-4716	Nuevo Casas Grandes	14
-4717	Nuevo Laredo	14
-4718	Oaxaca	14
-4719	Ojinaga	14
-4720	Ometepec	14
-4721	Orizaba	14
-4722	Pachuca	14
-4723	Panuco	14
-4724	Papasquiaro	14
-4725	Paraiso	14
-4726	Parras	14
-4727	Petatlan	14
-4728	Peto	14
-4729	Piedras Negras	14
-4730	Pijijiapan	14
-4731	Pochutla	14
-4732	Poza Rica de Hidalgo	14
-4733	Progreso	14
-4734	Puebla	14
-4735	Puerto Escondido	14
-4736	Puerto Vallarta	14
-4737	Punta Prieta	14
-4738	Queretaro	14
-4739	Reynosa	14
-4740	Rio Verde	14
-4741	Sabinas Hidalgo	14
-4742	Salamanca	14
-4743	Salina Cruz	14
-4744	Saltillo	14
-4745	San Cristobal de Las Casas	14
-4746	San Felipe	14
-4747	San Fernando	14
-4748	San Juan del Rio	14
-4749	San Luis Potosi	14
-4750	San Pedro de las Colonias	14
-4751	San Quintin	14
-4752	Santa Barbara	14
-4753	Santa Rosalia	14
-4754	Santiago Ixcuintla	14
-4755	Santiago Tuxtla	14
-4756	Tamazunchale	14
-4757	Tampico	14
-4758	Tamuin	14
-4759	Tapachula	14
-4760	Taxco	14
-4761	Tecoman	14
-4762	Tecpan	14
-4763	Tecuala	14
-4764	Tehuacan	14
-4765	Tehuantepec	14
-4766	Tekax	14
-4767	Tenosique	14
-4768	Tepic	14
-4769	Teziutlan	14
-4770	Ticul	14
-4771	Tijuana	14
-4772	Tizimin	14
-4773	Tlaxcala	14
-4774	Tlaxiaco	14
-4775	Toluca	14
-4776	Torreon	14
-4777	Tula	14
-4778	Tuxpam	14
-4779	Tuxpan	14
-4780	Tuxtla Gutierrez	14
-4781	Uruapan	14
-4782	Valladolid	14
-4783	Valparaiso	14
-4784	Veracruz	14
-4785	Vicente Guerrero	14
-4786	Villa Ahumada	14
-4787	Villa Union	14
-4788	Villahermosa	14
-4789	Villanueva	14
-4790	Xalapa	14
-4791	Zacatecas	14
-4792	Zamora	14
-4793	Zumpango	14
-4794	Colonia	14
-4795	Kolonia	14
-4796	Palikir	14
-4797	Tofol	14
-4798	Weno	14
-4799	Anenii Noi	14
-4800	Balti	14
-4801	Basarabeasca	14
-4802	Bender	14
-4803	Briceni	14
-4804	Cahul	14
-4805	Calarasi	14
-4806	Cantemir	14
-4807	Causeni	14
-4808	Chisinau	14
-4809	Cimislia	14
-4810	Cocieri	14
-4811	Comrat	14
-4812	Criuleni	14
-4813	Donduseni	14
-4814	Drochia	14
-4815	Dubasari	14
-4816	Edinet	14
-4817	Falesti	14
-4818	Floresti	14
-4819	Glodeni	14
-4820	Hincesti	14
-4821	Ialoveni	14
-4822	Leova	14
-4823	Nisporeni	14
-4824	Ocnita	14
-4825	Orhei	14
-4826	Rezina	14
-4827	Riscani	14
-4828	Singerei	14
-4829	Soldanesti	14
-4830	Soroca	14
-4831	Stefan Voda	14
-4832	Straseni	14
-4833	Taraclia	14
-4834	Telenesti	14
-4835	Tiraspol	14
-4836	Ungheni	14
-4837	Monaco	14
-4838	Altay	14
-4839	Arvayheer	14
-4840	Baruun Urt	14
-4841	Bayankhongor	14
-4842	Bulgan	14
-4843	Buyant-Uhaa	14
-4844	Choybalsan	14
-4845	Choyr	14
-4846	Dalandzadgad	14
-4847	Darhan	14
-4848	Darhan	14
-4849	Dund-Us	14
-4850	Dzuunharaa	14
-4851	Dzuunmod	14
-4852	Erdenet	14
-4853	Hodrogo	14
-4854	Mandalgovi	14
-4855	Moron	14
-4856	Olgiy	14
-4857	Ondorhaan	14
-4858	Suchboatar	14
-4859	Tsetserleg	14
-4860	Ulaan-Uul	14
-4861	Ulaanbaatar	14
-4862	Ulaangom	14
-4863	Uliastay	14
-4864	Andrijevica	14
-4865	Bar	14
-4866	Berane	14
-4867	Bijelo Polje	14
-4868	Budva	14
-4869	Cetinje	14
-4870	Danilovgrad	14
-4871	Gusinje	14
-4872	Herceg-Novi	14
-4873	Kolasin	14
-4874	Kotor	14
-4875	Mojkovac	14
-4876	Niksic	14
-4877	Petnjica	14
-4878	Plav	14
-4879	Pljevlja	14
-4880	Pluzine	14
-4881	Podgorica	14
-4882	Rozaje	14
-4883	Savnik	14
-4884	Tivat	14
-4885	Ulcinj	14
-4886	Zabljak	14
-4887	Plymouth	14
-4888	Agadir	14
-4889	Beni Mellal	14
-4890	Casablanca	14
-4891	El Jadida	14
-4892	Er Rachidia	14
-4893	Fez	14
-4894	Goulimine	14
-4895	Kenitra	14
-4896	Ksar El Kebir	14
-4897	Larache	14
-4898	Marrakesh	14
-4899	Meknes	14
-4900	Ouezzane	14
-4901	Oujda	14
-4902	Rabat	14
-4903	Safi	14
-4904	Settat	14
-4905	Tan Tan	14
-4906	Tangier	14
-4907	Taza	14
-4908	Tiznit	14
-4909	Angoche	14
-4910	Beira	14
-4911	Chimoio	14
-4912	Chiramba	14
-4913	Cuamba	14
-4914	Dondo	14
-4915	Espungabera	14
-4916	Inhambane	14
-4917	Lichinga	14
-4918	Ligonha	14
-4919	Macia	14
-4920	Manica	14
-4921	Mapai	14
-4922	Maputo	14
-4923	Marrupa	14
-4924	Massangena	14
-4925	Matola	14
-4926	Maxixe	14
-4927	Moatize	14
-4928	Mocambique	14
-4929	Mocimboa	14
-4930	Mocuba	14
-4931	Montepuez	14
-4932	Nacala	14
-4933	Nampula	14
-4934	Nicuadala	14
-4935	Panda	14
-4936	Pemba	14
-4937	Quelimane	14
-4938	Quissico	14
-4939	Tete	14
-4940	Vilanculos	14
-4941	Xai-Xai	14
+4579	Majuro	132
+4580	Fort-de-France	133
+4581	Akjoujt	134
+4582	Aleg	134
+4583	Arafat	134
+4584	Atar	134
+4585	Ayoun el Atrous	134
+4586	Bir Mogrein	134
+4587	Bogue	134
+4588	Boutilimit	134
+4589	Chegga	134
+4590	Dar Naim	134
+4591	Fderik	134
+4592	Kaedi	134
+4593	Kiffa	134
+4594	Nema	134
+4595	Nouadhibou	134
+4596	Nouakchott	134
+4597	Rosso	134
+4598	Selibaby	134
+4599	Tevragh Zeina	134
+4600	Tidjikdja	134
+4601	Timbedra	134
+4602	Zouirat	134
+4603	Curepipe	135
+4604	Port Louis	135
+4605	Dzaoudzi	136
+4606	Acapulco	137
+4607	Acatlan	137
+4608	Agua Prieta	137
+4609	Aguascalientes	137
+4610	Aldama	137
+4611	Allende	137
+4612	Altata	137
+4613	Apatzingan	137
+4614	Ascension	137
+4615	Atlixco	137
+4616	Atoyac	137
+4617	Autlan	137
+4618	Ayutla	137
+4619	Balancan	137
+4620	Cabo San Lucas	137
+4621	Caborca	137
+4622	Campeche	137
+4623	Cananea	137
+4624	Canatlan	137
+4625	Cancun	137
+4626	Cardenas	137
+4627	Celaya	137
+4628	Champoton	137
+4629	Chetumal	137
+4630	Chihuahua	137
+4631	Chilpancingo	137
+4632	Ciudad Altamirano	137
+4633	Ciudad Camargo	137
+4634	Ciudad Constitucion	137
+4635	Ciudad del Carmen	137
+4636	Ciudad Guzman	137
+4637	Ciudad Hidalgo	137
+4638	Ciudad Juarez	137
+4639	Ciudad Madero	137
+4640	Ciudad Mante	137
+4641	Ciudad Obregon	137
+4642	Ciudad Valles	137
+4643	Ciudad Victoria	137
+4644	Coalcoman	137
+4645	Coatzacoalcos	137
+4646	Colima	137
+4647	Compostela	137
+4648	Cordoba	137
+4649	Cozumel	137
+4650	Cuauhtemoc	137
+4651	Cuencame	137
+4652	Cuernavaca	137
+4653	Culiacan	137
+4654	Delicias	137
+4655	Durango	137
+4656	El Fuerte	137
+4657	Eldorado	137
+4658	Ensenada	137
+4659	Escuinapa	137
+4660	Escuintla	137
+4661	Esperanza	137
+4662	Felipe Carrillo Puerto	137
+4663	Fresnillo	137
+4664	Frontera	137
+4665	Gomez Palacio	137
+4666	Guadalajara	137
+4667	Guamuchil	137
+4668	Guanajuato	137
+4669	Guasave	137
+4670	Guaymas	137
+4671	Guerrero Negro	137
+4672	Halacho	137
+4673	Hermosillo	137
+4674	Hidalgo del Parral	137
+4675	Huajuapan de Leon	137
+4676	Huatabampo	137
+4677	Iguala	137
+4678	Irapuato	137
+4679	Isla Mujeres	137
+4680	Izamal	137
+4681	Jaltipan	137
+4682	Juan Aldama	137
+4683	Juchitan	137
+4684	La Barca	137
+4685	La Cruz	137
+4686	La Paz	137
+4687	Lagos de Moreno	137
+4688	Lazaro Cardenas	137
+4689	Leon	137
+4690	Linares	137
+4691	Loreto	137
+4692	Los Mochis	137
+4693	Magdalena	137
+4694	Manzanillo	137
+4695	Matamoros	137
+4696	Matehuala	137
+4697	Mazatlan	137
+4698	Mazatlan	137
+4699	Merida	137
+4700	Mexicali	137
+4701	Mexico City	137
+4702	Miahuatlan	137
+4703	Minatitlan	137
+4704	Mitla	137
+4705	Monclova	137
+4706	Montemorelos	137
+4707	Monterrey	137
+4708	Morelia	137
+4709	Motul	137
+4710	Nacozari de Garcia	137
+4711	Nautla	137
+4712	Navajoa	137
+4713	Nezahualcoyotl	137
+4714	Nogales	137
+4715	Nueva Rosita	137
+4716	Nuevo Casas Grandes	137
+4717	Nuevo Laredo	137
+4718	Oaxaca	137
+4719	Ojinaga	137
+4720	Ometepec	137
+4721	Orizaba	137
+4722	Pachuca	137
+4723	Panuco	137
+4724	Papasquiaro	137
+4725	Paraiso	137
+4726	Parras	137
+4727	Petatlan	137
+4728	Peto	137
+4729	Piedras Negras	137
+4730	Pijijiapan	137
+4731	Pochutla	137
+4732	Poza Rica de Hidalgo	137
+4733	Progreso	137
+4734	Puebla	137
+4735	Puerto Escondido	137
+4736	Puerto Vallarta	137
+4737	Punta Prieta	137
+4738	Queretaro	137
+4739	Reynosa	137
+4740	Rio Verde	137
+4741	Sabinas Hidalgo	137
+4742	Salamanca	137
+4743	Salina Cruz	137
+4744	Saltillo	137
+4745	San Cristobal de Las Casas	137
+4746	San Felipe	137
+4747	San Fernando	137
+4748	San Juan del Rio	137
+4749	San Luis Potosi	137
+4750	San Pedro de las Colonias	137
+4751	San Quintin	137
+4752	Santa Barbara	137
+4753	Santa Rosalia	137
+4754	Santiago Ixcuintla	137
+4755	Santiago Tuxtla	137
+4756	Tamazunchale	137
+4757	Tampico	137
+4758	Tamuin	137
+4759	Tapachula	137
+4760	Taxco	137
+4761	Tecoman	137
+4762	Tecpan	137
+4763	Tecuala	137
+4764	Tehuacan	137
+4765	Tehuantepec	137
+4766	Tekax	137
+4767	Tenosique	137
+4768	Tepic	137
+4769	Teziutlan	137
+4770	Ticul	137
+4771	Tijuana	137
+4772	Tizimin	137
+4773	Tlaxcala	137
+4774	Tlaxiaco	137
+4775	Toluca	137
+4776	Torreon	137
+4777	Tula	137
+4778	Tuxpam	137
+4779	Tuxpan	137
+4780	Tuxtla Gutierrez	137
+4781	Uruapan	137
+4782	Valladolid	137
+4783	Valparaiso	137
+4784	Veracruz	137
+4785	Vicente Guerrero	137
+4786	Villa Ahumada	137
+4787	Villa Union	137
+4788	Villahermosa	137
+4789	Villanueva	137
+4790	Xalapa	137
+4791	Zacatecas	137
+4792	Zamora	137
+4793	Zumpango	137
+4794	Colonia	138
+4795	Kolonia	138
+4796	Palikir	138
+4797	Tofol	138
+4798	Weno	138
+4799	Anenii Noi	139
+4800	Balti	139
+4801	Basarabeasca	139
+4802	Bender	139
+4803	Briceni	139
+4804	Cahul	139
+4805	Calarasi	139
+4806	Cantemir	139
+4807	Causeni	139
+4808	Chisinau	139
+4809	Cimislia	139
+4810	Cocieri	139
+4811	Comrat	139
+4812	Criuleni	139
+4813	Donduseni	139
+4814	Drochia	139
+4815	Dubasari	139
+4816	Edinet	139
+4817	Falesti	139
+4818	Floresti	139
+4819	Glodeni	139
+4820	Hincesti	139
+4821	Ialoveni	139
+4822	Leova	139
+4823	Nisporeni	139
+4824	Ocnita	139
+4825	Orhei	139
+4826	Rezina	139
+4827	Riscani	139
+4828	Singerei	139
+4829	Soldanesti	139
+4830	Soroca	139
+4831	Stefan Voda	139
+4832	Straseni	139
+4833	Taraclia	139
+4834	Telenesti	139
+4835	Tiraspol	139
+4836	Ungheni	139
+4837	Monaco	140
+4838	Altay	141
+4839	Arvayheer	141
+4840	Baruun Urt	141
+4841	Bayankhongor	141
+4842	Bulgan	141
+4843	Buyant-Uhaa	141
+4844	Choybalsan	141
+4845	Choyr	141
+4846	Dalandzadgad	141
+4847	Darhan	141
+4848	Darhan	141
+4849	Dund-Us	141
+4850	Dzuunharaa	141
+4851	Dzuunmod	141
+4852	Erdenet	141
+4853	Hodrogo	141
+4854	Mandalgovi	141
+4855	Moron	141
+4856	Olgiy	141
+4857	Ondorhaan	141
+4858	Suchboatar	141
+4859	Tsetserleg	141
+4860	Ulaan-Uul	141
+4861	Ulaanbaatar	141
+4862	Ulaangom	141
+4863	Uliastay	141
+4864	Andrijevica	142
+4865	Bar	142
+4866	Berane	142
+4867	Bijelo Polje	142
+4868	Budva	142
+4869	Cetinje	142
+4870	Danilovgrad	142
+4871	Gusinje	142
+4872	Herceg-Novi	142
+4873	Kolasin	142
+4874	Kotor	142
+4875	Mojkovac	142
+4876	Niksic	142
+4877	Petnjica	142
+4878	Plav	142
+4879	Pljevlja	142
+4880	Pluzine	142
+4881	Podgorica	142
+4882	Rozaje	142
+4883	Savnik	142
+4884	Tivat	142
+4885	Ulcinj	142
+4886	Zabljak	142
+4887	Plymouth	143
+4888	Agadir	144
+4889	Beni Mellal	144
+4890	Casablanca	144
+4891	El Jadida	144
+4892	Er Rachidia	144
+4893	Fez	144
+4894	Goulimine	144
+4895	Kenitra	144
+4896	Ksar El Kebir	144
+4897	Larache	144
+4898	Marrakesh	144
+4899	Meknes	144
+4900	Ouezzane	144
+4901	Oujda	144
+4902	Rabat	144
+4903	Safi	144
+4904	Settat	144
+4905	Tan Tan	144
+4906	Tangier	144
+4907	Taza	144
+4908	Tiznit	144
+4909	Angoche	145
+4910	Beira	145
+4911	Chimoio	145
+4912	Chiramba	145
+4913	Cuamba	145
+4914	Dondo	145
+4915	Espungabera	145
+4916	Inhambane	145
+4917	Lichinga	145
+4918	Ligonha	145
+4919	Macia	145
+4920	Manica	145
+4921	Mapai	145
+4922	Maputo	145
+4923	Marrupa	145
+4924	Massangena	145
+4925	Matola	145
+4926	Maxixe	145
+4927	Moatize	145
+4928	Mocambique	145
+4929	Mocimboa	145
+4930	Mocuba	145
+4931	Montepuez	145
+4932	Nacala	145
+4933	Nampula	145
+4934	Nicuadala	145
+4935	Panda	145
+4936	Pemba	145
+4937	Quelimane	145
+4938	Quissico	145
+4939	Tete	145
+4940	Vilanculos	145
+4941	Xai-Xai	145
 4942	Bethanie	146
 4943	Eenhana	146
 4944	Gobabis	146
@@ -4987,7 +4987,7 @@
 4987	Rajbiraj	147
 4988	Ramechhap	147
 4989	Salyan	147
-4990	's-Hertogenbosch	148
+4990	s-Hertogenbosch	148
 4991	Amsterdam	148
 4992	Arnhem	148
 4993	Assen	148
@@ -5598,10 +5598,10 @@
 5598	Al Wakrah	169
 5599	Ar Rayyan	169
 5600	Ash Shihaniyah	169
-5601	Az Za`ayin	169
+5601	Az Zaayin	169
 5602	Doha	169
 5603	Madinat ash Shamal	169
-5604	Umm Salal `Ali	169
+5604	Umm Salal Ali	169
 5605	St.-Benoit	170
 5606	St.-Denis	170
 5607	Alba Lulia	171
@@ -6247,7 +6247,7 @@
 6247	Safotulafai	181
 6248	Saleaula	181
 6249	Samamea	181
-6250	Satupa`itea	181
+6250	Satupaitea	181
 6251	Vailoa	181
 6252	Acquaviva	182
 6253	Poggio di Chiesanuova	182
@@ -7530,7 +7530,7 @@
 7530	Voznesensk	221
 7531	Zaporizhzhya	221
 7532	Zhytomyr	221
-7533	`Ajman	222
+7533	Ajman	222
 7534	Abu Dhabi	222
 7535	Al Ayn	222
 7536	Al Fujayrah	222
@@ -12811,9 +12811,9 @@
 12811	Road Town	230
 12812	Leava	231
 12813	Mata-Utu	231
-12814	'Ataq	232
-12815	`Amran	232
-12816	Ad Dali`	232
+12814	Ataq	232
+12815	Amran	232
+12816	Ad Dali	232
 12817	Aden	232
 12818	Al Bayda	232
 12819	Al Ghaydah	232

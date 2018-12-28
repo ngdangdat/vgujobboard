@@ -25,6 +25,12 @@ class Command(BaseCommand):
         # Seed country, city and major, intake
         if action == 'seedcountry':
             self.seed_country()
+        elif action == 'clearcountry':
+            self.clear_country()
+        elif action == 'clearcity':
+            self.clear_city()
+        else:
+            self.stdout.write('Cannot found action %s' % action)
 
     def seed_country(self):
         countries_data = path.join(DATA_DIR, 'countries.csv')
@@ -65,3 +71,18 @@ class Command(BaseCommand):
 
     def seed_major(self):
         self.stdout.write('Done seeding major and intake')
+
+    def clear_country(self):
+        countries = Country.objects.all()
+        for c in countries:
+            c.delete()
+
+        self.stdout.write('Done clearing %s countries' % len(countries))
+    
+    def clear_city(self):
+        cities = City.objects.all()
+        for c in cities:
+            c.delete()
+
+        self.stdout.write('Done clearing %s cities' % len(cities))
+
