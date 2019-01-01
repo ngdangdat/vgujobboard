@@ -7,6 +7,9 @@ import MemberDetail from '../views/MemberDetail/index.vue';
 import Profile from '../views/Profile/index.vue';
 import Register from '../views/RegisterView/index.vue';
 import Login from '../views/LoginView/index.vue';
+import ResetPassword from '../views/PasswordView/ResetView/index.vue';
+import ChangePassword from '../views/PasswordView/ChangeView/index.vue';
+import PasswordDone from '../views/PasswordView/DoneView/index.vue';
 
 Vue.use(Router);
 
@@ -55,6 +58,30 @@ const router = new Router({
             props: true,
             meta: {
                 requiresAuth: true,
+            },
+        },
+        {
+            path: '/password/reset',
+            component: ResetPassword,
+            props: true,
+            meta: {
+                requiresAuth: false,
+            },
+        },
+        {
+            path: 'password/new',
+            component: ChangePassword,
+            props: true,
+            meta: {
+                requiresAuth: false, //change to TRUE for token after testing
+            },
+        },
+        {
+            path: 'password/done',
+            component: PasswordDone,
+            props: true,
+            meta: {
+                requiresAuth: false,
             },
         },
     ],
