@@ -1,7 +1,7 @@
 <template>
     <div class="change-form">
         <h2 class="title has-text-centered is-3">
-            Lorem Ipsum
+            New Password
         </h2>
         <div class="change-form">
             <div class="field">
