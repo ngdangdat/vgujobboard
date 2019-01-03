@@ -69,7 +69,7 @@ const router = new Router({
             },
         },
         {
-            path: 'password/new',
+            path: '/password/new',
             component: ChangePassword,
             props: true,
             meta: {
@@ -77,7 +77,7 @@ const router = new Router({
             },
         },
         {
-            path: 'password/done',
+            path: '/password/done',
             component: PasswordDone,
             props: true,
             meta: {
