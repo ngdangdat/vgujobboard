@@ -45,5 +45,5 @@ class AuthSerializer(Serializer):
 
 from .user import (
     UserSerializer, ProfileSerializer, UserChangePasswordSerializer, UserChangePasswordByOTPSerializer,
-    CountrySerializer, CitySerializer,
+    CountrySerializer, CitySerializer, MajorSerializer, 
 )

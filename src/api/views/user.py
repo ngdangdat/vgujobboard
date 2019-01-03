@@ -6,12 +6,12 @@ from rest_framework.exceptions import PermissionDenied, ParseError, NotFound, No
 
 from api.serializers import (
   UserSerializer, UserChangePasswordSerializer, UserChangePasswordByOTPSerializer,
-  CountrySerializer, CitySerializer,
+  CountrySerializer, CitySerializer, MajorSerializer, 
 )
 from api.http import Response
 from api.exceptions import Throttled, CODE
 
-from user.models import User, OneTimePassword, Country, City
+from user.models import User, OneTimePassword, Country, City, Major
 from user.otp import generate_otp_from_instance, is_valid_otp
 from user.exceptions import LimitedException, InvalidOTPException
 from user.const import OTP_INTERVAL
@@ -38,9 +38,8 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
     @apiParam {string} password user's password
     @apiParam {string} first_name user's first name
     @apiParam {string} last_name user's last name
-    @apiParam {string} profile__major user's major
-    @apiParam {string} profile__intake user's intake
-    @apiParam {integer} profile__gender user's gender
+    @apiParam {object} profile
+    @apiParam {object} majors
 
     @apiSuccessExample {json} Success-Response:
         HTTP/1.1 200 OK
@@ -56,8 +55,6 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
                 "id": 5,
                 "profile": {
                   "gender": 5,
-                  "major": "EEIT",
-                  "intake": 2017,
                   "phone_number": "0905772919",
                   "state": "Quy Nhon",
                   "birthday": "10/11/1994",
@@ -65,7 +62,19 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
                   "organization": "Vinagame",
                   "title": "Software Engineer",
                   "status": null,
-                }
+                },
+                "majors": [
+                    {
+                        "major": 1,
+                        "intake": 2017,
+                        "name": "Electrical Engineering and Information Technology",
+                        "shorten": "EEIT",
+                        "degree": {
+                            "value": 1,
+                            "display": "Bachelor"
+                        }
+                    }
+                ]
             }
         }
     """
@@ -89,27 +98,38 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
     @apiSuccessExample {json} Success-Response:
         HTTP/1.1 200 OK
           {
-            "success": true,
-            "errors": [],
             "data": {
-                "id": 3,
-                "email": "dat01@yopmail.com",
+                "id": 15,
+                "email": "dat16@yopmail.com",
                 "first_name": "Dat",
                 "last_name": "Nguyen",
                 "profile": {
                     "gender": 5,
-                    "major": "EEIT",
-                    "intake": 2012,
-                    "phone_number": null,
-                    "state": "Ahihi",
-                    "country": "Test",
-                    "office": "Test",
-                    "job_title": "Test",
-                    "message": null,
-                    "name": "Dat Nguyen"
-                }
+                    "phone_number": "0905772919",
+                    "city": 12737,
+                    "country": 229,
+                    "organization": "Vinagame",
+                    "title": "Software Engineer",
+                    "status": null,
+                    "avatar": "",
+                    "birthday": "1994-10-11",
+                    "linkedin": null
+                },
+                "majors": [
+                    {
+                        "major": 1,
+                        "intake": 2017,
+                        "name": "Electrical Engineering and Information Technology",
+                        "shorten": "EEIT",
+                        "degree": {
+                            "value": 1,
+                            "display": "Bachelor"
+                        }
+                    }
+                ]
             },
-            "status": 200
+            "errors": [],
+            "success": true
           }
     """
     if int(pk) != request.user.id:
@@ -356,7 +376,7 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
     serializer = CountrySerializer(countries, many=True)
     return Response(serializer.data)
 
-  @list_route(url_path='country/(?P<country_id>[\\d]+)/cities', permission_classes=())
+  @list_route(methods=['get'], url_path='country/(?P<country_id>[\\d]+)/cities', permission_classes=())
   def cities(self, request, country_id, *args, **kwargs):
     """
     Get city list using country ID
@@ -364,8 +384,14 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
     try:
       country = Country.objects.get(id=country_id)
     except Country.DoesNotExist:
-      raise NotFound('User not found.')
+      raise NotFound('Country not found.')
 
     cities = City.objects.filter(country=country).order_by('name')
     serializer = CitySerializer(cities, many=True)
+    return Response(serializer.data)
+
+  @list_route(methods=['get'], permission_classes=())
+  def major(self, request, *args, **kwargs):
+    majors = Major.objects.all().order_by('degree')
+    serializer = MajorSerializer(majors, many=True)
     return Response(serializer.data)

@@ -10,7 +10,7 @@ from django.utils.crypto import get_random_string
 from django.conf import settings
 
 from api.models import Token
-from user.const import OTP_INTERVAL, OTP_LIMIT
+from user.const import OTP_INTERVAL, OTP_LIMIT, DEGREE, DEGREE_CHOICES
 
 
 class BaseUserManager(Manager):
@@ -138,7 +138,7 @@ class User(AbstractUser):
     return token
 
   def get_otp_instance(self):
-    otp, created = OneTimePassword.objects.get_or_create(user=self)
+    otp, _ = OneTimePassword.objects.get_or_create(user=self)
     return otp
 
 class Group(RootGroup):
@@ -216,3 +216,29 @@ class OneTimePassword(models.Model):
       self.last_check = now
     self.save()
     return allowed
+
+
+class Major(models.Model):
+  name = models.CharField(default=None, max_length=100, blank=True, null=True, )
+  shorten = models.CharField(default=None, max_length=20, blank=True, null=True, unique=True, )
+  start_from = models.PositiveSmallIntegerField(_('Start Year'), blank=True, null=True, )
+  degree = models.PositiveSmallIntegerField(_('Degree'), blank=True, null=True, choices=DEGREE_CHOICES, )
+  objects = models.Manager()
+
+  def __str__(self):
+    degree_display = DEGREE.get_name(self.degree)
+    return "%s (%s)" % (self.name, degree_display)
+
+  @property
+  def degree_display(self):
+    return DEGREE.get_name(self.degree)
+
+
+class UserMajor(models.Model):
+  user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='majors', )
+  major = models.ForeignKey(Major, on_delete=models.CASCADE, )
+  intake = models.PositiveIntegerField(_('Intake'), blank=True, null=True, )
+  objects = models.Manager()
+
+  class Meta:
+    unique_together = (('user', 'major', 'intake', ), )

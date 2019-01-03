@@ -11,18 +11,22 @@ GENDER_CHOICES = [
   (GENDER.UNDEFINED, 'Undefined'),
 ]
 
-class MAJOR(Const):
-  UNDEFINED = 1
-  EEIT = 3
-  FA = 5
+
+class DEGREE(Const):
+  BACHELOR = 1
+  MASTER = 3
 
   choices = [
-    (EEIT, 'EEIT'),
-    (FA, 'FA'),
+    (BACHELOR, 'Bachelor', ),
+    (MASTER, 'Master', ),
   ]
 
 
-MIN_INTAKE = 2008
+DEGREE_CHOICES = [
+  (DEGREE.BACHELOR, 'Bachelor', ),
+  (DEGREE.MASTER, 'Master', ),
+]
+
 
 class USER_STATUS(Const):
   CREATED = 1
