@@ -55,7 +55,7 @@ import { PASSWORD_CHANGE_ACTIONS } from './../../../constrains/user';
 
 const ChangeView = Vue.extend({
     beforeMount() {
-        if (this.user !== null) {
+        if (this.password !== null) {
             this.$router.push('/password/new');
         }
     },
@@ -89,13 +89,6 @@ const ChangeView = Vue.extend({
                 }
             });
         },
-    },
-    watch: {
-        ChangeSuccess(val) {
-            if(val) {
-                this.$router.push('/done');
-            }
-        }
     },
 })
 
