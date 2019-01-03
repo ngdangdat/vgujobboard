@@ -1,7 +1,7 @@
 <template>
     <div class="reset-form">
         <h2 class="title has-text-centered is-3">
-            Lorem Ipsum
+            Reset Password
         </h2>
         <div class="reset-form">
             <div class="field">
@@ -71,13 +71,7 @@ const ResetView = Vue.extend({
             });
         },
     },
-    watch: {
-        resetSuccess(val) {
-            if(val) {
-                this.$router.push('/');
-            }
-        }
-    },
+   
 })
 
 export default ResetView;
@@ -99,3 +93,4 @@ export default ResetView;
         }
     }
 </style>
+
