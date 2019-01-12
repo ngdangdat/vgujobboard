@@ -102,23 +102,17 @@ const actions = {
     [REGISTER_ACTIONS.REGISTER_REQUEST]  ({ commit }, payload) {
         commit(REGISTER_ACTIONS.REGISTER_REQUEST_PENDING);
         let formData = new FormData();
-        const { profile, user, avatar } = payload;
+        const { user, avatar } = payload;
 
-        for (let key in profile) {
-            let val = profile[key];
-            formData.append(`profile.${key}`, val);
-        }
+        const userJsonData = JSON.stringify(user);
 
-        for (let key in user) {
-            let val = user[key];
-            formData.append(`${key}`, val);
-        }
-
+        formData.append('user', userJsonData);
         formData.append('profile.avatar', avatar);
         let headers = {
             'Content-Type': 'multipart/form-data',
         };
 
+        window.test = formData;
         return axios({
             method: 'post',
             headers: headers,

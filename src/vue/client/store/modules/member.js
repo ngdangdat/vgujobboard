@@ -1,7 +1,7 @@
 import axios from 'axios';
 import _ from 'lodash';
-import { joinUrl } from './../../utils/url';
-import { getHeaders } from './../../utils/request';
+import { joinUrl } from '@/utils/url';
+import { getHeaders } from '@/utils/request';
 import config from '@/config/project.config.js';
 import { MEMBER_LIST_ACTIONS, MEMBER_DETAIL_ACTIONS } from '@/constrains/member';
 import Vue from 'vue';
@@ -9,9 +9,7 @@ import Vue from 'vue';
 let state = {
     loadings: {},
     success: {},
-    // Object { [memberId]: Objet(user) }
     membersByID: {},
-    // Object { [pageIndex]: Array(IDs) }
     memberIDsByPage: {},
     totalMembers: 1,
     totalPages: 1,
@@ -29,7 +27,8 @@ let mutations = {
         Vue.set(state.membersByID, id, user);
     },
     [MEMBER_DETAIL_ACTIONS.MEMBER_DETAIL_REQUEST_FAILED] (state, payload = {}) {
-        Vue.set(state.errors, MEMBER_DETAIL_ACTIONS.MEMBER_DETAIL_REQUEST, payload);
+        const { errors } = payload;
+        Vue.set(state.errors, MEMBER_DETAIL_ACTIONS.MEMBER_DETAIL_REQUEST, errors);
     },
 
     // Member list mutations
@@ -63,7 +62,7 @@ let actions = {
         const { userId } = payload;
         commit(MEMBER_DETAIL_ACTIONS.MEMBER_DETAIL_REQUEST_PENDING);
         return axios({
-            method: 'get',
+            method: 'GET',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, `user/${userId}`),
         }).then(response => {
@@ -73,7 +72,9 @@ let actions = {
                     user: response.data.data,
                 });
             } else {
-                commit(MEMBER_DETAIL_ACTIONS.MEMBER_DETAIL_REQUEST_FAILED, response.data.errors);
+                commit(MEMBER_DETAIL_ACTIONS.MEMBER_DETAIL_REQUEST_FAILED, {
+                    errors: response.data.errors,
+                });
             }
         });
     },
@@ -83,7 +84,7 @@ let actions = {
         const { page } = payload;
         commit(MEMBER_LIST_ACTIONS.MEMBER_LIST_REQUEST_PENDING);
         return axios({
-            method: 'get',
+            method: 'GET',
             headers: getHeaders(),
             url: joinUrl(config.API_ENDPOINT, `user?page_size=${config.PAGINATION_PAGE_SIZE}&page=${page}`),
         }).then(response => {

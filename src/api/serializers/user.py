@@ -18,12 +18,11 @@ PROFILE_AVATAR_KEY = settings.PROFILE_AVATAR_KEY
 PROFILE_FIELDS = (
   'gender', 'phone_number', 'city', 'country',
   'organization', 'title', 'status', 'avatar', 'birthday',
-  'linkedin',
+  'linkedin', 'majors',
 )
 
 
 class UserMajorSerializer(ModelSerializer):
-
 
   def to_representation(self, instance):
     data = super(UserMajorSerializer, self).to_representation(instance)
@@ -44,6 +43,7 @@ class UserMajorSerializer(ModelSerializer):
 
 class ProfileSerializer(ModelSerializer):
   avatar = serializers.CharField(max_length=255, required=False)
+  majors = UserMajorSerializer(required=False, many=True)
 
   def validate_avatar(self, value):
     try:
@@ -69,7 +69,6 @@ class ProfileSerializer(ModelSerializer):
 
 class UserSerializer(ModelSerializer):
   profile = ProfileSerializer(required=False, many=False)
-  majors = UserMajorSerializer(required=False, many=True)
   password = serializers.CharField(write_only=True)
 
   def to_internal_value(self, data):
@@ -88,9 +87,9 @@ class UserSerializer(ModelSerializer):
     if 'profile' in validated_data:
       _profile = dict(validated_data.pop('profile'))
 
-    _majors = {}
-    if 'majors' in validated_data:
-      _majors = list(validated_data.pop('majors'))
+    _majors = []
+    if 'majors' in _profile:
+      _majors = list(_profile.pop('majors'))
 
     if 'email' not in validated_data or not validated_data['email']:
       raise exceptions.ParseError('Please enter email.', CODE.USER.REQUIRED_EMAIL)
@@ -100,10 +99,12 @@ class UserSerializer(ModelSerializer):
     user.is_active = False
     user.save()
 
-    for major in _majors:
-      UserMajor.objects.create(user=user, **major)
+    profile = Profile.objects.get_or_create_profile(user=user, **_profile)
+    user.profile = profile
 
-    user.profile = Profile.objects.get_or_create_profile(user=user, **_profile)
+    for major in _majors:
+      UserMajor.objects.create(profile=profile, **major)
+
     return user
 
   def update(self, instance, validated_data):
@@ -128,7 +129,7 @@ class UserSerializer(ModelSerializer):
     model = User
     extra_kwargs = {'password': {'write_only': True}}
     fields = (
-      'id', 'email', 'first_name', 'last_name', 'profile', 'password', 'majors',
+      'id', 'email', 'first_name', 'last_name', 'profile', 'password',
     )
 
 

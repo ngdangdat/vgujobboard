@@ -16,7 +16,8 @@ from core.models import ModelDiffMixin
 from core.modules.storage import get_storage_path, get_cdn_url
 from core.modules.image import crop_it
 
-from user.const import GENDER, GENDER_CHOICES
+from user.const import GENDER, GENDER_CHOICES, DEGREE, DEGREE_CHOICES
+from .major import Major
 
 AVATAR_SIZE = 256, 256
 PROFILE_AVATAR_KEY = settings.PROFILE_AVATAR_KEY
@@ -122,8 +123,9 @@ class Profile(ModelDiffMixin, models.Model):
 
   @property
   def name(self):
-    user = self.user
-    return "%s %s" % (user.first_name, user.last_name)
+    fname = getattr(self.user, 'first_name', '')
+    lname = getattr(self.user, 'last_name', '')
+    return "%s %s" % (fname, lname)
 
   def save(self, *args, **kwargs):
     self.clean()
@@ -137,3 +139,14 @@ class Profile(ModelDiffMixin, models.Model):
         name_to_save, avatar = save_avatar(name)
         self.avatar.save(name_to_save, avatar, save=False)
         self.avatar.name = get_cdn_url(self.avatar.name)
+
+
+class UserMajor(models.Model):
+  profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='majors', )
+  major = models.ForeignKey(Major, on_delete=models.CASCADE, )
+  intake = models.PositiveIntegerField(_('Intake'), blank=True, null=True, )
+  objects = models.Manager()
+
+
+  class Meta:
+    unique_together = (('profile', 'major', ), ('profile', 'intake'), )

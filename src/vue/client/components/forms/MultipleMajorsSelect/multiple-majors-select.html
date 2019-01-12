@@ -1,0 +1,14 @@
+<div :class="wrapClass">
+    <major-select
+        v-for="(item, index) in majors"
+        :id="index"
+        :key="index"
+        :major-list="getAllowedMajorsForCurrentInput(index)"
+        :wrap-class="selectWrapClass"
+        :input-class="inputClass"
+        @change="changeMajor(index)"
+    />
+    <div v-if="isShowAddMoreBtn" class="add-more" @click="increaseMajorLength">
+        <icon name="plus-circle" size="2x"/>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div :class="wrapClass">
+    <div :class="inputClass">
+        <div class="select full-width">
+            <select name="major" class="input" v-model="majorId">
+                <option :value="null">Major</option>
+                <option v-for="item in majorList"
+                    :key="item.id"
+                    :value="item.id"
+                >
+                    {{ `${item.name} (${item.degree.display})` }}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div :class="inputClass" >
+        <div class="select full-width">
+            <select @change="change" name="intake" class="input" v-model="intake">
+                <option :value="null">Intake</option>
+                <option v-for="(year, index) in acceptedYears" :id="index" :value="year">
+                    {{ year }}
+                </option>
+            </select>
+        </div>
+    </div>
+</div>

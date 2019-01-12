@@ -155,48 +155,14 @@
             </div>
         </div>
         <div class="field">
-            <div class="control two-cols">
-            <div class="col">
-                <div class="select full-width">
-                <select v-model="major"
-                    v-validate="'required:true'"
-                    class="input"
-                    :class="{
-                    'is-danger': errors.has('major')
-                    }"
-                    name="major"
-                >
-                    <option :value="null">Major</option>
-                    <option :value="3">EEIT</option>
-                    <option :value="5">FA</option>
-                    <!-- <option v-for="(eachMajor, index) in availableMajors" :key="index" :value="eachMajor.value">
-                    {{ eachMajor.display }}
-                    </option> -->
-                </select>
-                </div>
-                <span class="help is-danger">{{ errors.first('major') }}</span>
-            </div>
-            <div class="col">
-                <div class="select full-width">
-                <select v-model="intake"
-                    name="intake"
-                    v-validate="'required:true'"
-                    class="input"
-                    :class="{
-                    'is-danger': errors.has('intake')
-                    }"
-                >
-                    <option :value="null">Intake</option>
-                    <option :value="2011">2011</option>
-                    <option :value="2012">2012</option>
-                    <!-- <option v-for="(eachIntake, index) in availableIntakes" :key="index" :value="eachIntake.value">
-                    {{ eachIntake.display }}
-                    </option> -->
-                </select>
-                </div>
-                <span class="help is-danger">{{ errors.first('intake') }}</span>
-            </div>
-            </div>
+            <hr />
+            <multiple-majors-select 
+                :major-list="majorList"
+                select-wrap-class="control two-cols each-major"
+                input-class="col"
+                v-model="majors"
+            />
+            <hr />
         </div>
         <div class="field">
             <div class="control two-cols">
@@ -273,9 +239,9 @@
         </div>
         <div class="field">
             <div class="control">
-            <textarea v-model="status"
+            <input v-model="status"
                 name="status"
-                class="textarea"
+                class="input"
                 type="text"
                 placeholder="Message to VGU"
             />
