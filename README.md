@@ -2,84 +2,92 @@
 
 # Set up front-end environment
 
-To set up environment, make sure you have npm. You can download npm here: https://www.npmjs.com/
+To set up environment, make sure you have package manager. You can download [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/en/).
 
-Next, install gulp and gulp dependencies by running following commands in command line:
-
-```
-$ npm install gulp -g
+NPM
+```bash
 $ npm install
 ```
 
-## Build commands
-
-After setting up environment, you can start write SCSS in *sass* folder.
-
-Build command:
-
-```
-$ gulp build
+Yarn
+```bash
+$ yarn install
 ```
 
-Add *--sourcemaps* as parameter of commands above to generate SCSS and CSS map.
+## Run command
+
+Start development server for front-end side
+
+NPM
+```bash
+$ npm run start
+```
+
+Yarn
+```bash
+$ yarn start
+```
 
 # Set up back-end environment
 
 We use Django as our framework to handle back-end logic. Prerequisites:
 
 * Python
-* Gunicorn
 * PostgreSQL
 
-Setup virtual env
+Setup virtual environment
 
-```
-$ [sudo] pip install virtualenv
+```bash
+$ pip install virtualenv
 ```
 
-Create VE with python3
+Create virtual environment with python3
 
-```
+```bash
 $ virtualenv -p python3 env
 ```
 
-Use created virtual environment
+Activate created virtual environment
 
-```
+```bash
 $ source env/bin/activate
 ```
 
-## Clone source and configure
-- Clone this repository.
-- Create a database for project.
-- Copy `core/settings/local.env.sample` to `core.settings.local.env`.
-- Replace `DATABASE_URL` key with your local database credentials. You can use Postgres, MySQL,...
+## Create database
 
-**Notes:** For mysql MSDB, please make sure your database chartset is support utf8. `CREATE DATABASE vgualumni CHARACTER SET utf8 COLLATE utf8_general_ci;`
+PostgreSQL database create command
+```sql
+CREATE DATABASE vgu;
+```
+
+## Install required packages
+
+Install all necessary packages
+
+```bash
+$ pip install -r requirements.txt
+```
+
+## Configure environment for Django
+
+Copy `core/settings/local.env.sample` to `core/settings/local.env`. Configure `local.env` with your local machine variables (eg: database,...).
+
+## Apply migrations
+
+```bash
+$ python manage.py migrate
+```
 
 ## Facebook configuration
 Get Facebook access token for your fan page to configure the key `FACEBOOK_ACCESS_TOKEN`.
 Configure `FACEBOOK_ALBUM_ID` key with ID of the photo album that you want photos being posted to.
 
-## Run at localhost
-Install all necessary packages
+## Run the development server
 
+Run development server
+```bash
+$ python src/manager.py runserver 8000
 ```
-$ pip install -r requirements.txt
-```
-
-Apply migrations
-
-```
-$ python manage.py migrate
-```
-
-Run server
-
-```
-$ python src/manager.py runserver 8002
-```
-
 
 ### References
 - [How to get Facebook access token?](https://stackoverflow.com/questions/42663080/how-can-you-get-facebook-access-token)
