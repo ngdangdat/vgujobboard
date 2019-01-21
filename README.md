@@ -2,8 +2,9 @@
 
 # Set up front-end environment
 
-To set up environment, make sure you have package manager. You can download [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/en/).
+To set up environment, make sure you have package manager. Following these links to install [npm](https://www.npmjs.com/) and [Yarn](https://yarnpkg.com/en/).
 
+## Update initial environment
 NPM
 ```bash
 $ npm install
@@ -14,9 +15,7 @@ Yarn
 $ yarn install
 ```
 
-## Run command
-
-Start development server for front-end side
+## Start development server for front-end side
 
 NPM
 ```bash
@@ -33,9 +32,9 @@ $ yarn start
 We use Django as our framework to handle back-end logic. Prerequisites:
 
 * Python
-* PostgreSQL
+* [PostgreSQL](https://www.postgresql.org/download/)
 
-Setup virtual environment
+## Setup virtual environment
 
 ```bash
 $ pip install virtualenv
@@ -53,13 +52,6 @@ Activate created virtual environment
 $ source env/bin/activate
 ```
 
-## Create database
-
-PostgreSQL database create command
-```sql
-CREATE DATABASE vgu;
-```
-
 ## Install required packages
 
 Install all necessary packages
@@ -68,9 +60,22 @@ Install all necessary packages
 $ pip install -r requirements.txt
 ```
 
+## Create database
+
+PostgreSQL database create command
+```bash
+sudo -u postgres psql
+CREATE DATABASE <db_name>;
+optional: ALTER USER postgres PASSWORD '<new_password>';
+```
+
 ## Configure environment for Django
 
-Copy `core/settings/local.env.sample` to `core/settings/local.env`. Configure `local.env` with your local machine variables (eg: database,...).
+Copy `src/core/settings/local.env.sample` to `src/core/settings/local.env`. Configure `local.env` with your local machine variables
+Example:
+```
+DATABASE_URL=postgres://postgres:<new_password>@localhost:5432/<db_name>
+```
 
 ## Apply migrations
 
@@ -86,7 +91,7 @@ Configure `FACEBOOK_ALBUM_ID` key with ID of the photo album that you want photo
 
 Run development server
 ```bash
-$ python src/manager.py runserver 8000
+$ python src/manage.py runserver 8000
 ```
 
 ### References
