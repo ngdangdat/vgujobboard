@@ -16,6 +16,8 @@ from user.otp import generate_otp_from_instance, is_valid_otp
 from user.exceptions import LimitedException, InvalidOTPException
 from user.const import OTP_INTERVAL
 
+import json
+
 def raise_throttled(wait=None, detail=None):
   exc = Throttled(wait=wait, detail=detail)
   exc.code = CODE.USER.OTP_REQUEST_LIMITED
@@ -47,38 +49,13 @@ class UserViewSet(viewsets.ModelViewSet, mixins.ListModelMixin):
             "status": 200,
             "success": true,
             "errors: [],
-            "data": {
-                "email": "ngdangdat09@gmail.com",
-                "password": "Admin@123",
-                "first_name": "Dat",
-                "last_name": "Nguyen",
-                "id": 5,
-                "profile": {
-                  "gender": 5,
-                  "phone_number": "0905772919",
-                  "state": "Quy Nhon",
-                  "birthday": "10/11/1994",
-                  "country": "VN",
-                  "organization": "Vinagame",
-                  "title": "Software Engineer",
-                  "status": null,
-                },
-                "majors": [
-                    {
-                        "major": 1,
-                        "intake": 2017,
-                        "name": "Electrical Engineering and Information Technology",
-                        "shorten": "EEIT",
-                        "degree": {
-                            "value": 1,
-                            "display": "Bachelor"
-                        }
-                    }
-                ]
-            }
+            "data": {}
         }
     """
-    serializer = self.get_serializer(data=request.data)
+    json_user = request.data['user']
+    user = json.loads(json_user)
+
+    serializer = self.get_serializer(data=user)
     serializer.is_valid(raise_exception=True)
     serializer.save()
     headers = self.get_success_headers(serializer.data)
