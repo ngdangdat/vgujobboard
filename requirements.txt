@@ -1,6 +1,6 @@
 certifi==2018.1.18
 chardet==3.0.4
-Django==2.0.8
+Django==2.2.24
 django-environ==0.4.4
 -e git+https://github.com/mobolic/facebook-sdk.git@27697ed3743e3a60da6907267280755d324a85f3#egg=facebook_sdk
 idna==2.6
